@@ -1243,24 +1243,3 @@ function download {
 
 	aria2c -x "$connections" "$1"
 }
-
-# Watch a git repository for un-committed changes.
-# @since April 9th, 2025
-# @usage git-watch /path/to/repo
-git-watch() {
-
-	local dir="$1"
-
-	if [ ! -d "$dir/.git" ]; then
-		echo "$dir is not a Git repo"
-		return 1
-	fi
-
-	git -C "$dir" diff --quiet --ignore-submodules HEAD
-
-	if [ $? -ne 0 ]; then
-		echo "\033[0;33m$dir has uncommitted changes.\033[0m"
-	fi
-}
-	git-watch "$HOME/.githooks"
-	git-watch "$HOME/.zsh"

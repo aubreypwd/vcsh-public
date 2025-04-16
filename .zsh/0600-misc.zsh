@@ -96,3 +96,14 @@ _clone-and-link-antigen-bundle () {
 
 	antigen bundle "$HOME/Repos/github.com/$1" --no-local-clone
 }
+
+# Check vcsh.
+if [ "$HOME" = "$(pwd)" ]; then
+	if [ -n "$(vcsh public status --porcelain)" ]; then
+		echo -e "\033[0;33mvcsh public has uncommitted changes.\033[0m"
+	fi
+
+	if [ -n "$(vcsh private status --porcelain)" ]; then
+		echo -e "\033[0;33mvcsh private has uncommitted changes.\033[0m"
+	fi
+fi
