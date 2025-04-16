@@ -56,10 +56,6 @@ alias unhide="chflags nohidden"
 # Browser in the terminal
 alias browse="carbonyl --zoom=50"
 
-# vcsh
-alias public="vcsh public"
-alias private="vcsh private"
-
 # Exit Alias.
 if [[ ( "$TERM_PROGRAM" == 'vscode' ) ]]; then
 
@@ -1246,4 +1242,28 @@ function download {
 	fi
 
 	aria2c -x "$connections" "$1"
+}
+
+# vcsh public alias
+# @since April 16th 2025 - Includes lazygit integration.
+public() {
+
+	if [[ "$1" == "lg" ]]; then
+		shift
+		lazygit --git-dir="$HOME/.config/vcsh/repo.d/public.git" --work-tree="$HOME" "$@"
+	else
+		vcsh public "$@"
+	fi
+}
+
+# vcsh public alias
+# @since April 16th 2025 - Includes lazygit integration.
+private() {
+
+	if [[ "$1" == "lg" ]]; then
+		shift
+		lazygit --git-dir="$HOME/.config/vcsh/repo.d/private.git" --work-tree="$HOME" "$@"
+	else
+		vcsh private "$@"
+	fi
 }
