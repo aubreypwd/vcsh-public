@@ -56,6 +56,10 @@ alias unhide="chflags nohidden"
 # Browser in the terminal
 alias browse="carbonyl --zoom=50"
 
+# vcsh
+alias public="vcsh public"
+alias private="vcsh private"
+
 # Exit Alias.
 if [[ ( "$TERM_PROGRAM" == 'vscode' ) ]]; then
 
