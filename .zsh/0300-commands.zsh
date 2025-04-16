@@ -1244,26 +1244,17 @@ function download {
 	aria2c -x "$connections" "$1"
 }
 
-# vcsh public alias
-# @since April 16th 2025 - Includes lazygit integration.
-public() {
-
-	if [[ "$1" == "lg" ]]; then
-		shift
-		lazygit --git-dir="$HOME/.config/vcsh/repo.d/public.git" --work-tree="$HOME" "$@"
-	else
-		vcsh public "$@"
-	fi
-}
-
-# vcsh public alias
-# @since April 16th 2025 - Includes lazygit integration.
-private() {
-
-	if [[ "$1" == "lg" ]]; then
-		shift
-		lazygit --git-dir="$HOME/.config/vcsh/repo.d/private.git" --work-tree="$HOME" "$@"
-	else
-		vcsh private "$@"
-	fi
-}
+# vcsh shorthand for public and private repos.
+# @since April 16th 2025 - With lazygit support.
+for repo in public private; do
+	eval "
+		$repo() {
+			if [[ \"\$1\" == \"lg\" ]]; then
+				shift
+				lazygit --git-dir=\"\$HOME/.config/vcsh/repo.d/$repo.git\" --work-tree=\"\$HOME\" \"\$@\"
+			else
+				vcsh $repo \"\$@\"
+			fi
+		}
+	"
+done
