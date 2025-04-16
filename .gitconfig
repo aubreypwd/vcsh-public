@@ -1,0 +1,194 @@
+[alias]
+	aa     = "add ." # All all
+	ai     = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git add -f" # https://spin.atomicobject.com/2018/04/05/fuzzy-find-git-add/
+	aic    = "! git ai && git c"
+	b      = "! echo $(git branch --show-current)" # Show the current branch.
+	c      = commit -v # Commit.
+	cp     = "! function f() { git commit -v; git push; }; f" # Commit and push.
+	ca     = "! function f() { git aa && git commit -v; }; f" # Commit all.
+	cap    = "! function f() { git aa && git commit -v; git push; }; f" # Commit all and push.
+	cb     = "! git b | pbcopy" # Copy the current branch to the clipboard.
+	clear  = clean -df # Just remove new files
+	cm     = "! function f() { git mod && git commit -v; }; f"
+	cmp    = "! function f() { git mod && git commit -v && git push; }; f"
+	co     = checkout
+	d      = diff
+	db     = "! function f() { git branch -D $1; git push origin :$1 ;}; f" # Delete branch.
+	di     = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git diff" # Interactive diff.
+	ds     = diff --staged
+	gdiff  = "! function f() { /usr/local/bin/juxta; }; f"
+	dt     = "! function f() { git tag -d $1; git push origin :refs/tags/$1; }; f"
+	f      = "fetch"
+	fb     = "! /bin/bash -c 'source /Users/aubreypwd/Repos/github.com/aubreypwd/zsh-plugin-fzf-git-branch/fzf-git-branch.plugin.zsh && fzf-git-branch'" # See https://github.com/aubreypwd/zsh-plugin-fzf-git-branch
+	force  = "force --force-with-lease" # Check for staleness first.
+	g      = gui
+	ga     = "! function f() { git add . && git g; }; f" # Add all files and open the GUI.
+	get    = "! function f() { ghq get \"$1\"; }; f" # Commit all files, add message inline, and push.
+	gh     = "! function f() { gh \"$@\"; }; f"
+	ghget  = "! function f() { ghq get \"git@github.com:$1/$2.git$1\"; }; f"
+	l      = log --oneline --decorate --graph # Better log, looks better in CLI.
+	l1     = l -n 1
+	l5     = l -n 5
+	l10    = l -n 10
+	l20    = l -n 20
+	l50    = l -n 20
+	l100   = l -n 20
+	lg     = "! function f() { lazygit; }; f"
+	lgnt   = "! function f() { ttab -w -t 'lazygit' -q 'lazygit && exit'; }; f"
+	m      = merge
+	mod    = "add -u" # Add modifed
+	mt     = "! function f() { git dt $1; git tag $1; git push --tags; }; f" # Move tag here.
+	nb     = checkout -b # New branch
+	p      = pull
+	pb     = "! git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\"" # git push current branch.
+	pew    = "! function f() { git commit -a --allow-empty-message -m '' && git pb; }; f" # Push an empty commit with all updates (dependant in other packages).
+	pp     = pb
+	pt     = push --tags
+	ui     = ! git diff --name-only --cached | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git restore --staged # Un-stage interactively.
+	rcob   = "! function f() { git rhhc && git fb && git pull; }; f" # Reset and checkout branch.
+	rhh    = reset --hard HEAD # Reset easily.
+	rhhc   = "! git rhh && git clear" # Reset and remove new files.
+	us     = "rm --cached" # Un-stage a file
+	s      = status
+	sa     = "rebase --root -i" # Squash all
+	sd     = "! function f() { git status && git diff ;}; f"
+	sds    = "! function f() { git status && git diff --staged ;}; f"
+  sparse = "!f() { repo=\"$1\"; folder=\"$2\"; branch=\"${3:-master}\"; target=\"${4:-$(basename \"$repo\" .git)}\"; git clone --filter=blob:none --no-checkout --branch \"$branch\" \"$repo\" \"$target\" && cd \"$target\" && git sparse-checkout init --cone && git sparse-checkout set \"$folder\" && git checkout; }; f" # e.g. git sparse git@github.com:use/repo.git sub-folder branch(master) folder(repo).
+	smerge = "! function f() { smerge ./ -b; }; f"  # Sublime Merge
+	stat   = status
+	stow   = "stash --all -m"
+	uaf    = "reset" # Unstage all files.
+	pl     = "! function f() { git -C wp-content/plugins $@; }; f" # Runs command in the wp-content/plugins directory (useful with LocalWP site shell).
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[user]
+	name = Aubrey Portwood
+	email = code@aubreypwd.com
+	signingkey = 8691F6F5E25C5E23
+
+[core]
+	excludesfile  = "$HOME/.gitignore"
+	editor    = "$EDITOR"
+	hooksPath = "$HOME/.githooks"
+	# editor        = "micro --clipboard external --infobar false --keepautoindent false --savecursor false --diffgutter false --colorcolumn 72 --ruler false --softwrap true --wordwrap true --eofnewline false --rmtrailingws true"
+	# editor        = open -W -a 'CommitEdit'
+	# editor        = "/Applications/Komet.app/Contents/MacOS/Komet"
+
+[color]
+	ui          = true
+	diff        = auto
+	status      = auto
+	branch      = auto
+	interactive = auto
+	pager       = true
+
+[credential]
+	helper = osxkeychain
+
+[color]
+	diff        = auto
+	status      = auto
+	branch      = auto
+	interactive = auto
+	ui          = true
+	pager       = true
+
+[color "status"]
+	added     = green
+	changed   = red bold
+	untracked = magenta bold
+
+[color "branch"]
+	remote = yellow
+
+[gui]
+	tabsize = 2
+	warndetachedcommit = true
+
+[diff]
+	noprefix = true
+	tool = juxta
+
+[difftool "meld"]
+	trustExitCode = true
+	cmd           = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
+
+[pager]
+	diff = false
+	show = false
+
+[mergetool "sublime"]
+	cmd           = subl -w $MERGED
+	trustExitCode = true
+
+[mergetool "smerge"]
+	cmd           = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
+
+[mergetool "meld"]
+	cmd           = open -W -a Meld --fresh --new --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+	trustExitCode = true
+
+[mergetool]
+	keepBackup = false
+
+[merge]
+	tool = juxta
+	summary = true
+
+[pull]
+	rebase = false
+
+[ghq]
+	root = ~/Repos
+
+[filter "lfs"]
+	clean    = git-lfs clean -- %f
+	smudge   = git-lfs smudge -- %f
+	process  = git-lfs filter-process
+	required = true
+
+[init]
+	defaultBranch = main
+
+[diff "plist"]
+	textconv = plutil -convert xml1 -o -
+
+[commit]
+	verbose = true
+	gpgsign = true
+
+[rerere]
+	enabled = true
+
+[branch]
+	sort = -committerdate
+
+[column]
+	ui = auto
+
+[maintenance]
+	repo = /Users/aubreypwd/Repos/github.com/awesomemotive/affiliate-wp
+	auto = false
+	strategy = incremental
+
+[mergetool "vscode"]
+	cmd = "code --new-window --wait --disable-extension shevaua.phpcs --merge  $REMOTE $LOCAL $BASE $MERGED" # 3-way merge.
+
+[mergetool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+	trustExitCode = false
+
+[mergetool "juxta"]
+	cmd = juxta _mergetool --base \"${BASE:-/dev/null}\" --local \"$LOCAL\" --remote \"$REMOTE\" --merged \"${MERGED:-/dev/null}\"
+	trustExitCode = true
+
+[difftool "juxta"]
+	cmd = juxta _difftool --local \"$LOCAL\" --remote \"$REMOTE\" --merged \"$MERGED\"
+	trustExitCode = true
+[safe]
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
