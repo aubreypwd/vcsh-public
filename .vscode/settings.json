@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+		"*/**": true,
+		"*/.zshrc": false,
+  },
+  "search.exclude": {
+    "*/**": true
+  },
+}
