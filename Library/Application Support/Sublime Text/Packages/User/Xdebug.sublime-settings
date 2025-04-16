@@ -1,0 +1,32 @@
+{
+  "close_on_stop": true,
+  "break_on_exception": [
+    // "InvalidArgumentException",
+    // "Exception",
+    "Fatal error", // E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR
+    "Catchable fatal error", // E_RECOVERABLE_ERROR (since PHP 5.2.0)
+    "Parse error", // E_PARSE
+    "Strict standards", // E_STRICT
+    // "Deprecated", // E_DEPRECATED, E_USER_DEPRECATED (since PHP 5.3.0)
+    "Unknown error" // default
+    // "Warning", // E_WARNING, E_CORE_WARNING, E_COMPILE_WARNING, E_USER_WARNING
+    // "Notice", // E_NOTICE, E_USER_NOTICE
+    // "Xdebug", // 0
+  ],
+  "pretty_output": true,
+  "break_on_start": false,
+  "debug": false,
+  "max_depth": 4,
+  "max_data": 2048,
+  "max_children": 16,
+  "super_globals": false,
+  "disable_layout": false,
+  "ide_key": "",
+  "port": 9022, // Yes, we have to use this now that PHP 7.4 takes over port 9000.
+  "host": "localhost", // Yes, we have to use this now that PHP 7.4 takes over port 9000.
+  "hide_password": true,
+  "breakpoint_enabled": "circle",
+  "breakpoint_disabled": "dot",
+  "breakpoint_current": "",
+  "current_line": "bookmark",
+}

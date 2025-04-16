@@ -1,0 +1,12 @@
+{
+	"searchanywhere_searchengine": "PHP",
+	"searchanywhere_searchurl": "http://ca3.php.net/manual-lookup.php?pattern={0}&scope=quickref",
+	"searchanywhere_type_searchengine":
+	[
+		{
+			"extension": ".php",
+			"name": "PHP",
+			"searchurl": "http://ca3.php.net/manual-lookup.php?pattern={0}&scope=quickref"
+		}
+	]
+}

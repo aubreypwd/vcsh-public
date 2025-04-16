@@ -1,0 +1,13 @@
+{
+     // Run PHPCBF when a buffer is saved.
+    "fix_on_save": false,
+
+    // Path to PHP.
+    // "php_path": "/usr/local/bin/php",
+
+    // Path to the PHPCBF script.
+    "phpcbf_path": "/Users/aubreypwd/.composer/vendor/bin/phpcbf",
+
+    // Additional arguments to pass to PHPCS/PHPCBF.
+    "additional_args": [],
+}

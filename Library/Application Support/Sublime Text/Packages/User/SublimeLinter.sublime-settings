@@ -1,0 +1,118 @@
+{
+    "highlights.time_to_idle": 1.5,
+    "lint_mode": "background",
+    "debug": false,
+    "delay": 0.1,
+    "linters": {
+        "eslint": {
+            "disable": false,
+            "args": [],
+            "excludes": [],
+        },
+        "phpcs": {
+            "working_dir": "${file_path}",
+            "env": {
+              "PATH": "/opt/homebrew/opt/php@8.3/bin"
+            },
+            "disable": false,
+            "args": [
+                "--ignore=*/vendor/*",
+                "--ignore=*/node_modules/*",
+                "--ignore=*/dist/*",
+            ],
+            "excludes": [
+                "*/node_modules/*",
+                "*/vendor/*",
+                "*/dist/*",
+            ],
+        },
+        "jshint": {
+            "working_dir": "${file_path}",
+            "disable": true,
+            "args": [],
+            "excludes": []
+        },
+        "phpcbf": {
+            "working_dir": "${file_path}",
+            "disable": false,
+        },
+        "sass": {
+            "working_dir": "${file_path}",
+            "disable": false,
+            "args": [],
+            "excludes": [],
+        },
+        "stylelint": {
+            "working_dir": "${file_path}",
+            "disable": false,
+            "args": [],
+            "excludes": [],
+        },
+        "json": {
+            "disable": false,
+            "args": [],
+            "excludes": [],
+            "strict": true
+        },
+        "shellcheck": {
+            "disable": false,
+            "args": [
+                // "--shell=bash"
+            ],
+            "exclude": "SC1091,SC3033", // Rules.
+            "excludes": [] // Files.
+        },
+        "csslint": {
+            "working_dir": "${file_path}",
+            "disable": true,
+            "args": [],
+            "errors": "",
+            "excludes": [],
+            "ignore": "",
+            "warnings": ""
+        }
+    },
+    "paths": {
+        "linux": [],
+        "osx": [
+          "/opt/homebrew/opt/php@8.3/bin",
+          "/opt/homebrew/bin",
+          "/usr/local/bin/"
+        ],
+        "windows": []
+    },
+    "syntax_map": {
+        "html (django)": "html",
+        "html (rails)": "html",
+        "html 5": "html",
+        "javascript (babel)": "javascript",
+        "magicpython": "python",
+        "php": "html",
+        "python django": "python",
+        "pythonimproved": "python"
+    },
+    "show_marks_in_minimap": true,
+    "no_column_highlights_line": true,
+    "show_hover_line_report": true,
+    "show_hover_region_report": true,
+    "highlights.start_hidden": [
+        "phantoms",
+    ],
+    "statusbar.show_active_linters": false,
+    "statusbar.messages_template": "{type}: {message}",
+    "gutter_theme": "Default",
+    "styles": [
+        {
+            "types": [
+                "error",
+                "warning",
+            ],
+            "icon": "diamond-outline",
+            "mark_style": "outline",
+            "priority": 0,
+            // "phantom": "{msg}",
+            // "annotation": "{msg}",
+            // "scope": "comment markup.error.sublime_linter"
+        },
+    ],
+}

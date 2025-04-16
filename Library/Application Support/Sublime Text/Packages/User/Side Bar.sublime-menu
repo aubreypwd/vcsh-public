@@ -1,0 +1,51 @@
+[
+	{"id": "side-bar-files-open-with",
+		"children":
+		[
+
+			{
+				"caption": "Photoshop",
+				"id": "side-bar-files-open-with-photoshop",
+
+				"command": "side_bar_files_open_with",
+				"args": {
+									"paths": [],
+									"application": "Adobe Photoshop CS5.app", // OSX
+									"extensions":"psd|png|jpg|jpeg",  //any file with these extensions
+									"args":[]
+								},
+				"open_automatically" : false // will close the view/tab and launch the application
+			},
+
+			{
+				"caption": "iTerm2",
+				"id": "side-bar-files-open-with-chrome",
+
+				"command": "side_bar_files_open_with",
+				"args": {
+									"paths": [
+										"/Applications"
+									],
+									"application": "iTerm.app",
+									"extensions":"", //any file with extension
+									"args":[]
+						},
+				"open_automatically" : false // will close the view/tab and launch the application
+			},
+
+			{
+				"caption": "Tower",
+				"id": "side-bar-files-open-with-tower",
+
+				"command": "/usr/local/bin/gittower",
+				"args": {
+									"paths": [],
+									"extensions":"", //any file with extension
+									"args":[]
+						},
+				"open_automatically" : false // will close the view/tab and launch the application
+			},
+
+		]
+	}
+]

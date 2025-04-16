@@ -1,0 +1,8 @@
+{
+  // The command to execute for the terminal, leave blank for the OS default
+  // See https://github.com/wbond/sublime_terminal#examples for examples
+  "terminal": "iTerm2-v3.sh",
+  "parameters": [
+      // "--open-in-tab"
+  ]
+}

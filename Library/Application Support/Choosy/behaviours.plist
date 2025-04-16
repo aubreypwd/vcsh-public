@@ -1,0 +1,1076 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/WordPress VIP.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "dashboard.wpvip.com" OR URL CONTAINS "wordpressvip.zendesk.com"</string>
+		<key>title</key>
+		<string>WordPress VIP</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/LinkedIn Learnin‪g.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "linkedin.com/learning"</string>
+		<key>title</key>
+		<string>LinkedIn Learning</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Safari.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "linkedin.com"</string>
+		<key>title</key>
+		<string>LinkedIn</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Safari.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "amazon.com"</string>
+		<key>title</key>
+		<string>Amazon</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Documentation.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "php.net" OR URL CONTAINS "https://developer.wordpress.org/?s=" OR URL CONTAINS "tailwindcss.com/docs" OR URL CONTAINS "wordpress.org/" OR URL CONTAINS "docs.wpvip.com" OR URL CONTAINS "https://support.advancedcustomfields.com" OR URL CONTAINS "developer.mozilla."</string>
+		<key>title</key>
+		<string>Documentation</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/YouTube.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "youtube." OR URL CONTAINS "youtu.be"</string>
+		<key>title</key>
+		<string>YouTube</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Figma.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "figma.com/file"</string>
+		<key>title</key>
+		<string>Figma</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Confluence.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS ".atlassian.net/wiki"</string>
+		<key>title</key>
+		<string>Confluence</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Jira.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS ".atlassian.net"</string>
+		<key>title</key>
+		<string>Jira</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "://google.com/search" OR URL CONTAINS "://www.google.com/search"</string>
+		<key>title</key>
+		<string>Google Search</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Google Calendar.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "calendar.google.com" OR URL CONTAINS "google.com/calendar"</string>
+		<key>title</key>
+		<string>Google Calendar</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Stack Exchange.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "stackoverflow.com" OR URL CONTAINS "stackexchange.com"</string>
+		<key>title</key>
+		<string>Stack Exchange</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/WP Engine.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "help.wpengine.com" OR URL CONTAINS "my.wpengine.com"</string>
+		<key>title</key>
+		<string>WP Engine</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Google Drive.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<true/>
+		<key>predicate</key>
+		<string>URL CONTAINS "docs.google.com" OR URL CONTAINS "drive.google.com"</string>
+		<key>title</key>
+		<string>Goolge Docs &amp; Drive</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Slack.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "slack.com/archives"</string>
+		<key>title</key>
+		<string>Slack Links</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Teamwork.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "teamwork.com"</string>
+		<key>title</key>
+		<string>Teamwork</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Slack Redirects (AwesomeMotive).app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "awesomemotive.slack.com"</string>
+		<key>title</key>
+		<string>Slack Redirects (AwesomeMotive)</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/DevDocs.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "devdocs.io"</string>
+		<key>title</key>
+		<string>devdocs.io</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/IFTTT.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "ifttt.com"</string>
+		<key>title</key>
+		<string>IFTTT</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/PageSpeed Insights.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "developers.google.com/speed/pagespeed/insights" OR URL CONTAINS "pagespeed.web.dev"</string>
+		<key>title</key>
+		<string>PageSpeed</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Buddy.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "buddy.works"</string>
+		<key>title</key>
+		<string>Buddy</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>5</integer>
+		<key>behaviourArgument</key>
+		<array>
+			<dict>
+				<key>path</key>
+				<string>/Users/aubreypwd/Applications/Github.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
+				<string>/Applications/Google Chrome.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
+				<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
+				<string>/Applications/Copy URL.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+		</array>
+		<key>enabled</key>
+		<true/>
+		<key>predicate</key>
+		<string>URL CONTAINS "github.com"</string>
+		<key>title</key>
+		<string>Github</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "twitter.com"</string>
+		<key>title</key>
+		<string>Twitter/X</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>5</integer>
+		<key>behaviourArgument</key>
+		<array>
+			<dict>
+				<key>path</key>
+				<string>/Applications/Google Chrome.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
+				<string>/Applications/Safari Technology Preview.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
+				<string>/Applications/Firefox Developer Edition.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
+				<string>/Applications/Copy URL.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+		</array>
+		<key>enabled</key>
+		<true/>
+		<key>predicate</key>
+		<string>URL CONTAINS ".local" OR URL CONTAINS ".test" OR URL CONTAINS "localhost:" OR URL CONTAINS "localhost" OR URL CONTAINS "127.0.0." OR URL CONTAINS "ddev.site"</string>
+		<key>title</key>
+		<string>Locals</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/zoom.us.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "zoom.us" OR URL CONTAINS "zoom.aubreypwd.com"</string>
+		<key>title</key>
+		<string>Zoom Links</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Safari.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "reddit.com"</string>
+		<key>title</key>
+		<string>Reddit</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/GIPHY.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "giphy.com"</string>
+		<key>title</key>
+		<string>Giphy</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Vercel.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "vercel.com"</string>
+		<key>title</key>
+		<string>Vercel</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/HackMD.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "://hackmd.io"</string>
+		<key>title</key>
+		<string>HackMD</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Facebook.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "facebook.com"</string>
+		<key>title</key>
+		<string>Facebook</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/WebCatalog Apps/WordPress.com.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "wordpress.com"</string>
+		<key>title</key>
+		<string>WordPress.com</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/WebCatalog Apps/Memrise.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "https://app.memrise.com"</string>
+		<key>title</key>
+		<string>Memrise</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Safari.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "//www.tumblr.com/blog/"</string>
+		<key>title</key>
+		<string>Tumblr</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Tenor.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "https://tenor.com/"</string>
+		<key>title</key>
+		<string>Tenor</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Arc.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "hub.awesomemotive.com" OR URL CONTAINS "awesomemotive.bamboohr.com" OR URL CONTAINS "app.gusto.com"</string>
+		<key>title</key>
+		<string>Awesome Motive</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Google Chrome.app</string>
+			<key>profileName</key>
+			<string>Default</string>
+			<key>supportPath</key>
+			<string>/Users/aubreypwd/Library/Application Support/Google/Chrome</string>
+			<key>type</key>
+			<string>ChoosyChromeProfileMode</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "affiliatewp.com/account" OR URL CONTAINS "docs.affiliatewp.com" OR URL CONTAINS "team.affiliatewp.com/feature-requests"</string>
+		<key>title</key>
+		<string>AffiliateWP</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Asana for Web.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<true/>
+		<key>predicate</key>
+		<string>URL CONTAINS "app.asana.com"</string>
+		<key>title</key>
+		<string>Asana</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>0</integer>
+		<key>behaviourArgument</key>
+		<string></string>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "drive.google.com"</string>
+		<key>title</key>
+		<string>Google Drive</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Chrome Apps.localized/Google Meet.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "meet.google.com"</string>
+		<key>title</key>
+		<string>Google Meet</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Helpscout.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<true/>
+		<key>predicate</key>
+		<string>URL CONTAINS "secure.helpscout.net"</string>
+		<key>title</key>
+		<string>Help Scout</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/MEGA.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "mega.nz"</string>
+		<key>title</key>
+		<string>Mega</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Stripe.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "dashboard.stripe.com"</string>
+		<key>title</key>
+		<string>Stripe</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Hashnode.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "hashnode.com"</string>
+		<key>title</key>
+		<string>Hashnode</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/LocalWP Community Forums.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "community.localwp.com"</string>
+		<key>title</key>
+		<string>LocalWP Community Forums</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Google Chrome.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "a.supportally.com"</string>
+		<key>title</key>
+		<string>a.supportally.com</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Todoist.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "://todoist.com/showTask"</string>
+		<key>title</key>
+		<string>Todoist</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Droplr.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "https://droplr.com/" OR URL CONTAINS "https://d.pr" OR URL CONTAINS "https://a.supportally.com"</string>
+		<key>title</key>
+		<string>Drolpr</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Arc.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "https://mail.google.com/mail/"</string>
+		<key>title</key>
+		<string>Gmail</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Google Chrome.app</string>
+			<key>profileName</key>
+			<string>Default</string>
+			<key>supportPath</key>
+			<string>/Users/aubreypwd/Library/Application Support/Google/Chrome</string>
+			<key>type</key>
+			<string>ChoosyChromeProfileMode</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "https://github.com/awesomemotive"</string>
+		<key>title</key>
+		<string>AwesomeMotive Github</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Fluid Apps/Bandcamp.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "bandcamp.com/aubreypwd"</string>
+		<key>title</key>
+		<string>Bandcamp</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "github.com" OR URL CONTAINS "docs.google.com"</string>
+		<key>title</key>
+		<string>Safari</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Arc.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "https://docs.google.com/document/d/1BCtpNnXcpvNQtYP5AXK-W0Gch8_D0Pa_RUOOkLsGrR8"</string>
+		<key>title</key>
+		<string>Work Journal &amp; Weekly Tasks</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Arc.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "https://docs.google.com/document/d/1gwXZwBNq3Dij0_cEMnDbQjUqtJbYRCMDovEuQExpRm8"</string>
+		<key>title</key>
+		<string>AffiliateWP L10</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Arc.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "https://docs.google.com/document/d/1K1t0AwVydDUAjuPK1S2wO6J0q1rXkpOwFcXQoe_xjoE/edit#heading=h.qetrhcqx9s74"</string>
+		<key>title</key>
+		<string>AffiliateWP DEV Meeting</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Arc.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "hub.awesome"</string>
+		<key>title</key>
+		<string>AwesomeMotive Hub</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "php.net"</string>
+		<key>title</key>
+		<string>PHP.net</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "wordpress.org"</string>
+		<key>title</key>
+		<string>WordPress.org</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Software/WebApps/Fluid/Google Drive.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<true/>
+		<key>predicate</key>
+		<string>URL CONTAINS "docs.google.com"</string>
+		<key>title</key>
+		<string>Google Docs</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>8</integer>
+		<key>behaviourArgument</key>
+		<string></string>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>localFile == 0</string>
+		<key>title</key>
+		<string>Open Share Sheet</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Applications/Copy URL.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "://"</string>
+		<key>title</key>
+		<string>Copy Link to Clipboard</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
+		<integer>3</integer>
+		<key>behaviourArgument</key>
+		<string></string>
+		<key>enabled</key>
+		<true/>
+		<key>predicate</key>
+		<string>TRUEPREDICATE</string>
+		<key>title</key>
+		<string>Default behaviour</string>
+	</dict>
+</array>
+</plist>

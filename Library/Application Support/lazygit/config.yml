@@ -1,0 +1,11 @@
+gui:
+  showFileTree: true # for rendering changes files in a tree format
+  showListFooter: true # for seeing the '5 of 20' message in list panels
+  showRandomTip: false
+  showCommandLog: false
+  commandLogSize: 20
+  expandFocusedSidePanel: true
+files:
+  commitChangesWithEditor: 'c'
+refresher:
+  refreshInterval: 1 # file/submodule refresh interval in seconds

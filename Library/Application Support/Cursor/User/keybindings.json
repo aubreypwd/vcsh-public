@@ -1,0 +1,20 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "shift+cmd+w",
+    "command": "-workbench.action.closeWindow"
+  },
+  {
+    "key": "shift+cmd+w",
+    "command": "workbench.action.closeAllEditors"
+  },
+  {
+    "key": "cmd+r cmd+w",
+    "command": "-workbench.action.closeAllEditors"
+  },
+  // {
+  //   "key": "cmd+n",
+  //   "command": "extension.multiCommand.newFileAndCloseEditors",
+  //   "when": "focusedView == 'workbench.panel.composerViewPane2.view'"
+  // }
+]

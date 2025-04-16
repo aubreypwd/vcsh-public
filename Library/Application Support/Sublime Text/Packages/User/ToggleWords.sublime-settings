@@ -1,0 +1,15 @@
+{
+  // User defined words
+  "toggle_words_dict": [
+      ["public", "private"],
+      ["add_filter", "add_action"],
+      ["left", "right"],
+      ["up", "down"],
+      ["top", "bottom"],
+      ["width", "height"],
+      ["true", "false"],
+      ["yes", "no"],
+      ["on", "off"],
+      ["0", "1"]
+  ]
+}

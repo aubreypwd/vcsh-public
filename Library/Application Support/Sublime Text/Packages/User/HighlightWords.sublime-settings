@@ -1,0 +1,12 @@
+{
+    "permanent_highlight_keyword_color_mappings": [
+        { "keyword": "@TODO", "color": "embedding.php text.html.basic meta.embedded.block.php source.php meta.class.php meta.block.php meta.function.php meta.block.php meta.catch.php meta.path.php support.class.exception.php", "flag": 3 },
+        { "keyword": "error_log", "color": "text.html.basic source.php.embedded.block.html keyword.control.php", "flag": 3 },
+        { "keyword": "var_dump", "color": "text.html.basic source.php.embedded.block.html keyword.control.php", "flag": 3 },
+        { "keyword": "var_export", "color": "text.html.basic source.php.embedded.block.html keyword.control.php", "flag": 3 },
+        { "keyword": "@LEFTOFF", "color": "text.html.basic source.php.embedded.block.html keyword.control.php", "flag": 3 },
+        { "keyword": "xdebug_break();", "color": "text.html.basic source.php.embedded.block.html keyword.control.php", "flag": 3 },
+        { "keyword": "affilaite", "color": "text.html.basic source.php.embedded.block.html keyword.control.php", "flag": 3 },
+        { "keyword": "PC::debug", "color": "text.html.basic source.php.embedded.block.html keyword.control.php", "flag": 3 },
+    ]
+}
