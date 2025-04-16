@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# shellcheck disable=SC3034
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+REMOTE_URL=$(git config --get remote.origin.url)
+
+if [ "$CURRENT_BRANCH" = "master" ] && echo "$REMOTE_URL" | grep -q "awesomemotive/affiliate-wp.git"; then
+
+	MSG=$(<"$1")
+	RED='\033[0;31m'
+	NC='\033[0m' # No Color
+	SPECIAL="Commit on master: " # You have to type this to commit on master.
+
+	case "$MSG" in
+		*"$SPECIAL"*)
+			echo "Committing..."
+			;;
+		*)
+			echo "${RED}Include \`$SPECIAL\` in your commit message to commit on master.${NC}"
+			echo "$SPECIAL: $MSG"
+
+			exit 1
+			;;
+	esac
+fi
