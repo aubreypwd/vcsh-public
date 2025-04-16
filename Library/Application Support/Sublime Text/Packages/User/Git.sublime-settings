@@ -1,0 +1,11 @@
+{
+  "statusbar_branch": true,
+  "statusbar_status": true,
+  "verbose_commits": true,
+  "history_size": 20,
+  "commit_rulers": [
+    70,
+    50,
+  ],
+  "gitignore_sync": false,
+}
