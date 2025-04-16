@@ -1,0 +1,697 @@
+{
+  // Debug configurations
+  "launch": {
+    "configurations": [
+      {
+        "name": "Xdebug + Brew PHP (9022)",
+        "type": "php",
+        "request": "launch",
+        "port": 9022,
+        "ignore": [
+          "**/vendor/**/*.php",
+          "**/node_modules/**/*.php",
+          "**/dist/**/*.php"
+        ],
+        "xdebugSettings": {
+          "max_data": 8096
+        }
+      },
+      {
+        "name": "JavaScript + Google Chrome (9222)",
+        "type": "chrome",
+        "port": 9222,
+        "request": "attach",
+        // "url": "http://${command:extension.commandvariable.workspace.folderBasename2Up}.local/wp-admin/?localwp_auto_login=1",
+        "webRoot": "${workspaceRoot}",
+        "sourceMaps": true,
+        "trace": true,
+        "timeout": 0
+      },
+      {
+        "name": "Xdebug + LocalWP (9003)",
+        "type": "php",
+        "request": "launch",
+        "url": "http://${command:extension.commandvariable.workspace.folderBasename2Up}.local/wp-admin/?localwp_auto_login=1",
+        "port": 9003,
+        "ignore": [
+          "**/vendor/**/*.php",
+          "**/node_modules/**/*.php",
+          "**/dist/**/*.php"
+        ],
+        "xdebugSettings": {
+          "max_data": 8096
+        },
+        // "runtimeExecutable": "open",
+        // "runtimeArgs": [
+        //   "-W",
+        //   "--new",
+        //   "-a",
+        //   "Google Chrome",
+        //   "--args",
+        //   "--remote-debugging-port=9222",
+        //   "http://${command:extension.commandvariable.workspace.folderBasename2Up}.local/wp-admin/?localwp_auto_login=1"
+        // ]
+      },
+    ],
+    "compounds": [
+      {
+        "name": "All",
+        "configurations": [
+          "Xdebug + LocalWP (9003)",
+          "Xdebug + Brew PHP (9022)",
+          "JavaScript + Google Chrome (9222)"
+        ]
+      }
+    ]
+  },
+
+  // Accessibility settings
+  "accessibility.signals.clear": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.terminalBell": {
+    "sound": "on"
+  },
+  "editor.accessibilitySupport": "off",
+
+  // Auto-hide settings
+  "autoHide.panelDelay": 500,
+  "autoHide.sideBarDelay": 500,
+
+  // Bookmarks settings
+  "bookmarks.keepBookmarksOnLineDelete": true,
+  "bookmarks.multicursor.toggleMode": "eachLineIndependently",
+  "bookmarks.saveBookmarksInProject": true,
+  "bookmarks.sideBar.countBadge": "off",
+  "bookmarks.sideBar.expanded": true,
+
+  // cSpell settings
+  "cSpell.userWords": [
+    "absint",
+    "ABSPATH",
+    "affiliatewp",
+    "affwp",
+    "AFFWPN",
+    "colname",
+    "dashicon",
+    "dashicons",
+    "kses",
+    "Laravel",
+    "linebreak",
+    "mofile",
+    "Monokai",
+    "multisite",
+    "phpcs",
+    "Portwood",
+    "pwdcp",
+    "quicktags",
+    "rewardswp",
+    "richedit",
+    "Sandhills",
+    "specialchars",
+    "Squiz",
+    "sslverify",
+    "subpackage",
+    "Traited",
+    "Trustpilot",
+    "untrailingslashit",
+    "userdata",
+    "vcsh",
+    "widefat",
+    "woocommerce",
+    "wpdb",
+    "xdebug"
+  ],
+
+  // Debug settings
+  "debug.closeReadonlyTabsOnEnd": true,
+  "debug.confirmOnExit": "always",
+  "debug.console.closeOnEnd": false,
+  "debug.toolBarLocation": "docked",
+
+  // Editor settings
+  "editor.autoIndent": "full",
+  "editor.colorDecoratorsActivatedOn": "click",
+  "editor.cursorStyle": "line-thin",
+  "editor.detectIndentation": true,
+  "editor.dragAndDrop": false,
+  "editor.emptySelectionClipboard": true,
+  "editor.fontFamily": "Menlo",
+  "editor.fontSize": 12,
+  "editor.glyphMargin": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.insertSpaces": false,
+  "editor.language.colorizedBracketPairs": [],
+  "editor.largeFileOptimizations": false,
+  "editor.lineDecorationsWidth": 10,
+  "editor.lineNumbersMinChars": 0,
+  "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.parameterHints.enabled": true,
+  "editor.renderLineHighlight": "gutter",
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [
+    {
+      "column": 80,
+      "color": "#1C1C1C"
+    }
+  ],
+  "[git-commit]":  {
+    "editor.rulers": [
+        50,
+        72
+    ],
+    "editor.wordWrap": "off",
+    "workbench.editor.restoreViewState": false
+  },
+  "editor.scrollbar.horizontalScrollbarSize": 0,
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.snippetSuggestions": "top",
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 5,
+  "editor.stickyTabStops": true,
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+
+  // Explorer settings
+  "explorer.confirmDelete": false,
+  "explorer.decorations.colors": false,
+
+  // Files settings
+  "files.useExperimentalFileWatcher": false,
+  "files.watcherExclude": {
+    "**/.git/": true,
+    "**/node_modules/*/**": true,
+    "**/vendor/*/**": true
+  },
+
+  // Firefox settings
+  "firefox.profileDir": "/Users/aubreypwd/Library/Application Support/Firefox/Profiles/hlshzjk8.dev-edition-default-1698963937197",
+
+  // Git settings
+  "git.autofetch": true,
+  "git.branchProtection": [
+    "master",
+    "main"
+  ],
+  "git.confirmSync": false,
+  "git.decorations.enabled": false,
+  "git.enableSmartCommit": true,
+  "git.fetchOnPull": true,
+  "git.openRepositoryInParentFolders": "always",
+  "git.replaceTagsWhenPull": true,
+
+  // GitHub settings
+  "github.branchProtection": true,
+  "github.gitProtocol": "ssh",
+
+  // Intelephense settings
+  "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": true,
+  "intelephense.completion.maxItems": 5,
+
+  // Local WP Shells settings
+  "localWPShells.folderPath": "/Users/aubreypwd/Library/Application Support/Local/ssh-entry",
+
+  // PHP settings
+  "php.debug.executablePath": "",
+  "php.debug.ideKey": "",
+  "php.validate.executablePath": "/opt/homebrew/opt/php@7.4/bin/php",
+  "phpsab.snifferShowSources": true,
+  "phpcs.executablePath": "/Users/aubreypwd/.composer/vendor/bin/phpcs",
+  "phpcs.ignorePatterns": [
+    "*/vendor/**",
+    "*/node_modules/**",
+    "*/dist/**"
+  ],
+  "phpcs.lintOnType": false,
+  "phpcs.showSources": true,
+  "phpcs.standard": "",
+  "phpcs.trace.server": "messages",
+  "phpSniffer.autoDetect": true,
+
+  // PHP Docblocker settings
+  "php-docblocker.alignParams": true,
+  "php-docblocker.extra": [
+    "@since ${100:AFFWPN} $200"
+  ],
+  "php-docblocker.gap": true,
+  "php-docblocker.paramDescription": true,
+  "php-docblocker.qualifyClassNames": true,
+  "php-docblocker.returnDescription": true,
+  "php-docblocker.returnGap": true,
+
+  // SCM settings
+  "scm.autoReveal": false,
+  "scm.diffDecorations": "gutter",
+  "scm.diffDecorationsGutterWidth": 2,
+  "scm.providerCountBadge": "hidden",
+  "scm.showActionButton": false,
+  "scm.showInputActionButton": false,
+
+  // Search settings
+  "search.useIgnoreFiles": false,
+
+  // Security settings
+  "security.promptForLocalFileProtocolHandling": false,
+  "security.workspace.trust.untrustedFiles": "open",
+
+  // Terminal settings
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.bellDuration": 10000,
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.closePanel"
+  ],
+  "terminal.integrated.confirmOnKill": "never",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.enableVisualBell": true,
+  "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
+  "terminal.integrated.fontWeightBold": "normal",
+  "terminal.integrated.hideOnStartup": "whenEmpty",
+  "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.tabs.title": "${process}${separator}${cwdFolder}",
+
+  // VS Code Custom CSS settings
+  "vscode_custom_css.imports": [
+    "file:///Users/aubreypwd/.config/vscode/tweaks.css"
+  ],
+
+  // Window settings
+  "window.autoDetectHighContrast": false,
+  // "window.density.editorTabHeight": "compact",
+  "window.nativeTabs": true,
+  "window.newWindowDimensions": "maximized",
+  "window.openFilesInNewWindow": "off",
+  "window.openFoldersInNewWindow": "on",
+  "window.openWithoutArgumentsInNewWindow": "off",
+  "window.title": "${rootPath}${separator}${activeEditorMedium}",
+
+  // Workspace settings
+  "workspaceExplorer.enableCustomIconSearch": false,
+  "workspaceExplorer.workspaceStorageDirectory": "/Users/aubreypwd/VSCode/Workspaces",
+  "workspace-manager.advanced.deep": 5,
+  "workspace-manager.includeGlobPattern": [
+    "/Users/aubreypwd/Sites/Valet/**/.code-workspaces/*"
+  ],
+  "workspaceSidebar.depth": 5,
+  "workspaceSidebar.excludeHiddenFolders": false,
+  "workspaceSidebar.rootFolders": [
+    {
+      "path": "/Users/aubreypwd/VSCode/Workspaces",
+      "depth": 1,
+      "excludeHiddenFolders": true
+    }
+  ],
+  "workspaceSidebar.showFileIcons": false,
+  "workspaceSidebar.showFolderHierarchy": true,
+
+  // Theme tweaks.
+  "workbench.colorCustomizations": {
+    "[Chromer Theme]": {
+      "badge.background": "#0978D4",
+      "button.background": "#0978D4",
+      "button.hoverBackground": "#0978D4",
+      "editor.background": "#1E1E1E",
+      "editor.lineHighlightBackground": "#2B2B2B",
+      "editor.outlineSelectionBackground": "#0978D4",
+      "editor.selectionBackground": "#175295",
+      "editor.selectionForeground": "#FFFFFF",
+      "editor.selectionHighlightBackground": "#175295",
+      "editor.selectionHighlightForeground": "#FFFFFF",
+      "editorGroupHeader.border": "#000000",
+      "editorGroupHeader.tabsBackground": "#202020",
+      "editorWidget.resizeBorder": "#0978D4",
+      "focusBorder": "#404040",
+      "input.background": "#383838",
+      "input.border": "#404040",
+      "panelInput.border": "#404040",
+      "list.activeSelectionBackground": "#175295",
+      "list.hoverBackground": "#0978D4",
+      "list.hoverForeground": "#FFFFFF",
+      "list.inactiveSelectionBackground": "#434343",
+      "menu.selectionBorder": "#175295",
+      "panel.background": "#282828",
+      "panel.border": "#404040",
+      "panel.dropBorder": "#404040",
+      "panelSection.border": "#404040",
+      "panelSectionHeader.border": "#404040",
+      "panelTitle.activeBorder": "#00000000",
+      "panelTitle.activeForeground": "#FFFFFF",
+      "scrollbar.shadow": "#00000000",
+      "scrollbarSlider.background": "#00000000",
+      "selection.background": "#175295",
+      "sideBar.background": "#242424",
+      "sideBar.border": "#000000",
+      "sideBarSectionHeader.background": "#2B2B2B",
+      "sideBarSectionHeader.foreground": "#FFFFFF",
+      "tab.activeBackground": "#383838",
+      "tab.activeBorder": "#00000000",
+      "tab.activeBorderTop": "#00000000",
+      "tab.activeForeground": "#FFFFFF",
+      "tab.border": "#000000",
+      "tab.hoverBackground": "#1F1F1F",
+      "tab.hoverBorder": "#00000000",
+      "tab.hoverForeground": "#D5D5D5",
+      "tab.inactiveBackground": "#202020",
+      "tab.inactiveModifiedBorder": "#000000",
+      "tab.lastPinnedBorder": "#00000000",
+      "tab.unfocusedActiveBackground": "#00000000",
+      "tab.unfocusedActiveBorder": "#00000000",
+      "tab.unfocusedActiveBorderTop": "#1F1F1F",
+      "tab.unfocusedHoverForeground": "#FFFFFF",
+      "tab.unfocusedInactiveBackground": "#00000000",
+      "tab.unfocusedInactiveForeground": "#909090",
+      "tab.unfocusedInactiveModifiedBorder": "#00000000",
+      "textLink.activeForeground": "#0978D4",
+      "textLink.foreground": "#0978D4",
+      "titleBar.activeBackground": "#363636",
+      "titleBar.border": "#00000000",
+      "titleBar.inactiveBackground": "#363636",
+      "widget.border": "#454545",
+      "terminal.background": "#282828",
+      "terminal.foreground": "#DFDEDB",
+      "terminalCursor.background": "#958AE5",
+      "terminalCursor.foreground": "#958AE5",
+      "terminal.selectionBackground": "#264F78",
+      "terminal.border": "#383838",
+      "terminal.ansiBlack": "#000000",
+      "terminal.ansiRed": "#FF4241",
+      "terminal.ansiGreen": "#A0F8B7",
+      "terminal.ansiYellow": "#E6C647",
+      "terminal.ansiBlue": "#81ACFF",
+      "terminal.ansiMagenta": "#987BCF",
+      "terminal.ansiCyan": "#F39766",
+      "terminal.ansiWhite": "#DFDEDB",
+      "terminal.ansiBrightBlack": "#666666",
+      "terminal.ansiBrightRed": "#FF5760",
+      "terminal.ansiBrightGreen": "#A0F8B7",
+      "terminal.ansiBrightYellow": "#E7C547",
+      "terminal.ansiBrightBlue": "#82ACFF",
+      "terminal.ansiBrightMagenta": "#A053BD",
+      "terminal.ansiBrightCyan": "#FF9159",
+      "terminal.ansiBrightWhite": "#FFFFFF",
+      "statusBar.background": "#1E1E1E",
+      "statusBar.border": "#383838",
+      "statusBar.foreground": "#CCCCCC",
+      "statusBar.focusBorder": "#00000000",
+      "statusBarItem.hoverBackground": "#00000000",
+      "statusBar.debuggingBackground": "#F48671",
+      "statusBar.debuggingForeground": "#000000",
+      "statusBar.debuggingBorder": "#00000000"
+    },
+    "editorBracketPairGuide.activeBackground1": "#69676C",
+    "editorBracketPairGuide.activeBackground2": "#69676C",
+    "editorBracketPairGuide.activeBackground3": "#69676C",
+    "editorBracketPairGuide.activeBackground4": "#69676C",
+    "editorBracketPairGuide.activeBackground5": "#69676C",
+    "editorBracketPairGuide.activeBackground6": "#69676C",
+    "scrollbar.shadow": "#ffffff00",
+    "widget.shadow": "#ffffff00",
+    "terminal.background": "#00000000"
+  },
+  "editor.tokenColorCustomizations": {
+    "Monokai Pro (Filter Spectrum)": {},
+    "[Chromer Theme]": {
+      "textMateRules": [
+        {
+          "scope": "support.function",
+          "settings": {
+            "foreground": "#8AABFF"
+          }
+        },
+        {
+          "scope": "storage.modifier",
+          "settings": {
+            "foreground": "#EEA8F0"
+          }
+        },
+        {
+          "scope": "storage.type",
+          "settings": {
+            "foreground": "#EEA8F0"
+          }
+        }
+      ]
+    }
+  },
+  "workbench.colorTheme": "Chromer Theme",
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.decorations.colors": false,
+  "workbench.preferredDarkColorTheme": "Monokai Pro (Filter Spectrum)",
+  "workbench.settings.useSplitJSON": true,
+  "workbench.startupEditor": "none",
+
+  // Github Copilot setings
+  "editor.inlineSuggest.enabled": false,
+  "github.copilot.editor.enableAutoCompletions": false,
+  "editor.lightbulb.enabled": "off",
+
+  // Other Misc
+  "pnotes.globalNotesFolder": "/Users/aubreypwd/.pnotes",
+  "pnotes.createGlobalProjectNotesGuideFile": false,
+  "git-blame.config.showBlameInline": false,
+  "git-blame.config.inlineBlameHoverMessage": true,
+
+  // Highlighted words.
+  "todohighlight.isCaseSensitive": true,
+  "todohighlight.keywords": [
+    {
+        "text": "debugger;",
+        "color": "#ff0031",
+        "backgroundColor": "#00000000",
+        "isWholeLine": false
+    },
+    {
+        "text": "TODO:",
+        "color": "#7cff51",
+        "backgroundColor": "#00000000",
+        "isWholeLine": false
+    },
+    {
+        "text": "FIXME:",
+        "color": "#ff00b1",
+        "backgroundColor": "#00000000",
+        "isWholeLine": false
+    },
+    {
+        "text": "phpcs:ignore",
+        "color": "#fec492",
+        "backgroundColor": "#00000000",
+        "isWholeLine": false
+    },
+    {
+        "text": "phpcs:disable",
+        "color": "#FF6E67",
+        "backgroundColor": "#00000000",
+        "isWholeLine": false
+    },
+    {
+        "text": "xdebug_break();",
+        "color": "#ff0031",
+        "backgroundColor": "#00000000",
+        "isWholeLine": false
+    }
+  ],
+
+  // Docblocks.
+  "php-docblocker-coffeeio.alignParams": true,
+  "php-docblocker-coffeeio.alignReturn": false,
+  "php-docblocker-coffeeio.author": {
+    "name": "Aubrey Portwood",
+    "email": "${1000:aportwood@am.co}"
+  },
+  "php-docblocker-coffeeio.extra": [
+    "@since ${2000:AFFWPN}"
+  ],
+  "php-docblocker-coffeeio.gap": true,
+  "php-docblocker-coffeeio.qualifyClassNames": true,
+  "php-docblocker-coffeeio.returnGap": true,
+  "php-docblocker-coffeeio.returnVoid": false,
+  "php-docblocker-coffeeio.useShortNames": true,
+  "tabout.charactersToTabOutFrom": [
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    },
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "'",
+      "close": "'"
+    },
+    {
+      "open": "\"",
+      "close": "\""
+    },
+    {
+      "open": ":",
+      "close": ":"
+    },
+    {
+      "open": "=",
+      "close": "="
+    },
+    {
+      "open": ">",
+      "close": ">"
+    },
+    {
+      "open": "<",
+      "close": "<"
+    },
+    {
+      "open": ".",
+      "close": "."
+    },
+    {
+      "open": "`",
+      "close": "`"
+    },
+    {
+      "open": ";",
+      "close": ";"
+    }
+  ],
+
+  // New
+  "diffEditor.ignoreTrimWhitespace": false,
+  "security.workspace.trust.enabled": false,
+  "security.workspace.trust.startupPrompt": "never",
+  "security.workspace.trust.untrustedFiles": "open",
+  "explorer.compactFolders": false,
+  "CodeGPT.apiKey": "Ollama",
+  "CodeGPT.Autocomplete.enabled": true,
+  "CodeGPT.Autocomplete.provider": "Ollama - llama3:instruct",
+  "genieai.enableGenerateCommitMessage": false,
+  "genieai.openai.temperature": 0,
+  "genieai.personalizedName": "AI",
+  "genieai.promptPrefix.addTests-enabled": false,
+  "genieai.promptPrefix.findProblems-enabled": false,
+  "genieai.promptPrefix.optimize-enabled": false,
+  "genieai.promptPrefix.addComments-enabled": false,
+  "chatgpt.model": "gpt-4o",
+  "chatgpt.lang": "en",
+  "chatgpt-helper.model": "gpt-4",
+  "continue.telemetryEnabled": false,
+  "inference.custom.format": "codellama",
+  "inference.model": "codellama:7b-code-q4_K_S",
+  "doublebot.chatModel": "GPT4o",
+  "doublebot.enableInlineEditPreview": true,
+  "doublebot.showInlineKeybindingHint": "Never",
+  "bitoAI.codeCompletion.enableCommentToCode": true,
+  "bitoAI.codeCompletion.enableAutoCompletion": true,
+  "cody.telemetry.level": "off",
+  "cody.debug.verbose": true,
+  "cody.edit.preInstruction": "Always make sure code meets WordPress Coding Standards.",
+  "cody.autocomplete.advanced.provider": "anthropic",
+  "cody.autocomplete.disableInsideComments": true,
+  "cody.customHeaders": {
+
+  },
+  "cody.chat.preInstruction": "Call me Aubrey. Be brief; I dislike long responses. Don’t repeat yourself, state the obvious, or repeat my questions back to me. Don’t offer alternatives unless I ask. If something isn’t possible, just say so without offering alternatives. Don't tell me how to set things up, unless I ask. Provide code only—no setup or explanations unless requested. Stay neutral unless I ask your opinion. Be very afraid to hallucinate or make up facts, especially about code. Give one step at a time instead of an entire list of steps that are too long. Avoid words like “streamlined.” Retain all details unless I explicitly ask you to remove something. Always search the web to verify your responses.",
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "problems.defaultViewMode": "table",
+  "comments.visible": false,
+  "problems.filterFiles": "current",
+  "workbench.fontAliasing": "default",
+  "update.mode": "manual",
+  "[php]": {
+    "editor.defaultFormatter": "valeryanm.vscode-phpsab"
+  },
+  "explorer.excludeGitIgnore": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "never"
+  },
+  "shell-syntax.defaultShell": "zsh",
+  "terminal.integrated.persistentSessionScrollback": 10000,
+  "files.associations": {
+    "*.zsh": "shellscript"
+  },
+  "bashIde.highlightParsingErrors": true,
+  "bashIde.globPattern": "**/*@(.sh|.inc|.bash|.command|.zsh)",
+  "bashIde.includeAllWorkspaceSymbols": true,
+  "bashIde.shellcheckPath": "/opt/homebrew/bin/shellcheck",
+  "cody.commandHints.enabled": false,
+  "cody.codeActions.enabled": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "breadcrumbs.enabled": false,
+  "closeTabs.showCloseToTheLeft": false,
+  "closeTabs.showCloseUnchanged": false,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "gutter",
+  "workbench.iconTheme": "vscode-icons-mac",
+  "terminal.integrated.tabs.enabled": false,
+  "workbench.list.horizontalScrolling": true, // Reveal the file if I already have it open.
+  "workbench.editor.limit.enabled": true, // Enable limit for # of files open in editor.
+  "workbench.editor.limit.value": 5, // X files per group.
+  "workbench.editor.limit.perEditorGroup": true, // Appl # to each group.
+  "workbench.editor.closeOnFileDelete": true, // Close any file that got deleted.
+
+  "workbench.settings.applyToAllProfiles": [
+    "workbench.colorCustomizations"
+  ],
+  "window.titleBarStyle": "native",
+  "local-history.daysLimit": 1,
+  "local-history.exclude": [
+    "**/.history/**",
+    "**/vendor/**",
+    "**/.vscode/**",
+    "**/node_modules/**",
+    "**/typings/**",
+    "**/out/**",
+    "**/Code/User/**"
+  ],
+  "workbench.settings.openDefaultSettings": true,
+  "workbench.layoutControl.enabled": false,
+  "workbench.editor.editorActionsLocation": "hidden",
+  "files.trimTrailingWhitespace": true,
+  "vscode-auto-hide-panel.autoHideChangesCount": 3,
+  "intelephense.diagnostics.run": "onSave",
+  "intelephense.format.braces": "k&r",
+  "intelephense.phpdoc.returnVoid": false,
+  "intelephense.rename.namespaceMode": "all",
+  "intelephense.completion.insertUseDeclaration": false,
+  "inertia.defaultExtension": ".vue,.jsx,.tsx",
+  "files.exclude": {
+    "**/.history": true
+  },
+  "toggleboolean.mapping": {
+    "0": 1,
+    "1": 0,
+    "true": false,
+    "false": true,
+    "yes": "no",
+    "no": "yes",
+    "on": "off",
+    "off": "on"
+  },
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.replace": "block-outline",
+  "vim.cursorStylePerMode.visual": "block",
+  "vim.cursorStylePerMode.visualblock": "block",
+  "vim.cursorStylePerMode.visualline": "block",
+  "vim.vimrc.path": "$HOME/.vimrc",
+  "vim.leader": ",",
+  "workbench.editor.splitInGroupLayout": "horizontal",
+  "symbols.hidesExplorerArrows": false,
+  "catppuccin-noctis-icons.hidesExplorerArrows": false,
+  "window.commandCenter": false,
+  "diffAutoClose.substrings": "(Working Tree),(Untracked),Extension:",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.enablePreview": true,
+  "editor.showFoldingControls": "always",
+  "autoHide.autoHideSideBar": false,
+  "debug.allowBreakpointsEverywhere": true,
+  "terminal.explorerKind": "external",
+  "ddevManager.showProjectsList": "Current Workspace",
+  "workbench.editor.showTabs": "none",
+  "workbench.activityBar.location": "hidden"
+}

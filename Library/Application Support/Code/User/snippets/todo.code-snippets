@@ -1,0 +1,9 @@
+{
+  "PHP TODO Comment": {
+    "prefix": "todo",
+    "body": [
+      "${100:// }TODO: (${200:Aubrey}) $300"
+    ],
+    "description": "Insert a TODO comment with a placeholder for the author and the task."
+  }
+}

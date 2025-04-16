@@ -1,0 +1,10 @@
+{
+  "PHP phpcs ignore/disable specific rule with scope": {
+    "prefix": "// phpcs:ignore",
+    "body": [
+      "// phpcs:${1:ignore} $2 -- $3"
+    ],
+    "scope": "php",
+    "description": "Ignore or disable a specific PHP CodeSniffer rule within PHP files."
+  }
+}

@@ -1,0 +1,10 @@
+{
+	"affiliate_wp()": {
+		"scope": "javascript,php",
+		"prefix": "@sa",
+		"body": [
+			"@since ${1:AFFWPN}",
+		],
+		"description": "@since AFFWPN"
+	}
+}
