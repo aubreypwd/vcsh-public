@@ -1,0 +1,5 @@
+.DS_*
+/vendor/
+/node_modules/
+wp-config.php
+.htaccess

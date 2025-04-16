@@ -1,0 +1,42 @@
+set autoindent
+set casesensitive
+set emptyline
+set linenumbers
+set minibar
+set mouse
+set multibuffer
+set nohelp
+set nonewlines
+set nowrap
+set numbercolor black,normal
+set quickblank
+set stripecolor white,red
+set tabsize 2
+set titlecolor black,normal
+
+# Mimic normal-ish editor.
+bind M-c copy main       # Copy the selected text.
+bind M-q exit main       # Exit Nano.
+bind M-s savefile main   # Save the current file.
+bind M-v paste main      # Paste the last cut or copied text.
+bind M-x cut main        # Cut the selected text.
+bind M-y redo main       # Redo the last undone action.
+bind M-z undo main       # Undo the last action.
+bind M-d zap main        # Delete the character under the cursor.
+bind M-/ comment main    # Toggle comments for the current line or selection.
+bind M-f whereis main    # Search for text in the document (Find).
+
+# Move by word | beginning end of line.
+bind M-b prevword main  # Move the cursor to the start of the previous word.
+bind M-w nextword main  # Move the cursor to the start of the next word.
+bind M-^ home main      # Move the cursor to the beginning of the line.
+bind M-$ end main       # Move the cursor to the end of the line.
+
+# Highlight Mode
+bind M-V mark main      # Remap Meta-Shift-V to activate mark mode (Ctrl-^).
+
+# Goto line.
+bind ^G gotoline main
+
+#include /Users/aubreypwd/Repos/github.com/scopatz/nanorc/*.nanorc # This keeps making tabs weird, might need to fork my own.
+include /opt/homebrew/share/nano/*.nanorc # Include normal syntax highlighting.
