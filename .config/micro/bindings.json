@@ -1,0 +1,22 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "Alt-Shift-g": "FindPrevious",
+    "Alt-a": "SelectAll",
+    "Alt-c": "Copy",
+    "Alt-d": "DuplicateLine",
+    "Alt-f": "Find",
+    "Alt-g": "FindNext",
+    "Alt-k": "DeleteLine",
+    "Alt-q": "Quit",
+    "Alt-r": "command:references",
+    "Alt-s": "Save",
+    "Alt-v": "Paste",
+    "Alt-w": "lua:snippets.Next",
+    "Alt-x": "Cut",
+    "Alt-y": "Redo",
+    "Alt-z": "Undo",
+    "Ctrl-r": "None",
+    "CtrlP": "command:palettero",
+    "CtrlSpace": "command:palettero",
+    "CtrlUnderscore": "lua:comment.comment"
+}

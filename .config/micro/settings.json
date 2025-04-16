@@ -1,0 +1,21 @@
+{
+  "autosu": true,
+  "colorscheme": "monokai",
+  "ignorecase": false,
+  "indentchar": "_",
+  "infobar": false,
+  "mkparents": true,
+  "paste": true,
+  "rmtrailingws": true,
+  "statusline": false,
+  "tabsize": 2,
+  "softwrap": true,
+  "clipboard": "external",
+  "keepautoindent": true,
+  "savecursor": false,
+  "diffgutter": false,
+  "colorcolumn": 80,
+  "ruler": true,
+  "wordwrap": false,
+  "eofnewline": false
+}
