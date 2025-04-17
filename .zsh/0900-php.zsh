@@ -27,27 +27,27 @@ reset-php () {
 	brew tap shivammathur/php
 	brew tap shivammathur/extensions
 
-	CONF_FILES=( 'php.ini' 'xdebug-3.ini' ) # In ~/.config/php/conf.d/ that I want symlinked.
-
 	# Fully uninstall old versions...
 	for VERSION in "${MY_PHP_VERSIONS[@]}"; do
 
-		# Un-pin just in case it is.
-		brew unpin "php@$VERSION" > /dev/null 2>&1
+		# Un-pin just in case it is (otherwise you cannot uninstall).
+		brew unpin "php@$VERSION"
 
-		# Fully uninstall the version.
+		# Fully uninstall any version of PHP...
 		brew uninstall --zap --ignore-dependencies "php@$VERSION"
 		brew uninstall --zap --ignore-dependencies "shivammathur/php/php/php@$VERSION"
-
-		brew cleanup --prune=all
 	done
+
+	brew cleanup --prune=all
+
+	CONF_FILES=( 'php.ini' 'xdebug-3.ini' ) # In ~/.config/php/conf.d/ that I want symlinked.
 
 	# For each version...
 	for VERSION in "${MY_PHP_VERSIONS[@]}"; do
 
-		# Install a fresh install...
-		brew install "shivammathur/php/php@$VERSION"
-		brew install "shivammathur/extensions/xdebug@$VERSION"
+		# Install a fresh install (w/ xDebug)...
+		brew install "shivammathur/php/php@$VERSION" && \
+			brew install "shivammathur/extensions/xdebug@$VERSION"
 
 		# Add custom configs...
 		for CONF_FILE in "${CONF_FILES[@]}"; do
@@ -57,12 +57,14 @@ reset-php () {
 		# Make sure it isn't linked, we'll link the preferred (my) version later.
 		brew unlink "php@$VERSION"
 
-	done # Each version...
+	done
 
 	brew cleanup --prune=all
 
 	# Link and pin the final PHP version (my version).
 	brew unlink php # Unlink whatever version might be linked.
+
+	# Link my preferred version of PHP.
 	brew link "php@$MY_PHP_VERSION"
 	brew pin "php@$MY_PHP_VERSION"
 }
