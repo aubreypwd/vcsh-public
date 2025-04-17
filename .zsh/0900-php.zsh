@@ -13,6 +13,9 @@
  ##
 MY_PHP_VERSIONS=(7.4 8.0 8.1 8.2 8.3 8.4)
 
+# The PHP version I want to use by default (pinned).
+MY_PHP_VERSION="8.3"
+
 ###
  # Setup PHP on my system.
  #
@@ -20,41 +23,48 @@ MY_PHP_VERSIONS=(7.4 8.0 8.1 8.2 8.3 8.4)
  ##
 reset-php () {
 
+	brew update
+	brew tap shivammathur/php
+	brew tap shivammathur/extensions
+
 	CONF_FILES=( 'php.ini' 'xdebug-3.ini' ) # In ~/.config/php/conf.d/ that I want symlinked.
 
+	# Fully uninstall old versions...
 	for VERSION in "${MY_PHP_VERSIONS[@]}"; do
 
-		echo "Installing php@$VERSION..."
+		# Un-pin just in case it is.
+		brew unpin "php@$VERSION" > /dev/null 2>&1
 
-		brew reinstall "php@$VERSION"
+		# Fully uninstall the version.
+		brew uninstall --zap --ignore-dependencies "php@$VERSION"
+		brew uninstall --zap --ignore-dependencies "shivammathur/php/php/php@$VERSION"
 
-		echo "Installing Xdebug for php@$VERSION..."
-
-		pecl -d "php_suffix=$VERSION" install -f xdebug #> /dev/null 2>&1
-
-		echo "Symlinking config files..."
-
-		for CONF_FILE in "${CONF_FILES[@]}"; do
-
-			SOURCE="$HOME/.config/php/conf.d/$CONF_FILE";
-			TARGET="/opt/homebrew/etc/php/$VERSION/conf.d/z-$CONF_FILE"
-
-			echo "Symlinking $SOURCE -> $TARGET..."
-
-			ln -sf "$SOURCE" "$TARGET"
-		done
-
-		echo "Restarting php@$VERSION services..."
-
-		brew services restart "php@$VERSION"
+		brew cleanup --prune=all
 	done
 
-	# valet restart
+	# For each version...
+	for VERSION in "${MY_PHP_VERSIONS[@]}"; do
 
-	echo "Setting your perferred version of PHP..."
+		# Install a fresh install...
+		brew install "shivammathur/php/php@$VERSION"
+		brew install "shivammathur/extensions/xdebug@$VERSION"
 
-	brew unlink php && brew link --force php@8.3
-	brew pin php@8.3
+		# Add custom configs...
+		for CONF_FILE in "${CONF_FILES[@]}"; do
+			ln -sf "$HOME/.config/php/conf.d/$CONF_FILE" "/opt/homebrew/etc/php/$VERSION/conf.d/z-$CONF_FILE"
+		done
+
+		# Make sure it isn't linked, we'll link the preferred (my) version later.
+		brew unlink "php@$VERSION"
+
+	done # Each version...
+
+	brew cleanup --prune=all
+
+	# Link and pin the final PHP version (my version).
+	brew unlink php # Unlink whatever version might be linked.
+	brew link "php@$MY_PHP_VERSION"
+	brew pin "php@$MY_PHP_VERSION"
 }
 
 for VERSION in "${MY_PHP_VERSIONS[@]}"; do
