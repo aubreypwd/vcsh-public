@@ -75,6 +75,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'mutewinter/nginx.vim'
 	Plug 'rhysd/committia.vim'
+	Plug 'preservim/nerdtree'
 call plug#end()
 
 " UI
@@ -88,3 +89,10 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 autocmd VimLeave * silent !echo -ne "\033[0 q"
+
+" Open NERDTree automatically when vim starts if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" Shortcut to toggle sidebar
+nnoremap <C-n> :NERDTreeToggle<CR>
