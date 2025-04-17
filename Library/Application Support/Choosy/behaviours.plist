@@ -461,7 +461,7 @@
 			<string>ChoosyBrowser</string>
 		</dict>
 		<key>enabled</key>
-		<false/>
+		<true/>
 		<key>predicate</key>
 		<string>URL CONTAINS "zoom.us" OR URL CONTAINS "zoom.aubreypwd.com"</string>
 		<key>title</key>
