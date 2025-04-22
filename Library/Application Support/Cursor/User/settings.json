@@ -4,25 +4,13 @@
     "security.promptForLocalFileProtocolHandling": false,
     "security.promptForRemoteFileProtocolHandling": false,
     "editor.accessibilitySupport": "off",
-    "multiCommand.commands": [
-        {
-            "command": "extension.multiCommand.newFileAndCloseEditors",
-            "sequence": [
-                "composer.createNew",
-                "workbench.action.closeAllEditors"
-            ]
-        }
-    ],
     "window.newWindowDimensions": "maximized",
-    "workbench.editor.showTabs": "none",
-    "workbench.editor.editorActionsLocation": "hidden",
     "breadcrumbs.enabled": false,
-    "window.titleBarStyle": "native",
     "cursor.general.gitGraphIndexing": "enabled",
     "cursor.diffs.useCharacterLevelDiffs": true,
     "cursor.preferNotificationsSameAsChat": true,
     "cursor.composer.shouldChimeAfterChatFinishes": true,
-    "workbench.layoutControl.enabled": false,
-    "window.autoDetectHighContrast": false,
-    "editor.minimap.enabled": true
+    "editor.minimap.enabled": true,
+    "git.openRepositoryInParentFolders": "never",
+    "window.commandCenter": true
 }
