@@ -761,7 +761,7 @@
 		"when": "searchViewletFocus"
 	},
 	{
-		"key": "alt+cmd+w",
+		"key": "shift+cmd+w",
 		"command": "workbench.action.closeAllEditors"
 	},
 	{
@@ -771,10 +771,6 @@
 	{
 		"key": "shift+cmd+w",
 		"command": "-workbench.action.closeWindow"
-	},
-	{
-		"key": "shift+cmd+w",
-		"command": "workbench.action.closeAllGroups"
 	},
 	{
 		"key": "cmd+k shift+cmd+w",
@@ -976,5 +972,13 @@
 		"key": "shift+cmd+i",
 		"command": "-workbench.panel.chatEditing",
 		"when": "workbench.panel.chat.view.edits.active"
+	},
+	{
+		"key": "shift+alt+cmd+w",
+		"command": "workbench.action.closeAllGroups"
+	},
+	{
+		"key": "shift+cmd+e",
+		"command": "workbench.files.action.collapseExplorerFolders"
 	}
 ]
