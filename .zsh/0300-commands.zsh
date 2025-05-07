@@ -1256,3 +1256,26 @@ for repo in public private; do
 		}
 	"
 done
+
+# Additional svn functionality.
+# @since May 6th, 2025
+function svn () {
+
+	if [[ "$1" == "add-remove" ]]; then
+		command svn add --force . --auto-props --parents
+		command svn status | grep '^!' | awk '{print $2}' | xargs -r command svn delete
+		command svn st
+	elif [[ "$1" == "sync-tag" ]]; then
+		command svn rm --force "tags/$2"
+		command svn cp trunk "tags/$2"
+		command svn st
+	elif [[ "$1" == "reset" ]]; then
+		command svn status --no-ignore | grep '^[?I]' | awk '{print $2}' | xargs -r rm -rf
+		command svn revert -R .
+		command svn cleanup
+		command svn update
+		command svn st
+	else
+		command svn "$@"
+	fi
+}
