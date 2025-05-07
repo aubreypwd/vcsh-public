@@ -1,0 +1,10 @@
+/* ==UserStyle==
+@name        Hackmd.io
+@match       *://hackmd.io/*
+==/UserStyle== */
+
+/* Menlo for Editor */
+.CodeMirror {
+    font-family: Menlo, monospace;
+    font-size: 12.5px;
+}

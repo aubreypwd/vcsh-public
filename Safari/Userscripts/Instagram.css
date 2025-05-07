@@ -1,0 +1,9 @@
+/* ==UserStyle==
+@name            Instagram
+@match           *://www.instagram.com/*
+@run-at          document-start
+==/UserStyle== */
+
+a[href="/reels/"] {
+    display: none !important;
+}

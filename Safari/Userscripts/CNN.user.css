@@ -1,0 +1,19 @@
+/* ==UserStyle==
+@name        CNN
+@match       *://www.cnn.com/*
+@run-at      document-start
+==/UserStyle== */
+
+.ad-slot,
+.c-adSkyBox,
+.ad-slot-header__container,
+.ad-slot-header,
+.ad-slot-header__wrapper,
+.c-featureDynamicAd,
+body.cnn .ad-slot-header__wrapper {
+    display: none !important;
+}
+
+body {
+    padding-top: 0 !important;
+}

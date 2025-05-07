@@ -1,0 +1,24 @@
+/* ==UserStyle==
+@name            YouTube
+@include         http*://*youtube.com*
+@run-at          document-start
+==/UserStyle== */
+
+/** Hide Shorts Icon **/
+#items .ytd-guide-section-renderer:nth-child(2), /* Desktop */
+#app ytm-pivot-bar-renderer ytm-pivot-bar-item-renderer:nth-child(2) /* Mobile */
+#items a[title="Home"],
+#items a[title="Shorts"]
+{ 
+    display: none !important;
+}
+
+.video-stream.html5-main-video {
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+#vinegar-toolbar {
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+}
