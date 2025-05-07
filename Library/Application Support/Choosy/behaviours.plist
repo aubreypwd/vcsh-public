@@ -234,7 +234,7 @@
 			<string>ChoosyBrowser</string>
 		</dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>predicate</key>
 		<string>URL CONTAINS "docs.google.com" OR URL CONTAINS "drive.google.com"</string>
 		<key>title</key>
@@ -390,7 +390,7 @@
 			</dict>
 		</array>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>predicate</key>
 		<string>URL CONTAINS "github.com"</string>
 		<key>title</key>
@@ -427,12 +427,6 @@
 			<dict>
 				<key>path</key>
 				<string>/Applications/Safari Technology Preview.app</string>
-				<key>type</key>
-				<string>ChoosyBrowser</string>
-			</dict>
-			<dict>
-				<key>path</key>
-				<string>/Applications/Firefox Developer Edition.app</string>
 				<key>type</key>
 				<string>ChoosyBrowser</string>
 			</dict>
@@ -1025,7 +1019,7 @@
 			<string>ChoosyBrowser</string>
 		</dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>predicate</key>
 		<string>URL CONTAINS "docs.google.com"</string>
 		<key>title</key>
