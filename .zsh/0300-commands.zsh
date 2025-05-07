@@ -1261,20 +1261,20 @@ done
 # @since May 6th, 2025
 function svn () {
 
-	if [[ "$1" == "add-remove" ]]; then
+	if [[ "$1" == "add-remove" || "$1" == "reindex" ]]; then
 		command svn add --force . --auto-props --parents
 		command svn status | grep '^!' | awk '{print $2}' | xargs -r command svn delete
-		command svn st
-	elif [[ "$1" == "sync-tag" ]]; then
-		command svn rm --force "tags/$2"
-		command svn cp trunk "tags/$2"
-		command svn st
-	elif [[ "$1" == "reset" ]]; then
+		command svn status
+	elif [[ "$1" == "sync-trunk-to-tag" || "$1" == "sttt" ]]; then
+		command svn delete --force "tags/$2"
+		command svn copy trunk "tags/$2"
+		command svn status
+	elif [[ "$1" == "reset" || "$1" == "rhhc" ]]; then
 		command svn status --no-ignore | grep '^[?I]' | awk '{print $2}' | xargs -r rm -rf
 		command svn revert -R .
 		command svn cleanup
 		command svn update
-		command svn st
+		command svn status
 	else
 		command svn "$@"
 	fi
