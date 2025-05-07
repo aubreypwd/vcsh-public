@@ -310,6 +310,8 @@
   // Theme tweaks.
   "workbench.colorCustomizations": {
     "[Chrome DevTools Theme]": {
+      "activityBarBadge.foreground": "#fff",
+      "activityBarBadge.background": "#0978D4",
       "statusBar.background": "#383838",
       "statusBar.border": "#383838",
       "statusBar.foreground": "#CCCCCC",
@@ -339,7 +341,7 @@
       "list.hoverForeground": "#FFFFFF",
       "list.inactiveSelectionBackground": "#434343",
       "menu.selectionBorder": "#175295",
-      "panel.background": "#282828",
+      "panel.background": "#333333",
       "panel.border": "#404040",
       "panel.dropBorder": "#404040",
       "panelSection.border": "#404040",
@@ -349,7 +351,7 @@
       "scrollbar.shadow": "#00000000",
       "scrollbarSlider.background": "#00000000",
       "selection.background": "#175295",
-      "sideBar.background": "#282828",
+      "sideBar.background": "#2B2B2B",
       "sideBar.border": "#000000",
       "sideBarSectionHeader.background": "#2B2B2B",
       "sideBarSectionHeader.foreground": "#FFFFFF",
@@ -361,7 +363,7 @@
       "tab.hoverBackground": "#1F1F1F",
       "tab.hoverBorder": "#00000000",
       "tab.hoverForeground": "#D5D5D5",
-      "tab.inactiveBackground": "#202020",
+      "tab.inactiveBackground": "#333333",
       "tab.inactiveModifiedBorder": "#000000",
       "tab.lastPinnedBorder": "#00000000",
       "tab.unfocusedActiveBackground": "#00000000",
