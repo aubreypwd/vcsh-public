@@ -37,7 +37,7 @@ reset-mac-defaults () {
 	defaults write com.apple.TextEdit SmartDashes -bool false
 
 	# Dock
-	defaults write com.apple.Dock autohide-delay -float 0 # Show dock after X seconds.
+	defaults write com.apple.Dock autohide-delay -float 1 # Show dock after X seconds.
 	defaults write com.apple.dock autohide-time-modifier -int 1 # Animation speed.
 	defaults write com.apple.dock show-recents -bool true;
 	defaults write com.apple.dock show-recent-count -int 3;
