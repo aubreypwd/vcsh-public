@@ -361,34 +361,14 @@
 	</dict>
 	<dict>
 		<key>behaviour</key>
-		<integer>5</integer>
+		<integer>6</integer>
 		<key>behaviourArgument</key>
-		<array>
-			<dict>
-				<key>path</key>
-				<string>/Users/aubreypwd/Applications/Github.app</string>
-				<key>type</key>
-				<string>ChoosyBrowser</string>
-			</dict>
-			<dict>
-				<key>path</key>
-				<string>/Applications/Google Chrome.app</string>
-				<key>type</key>
-				<string>ChoosyBrowser</string>
-			</dict>
-			<dict>
-				<key>path</key>
-				<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
-				<key>type</key>
-				<string>ChoosyBrowser</string>
-			</dict>
-			<dict>
-				<key>path</key>
-				<string>/Applications/Copy URL.app</string>
-				<key>type</key>
-				<string>ChoosyBrowser</string>
-			</dict>
-		</array>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Unite Apps/GitHub.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
 		<key>enabled</key>
 		<false/>
 		<key>predicate</key>
@@ -438,7 +418,7 @@
 			</dict>
 		</array>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>predicate</key>
 		<string>URL CONTAINS ".local" OR URL CONTAINS ".test" OR URL CONTAINS "localhost:" OR URL CONTAINS "localhost" OR URL CONTAINS "127.0.0." OR URL CONTAINS "ddev.site"</string>
 		<key>title</key>
@@ -663,7 +643,7 @@
 			<string>ChoosyBrowser</string>
 		</dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>predicate</key>
 		<string>URL CONTAINS "app.asana.com"</string>
 		<key>title</key>
@@ -671,13 +651,18 @@
 	</dict>
 	<dict>
 		<key>behaviour</key>
-		<integer>0</integer>
+		<integer>6</integer>
 		<key>behaviourArgument</key>
-		<string></string>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Unite Apps/Google Drive.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
 		<key>enabled</key>
 		<false/>
 		<key>predicate</key>
-		<string>URL CONTAINS "drive.google.com"</string>
+		<string>URL CONTAINS "drive.google.com" OR URL CONTAINS "docs.google.com" OR URL CONTAINS "sheets.google.com"</string>
 		<key>title</key>
 		<string>Google Drive</string>
 	</dict>
@@ -709,7 +694,7 @@
 			<string>ChoosyBrowser</string>
 		</dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>predicate</key>
 		<string>URL CONTAINS "secure.helpscout.net"</string>
 		<key>title</key>
@@ -1007,23 +992,6 @@
 		<string>URL CONTAINS "wordpress.org"</string>
 		<key>title</key>
 		<string>WordPress.org</string>
-	</dict>
-	<dict>
-		<key>behaviour</key>
-		<integer>6</integer>
-		<key>behaviourArgument</key>
-		<dict>
-			<key>path</key>
-			<string>/Users/aubreypwd/Software/WebApps/Fluid/Google Drive.app</string>
-			<key>type</key>
-			<string>ChoosyBrowser</string>
-		</dict>
-		<key>enabled</key>
-		<false/>
-		<key>predicate</key>
-		<string>URL CONTAINS "docs.google.com"</string>
-		<key>title</key>
-		<string>Google Docs</string>
 	</dict>
 	<dict>
 		<key>behaviour</key>
