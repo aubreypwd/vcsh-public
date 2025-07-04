@@ -56,6 +56,9 @@ alias unhide="chflags nohidden"
 # Browser in the terminal
 alias browse="carbonyl --zoom=50"
 
+# Go home quickly.
+alias h="cd $HOME"
+
 # Exit Alias.
 if [[ ( "$TERM_PROGRAM" == 'vscode' ) ]]; then
 
