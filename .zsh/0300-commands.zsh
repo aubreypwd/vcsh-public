@@ -1177,46 +1177,9 @@ ffd () {
 	# Using $(...) instead of backticks for command substitution for better readability and nesting
 	DIR=$(find -L * -maxdepth $DEPTH -type d -print 2> /dev/null | fzf --height=100%) \
 		&& cd "$DIR" || return 1
-
-	return 0
 }
 
-	alias fd="ffd 0" # For backwards compatibility.
-
-	# Find from the home directory.
-	ffhd () {
-		cd "$HOME" && ffd "$@"
-	}
-
-	# Find folders only in the current directory.
-	ff.d () {
-		ffd 0
-	}
-
-	## Find folders in the parent directory.
-	ff..d() {
-		cd ../ && ffd 0
-	}
-
-	# Find folders in the grandparent directory.
-	ffgd() {
-		cd ../../ && ffd 0
-	}
-
-	# Find folders 2 deep.
-	ff2d () {
-		ffd 1
-	}
-
-	# Find folders 3 deep.
-	ff3d () {
-		ffd 2
-	}
-
-	# Find folders unlimited (crazy) deep.
-	ffud () {
-		ffd 999
-	}
+alias fd="ffd 0" # For backwards compatibility.
 
 ###
  # Wrapper or aria2c
