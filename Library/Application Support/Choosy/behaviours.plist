@@ -400,13 +400,13 @@
 		<array>
 			<dict>
 				<key>path</key>
-				<string>/Applications/Google Chrome.app</string>
+				<string>/Applications/Safari Technology Preview.app</string>
 				<key>type</key>
 				<string>ChoosyBrowser</string>
 			</dict>
 			<dict>
 				<key>path</key>
-				<string>/Applications/Safari Technology Preview.app</string>
+				<string>/Applications/Google Chrome.app</string>
 				<key>type</key>
 				<string>ChoosyBrowser</string>
 			</dict>
@@ -418,7 +418,7 @@
 			</dict>
 		</array>
 		<key>enabled</key>
-		<false/>
+		<true/>
 		<key>predicate</key>
 		<string>URL CONTAINS ".local" OR URL CONTAINS ".test" OR URL CONTAINS "localhost:" OR URL CONTAINS "localhost" OR URL CONTAINS "127.0.0." OR URL CONTAINS "ddev.site"</string>
 		<key>title</key>
