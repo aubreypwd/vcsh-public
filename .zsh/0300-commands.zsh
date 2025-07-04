@@ -953,8 +953,9 @@ suggest () {
  # @usage bundle "Safari"
  #
  # @since Jun 2, 2024
+ # @since May 15th, 2025 -- Renamed to get-bundle-id.
  ##
-bundle () {
+get-bundle-id () {
 	osascript "-e id of app '$1'"
 }
 
