@@ -3,3 +3,4 @@
 /node_modules/
 wp-config.php
 .htaccess
+.vscode/extensions/extensions.json
