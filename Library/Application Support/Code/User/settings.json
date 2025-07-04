@@ -281,10 +281,10 @@
   // Window settings
   "window.autoDetectHighContrast": false,
   // "window.density.editorTabHeight": "compact",
-  "window.nativeTabs": false,
+  "window.nativeTabs": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "off",
-  "window.openFoldersInNewWindow": "on",
+  "window.openFoldersInNewWindow": "off",
   "window.openWithoutArgumentsInNewWindow": "off",
   "window.title": "${rootPath}${separator}${activeEditorMedium}",
 
@@ -537,7 +537,7 @@
       ]
     }
   },
-  "workbench.colorTheme": "Chrome DevTools Theme",
+  "workbench.colorTheme": "Chromer Theme",
   "workbench.editor.closeEmptyGroups": false,
   "workbench.editor.decorations.colors": false,
   "workbench.preferredDarkColorTheme": "Monokai Pro (Filter Spectrum)",
@@ -793,5 +793,6 @@
   "debug.allowBreakpointsEverywhere": true,
   "terminal.explorerKind": "external",
   "ddevManager.showProjectsList": "Current Workspace",
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "explorer.confirmDragAndDrop": false
 }

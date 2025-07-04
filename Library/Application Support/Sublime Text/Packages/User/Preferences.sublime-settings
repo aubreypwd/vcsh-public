@@ -77,7 +77,7 @@
 	"matching_scope": "invalid",
 	"mde.auto_fold_link.enabled": false,
 	"mini_diff": true,
-	"native_tabs": "disabled",
+	"native_tabs": "preferred",
 	"open_files_in_new_window": "always",
 	"ours_gutter": true,
 	"overlay_scroll_bars": "enabled",
