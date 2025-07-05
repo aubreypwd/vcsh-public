@@ -4,6 +4,19 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Shift+F3 → Mission Control",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f3",
+                                    "modifiers": { "mandatory": ["shift"] }
+                                },
+                                "to": [{ "key_code": "mission_control" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Remap F6 to Control + Command + Q (Lock Screen)",
                         "manipulators": [
                             {
@@ -22,7 +35,7 @@
                         ]
                     },
                     {
-                        "description": "Remap Shift+F5 to ⌃⌥⌘⇧T",
+                        "description": "Remap Shift+F5 to ⌃⌥⌘⇧T (Superwhisper)",
                         "manipulators": [
                             {
                                 "from": {
