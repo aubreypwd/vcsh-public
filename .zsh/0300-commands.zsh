@@ -110,7 +110,7 @@ wphome () {
 
 ###
  # Get the PHP version running.
- #g
+ #
  # @usedby sysinfo()
  #
  # @since Tuesday, August 2, 2022
