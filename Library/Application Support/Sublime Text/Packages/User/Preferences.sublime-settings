@@ -264,7 +264,6 @@
 	"ignored_packages":
 	[
 		"AlpineJS",
-		"Auto Hide Sidebar",
 		"LSP-eslint",
 		"SublimeLinter-php",
 		"SublimeLinter-phpcs",
