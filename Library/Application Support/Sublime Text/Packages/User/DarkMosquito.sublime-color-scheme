@@ -5,7 +5,13 @@
 	},
 	"globals":
 	{
-		"background": "#282828",
+		// "background": "#282828",
+		"background": "#1F1F1F",
+		"invisibles": "#262626",
+    // "gutter": "#1F1F1F",
+		"stack_guide": "#363537",
+		"guide": "#4D4D4D",
+		"active_guide": "#83FAAF",
 	},
 	"rules":
 	[
