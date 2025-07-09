@@ -68,6 +68,9 @@ reset-mac-defaults () {
 	# Repeat key mode for VIM emulation in VSCode.
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false # For VS Code
 
+	# Make sure loginwindow didn't get fucked up by something so I can lock the screen.
+	defaults delete com.apple.loginwindow
+
 	# Reset apps.
 	killall "Dock"
 	killall "Finder"
