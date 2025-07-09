@@ -102,6 +102,7 @@
 	"show_project_first": true,
 	"show_rel_path": true,
 	"show_tab_close_buttons": true,
+	"show_tab_close_buttons_on_left": true,
 	"sidebar_font_small": true,
 	"spell_check": true,
 	"sublime_merge_path": null,
@@ -204,6 +205,7 @@
 		"globals",
 		"env",
 		"usr",
+		"invisibles",
 	],
 	"binary_file_patterns":
 	[
