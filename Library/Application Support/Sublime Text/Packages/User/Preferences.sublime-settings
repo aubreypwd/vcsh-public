@@ -34,7 +34,7 @@
 	"centurion_color_orange": true,
 	"close_deleted_files": false,
 	"close_windows_when_empty": false,
-	"color_scheme": "Monokai Pro (Filter Spectrum).sublime-color-scheme",
+	"color_scheme": "Packages/DarkMosquito Color Scheme/DarkMosquito.tmTheme",
 	"console_max_history_lines": 100,
 	"copy_with_empty_selection": true,
 	"create_window_at_startup": false,
@@ -202,6 +202,8 @@
 		"Webhooks",
 		"Webhook",
 		"globals",
+		"env",
+		"usr",
 	],
 	"binary_file_patterns":
 	[

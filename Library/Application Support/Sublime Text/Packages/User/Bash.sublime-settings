@@ -1,0 +1,6 @@
+// These settings override both User and Default settings for the Bash syntax
+{
+    "use_tab_stops": false,
+    "detect_indentation": false,
+    "translate_tabs_to_spaces": false,
+}

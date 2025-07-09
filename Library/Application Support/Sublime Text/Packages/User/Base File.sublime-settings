@@ -1,0 +1,9 @@
+{
+    "jsdocs_extra_tags": [
+        "@since ${1:[-NEXT-]}",
+        "",
+    ],
+    "jsdocs_short_primitives": true,
+    "jsdocs_spacer_between_sections": "after_description",
+    "jsdocs_align_tags": "no"
+}
