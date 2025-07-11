@@ -104,7 +104,7 @@
 	"show_tab_close_buttons": true,
 	"show_tab_close_buttons_on_left": true,
 	"sidebar_font_small": true,
-	"spell_check": true,
+	"spell_check": false,
 	"sublime_merge_path": null,
 	"tab_completion": false,
 	"tab_size": 2,
@@ -306,4 +306,5 @@
 	"vintage_ctrl_keys": true,
 	"auto_complete": true,
 	"relative_line_numbers": false,
+	"sub_word_separators": "",
 }
