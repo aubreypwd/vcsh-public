@@ -1,0 +1,14 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : true,
+    "noSandbox" : false,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Convert to .webp",
+  "type" : "shell",
+  "uuid" : "19B03964-0326-46B5-87F2-94A8812EC9D0"
+}
