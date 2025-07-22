@@ -83,3 +83,6 @@ export SHOW_GIT_STATUS_ON_CD=true
 
 # Walk CLI
 export WALK_REMOVE_CMD=trash
+
+# k6 Options
+export K6_SUMMARY_MODE=full
