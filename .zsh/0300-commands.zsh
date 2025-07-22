@@ -59,6 +59,9 @@ alias browse="carbonyl --zoom=50"
 # Go home quickly.
 alias h="cd $HOME"
 
+# Habit of using code => subl
+alias code="subl"
+
 # Exit Alias.
 if [[ ( "$TERM_PROGRAM" == 'vscode' ) ]]; then
 
