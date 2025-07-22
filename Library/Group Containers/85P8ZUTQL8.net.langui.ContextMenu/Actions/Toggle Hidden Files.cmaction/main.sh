@@ -1,0 +1,1 @@
+tell application "Finder"	activate	tell application "System Events"		keystroke "." using {shift down, command down}	end tellend tell

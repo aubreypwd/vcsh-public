@@ -5,7 +5,7 @@
     "acceptFiles" : true,
     "noSandbox" : true,
     "confirmExecution" : false,
-    "showOutput" : false
+    "showOutput" : true
   },
   "icon" : "icon.icns",
   "name" : "Convert to .jpg",

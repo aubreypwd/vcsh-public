@@ -1,0 +1,11 @@
+{
+  "path" : "\/Applications\/Safari.app",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : true,
+    "noSandbox" : false,
+    "confirmExecution" : false
+  },
+  "name" : "Open with Safari",
+  "type" : "application"
+}

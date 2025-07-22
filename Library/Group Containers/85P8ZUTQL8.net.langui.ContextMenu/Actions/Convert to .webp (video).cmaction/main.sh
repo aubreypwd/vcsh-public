@@ -1,0 +1,1 @@
+/opt/homebrew/bin/ffmpeg -i "$@" -vcodec libwebp -filter:v fps=15 -lossless 0 -compression_level 6 -q:v 50 -loop 0 -an -preset picture -y "$@".webp

@@ -1,0 +1,14 @@
+{
+  "path" : "/usr/bin/osascript",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : false,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Toggle Dark Mode",
+  "type" : "shell",
+  "uuid" : "644D9A0B-420B-40A2-A7FA-E342DB1E2145"
+}

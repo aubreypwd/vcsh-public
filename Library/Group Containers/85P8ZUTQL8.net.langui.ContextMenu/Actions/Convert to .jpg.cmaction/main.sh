@@ -1,1 +1,1 @@
-/opt/homebrew/bin/convert "$@" "$@.jpg"
+/opt/homebrew/bin/magick convert "$@" "$@.jpg"

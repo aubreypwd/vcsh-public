@@ -1,0 +1,11 @@
+{
+  "path" : "\/Applications\/Google Chrome.app",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : true,
+    "noSandbox" : false,
+    "confirmExecution" : false
+  },
+  "name" : "Open with Google Chrome",
+  "type" : "application"
+}

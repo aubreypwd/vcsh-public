@@ -1,0 +1,11 @@
+{
+  "path" : "\/Applications\/Sublime Text.app",
+  "options" : {
+    "acceptDirs" : true,
+    "acceptFiles" : true,
+    "noSandbox" : false,
+    "confirmExecution" : false
+  },
+  "name" : "Open with Sublime Text",
+  "type" : "application"
+}

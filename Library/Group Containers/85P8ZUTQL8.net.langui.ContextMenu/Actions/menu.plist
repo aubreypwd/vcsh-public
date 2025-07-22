@@ -4,170 +4,11 @@
 <array>
 	<dict>
 		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>New iTerm2 Tab Here</string>
-		<key>path</key>
-		<string>New iTerm2 Tab Here.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
 		<true/>
 		<key>name</key>
 		<string>Copy Paths</string>
 		<key>path</key>
 		<string>Copy Paths.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<true/>
-		<key>name</key>
-		<string>New Terminal Window Here</string>
-		<key>path</key>
-		<string>New Terminal Window Here.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>New Terminal Tab Here</string>
-		<key>path</key>
-		<string>New Terminal Tab Here.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>Edit with Emacs</string>
-		<key>path</key>
-		<string>Edit with Emacs.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>New Text File</string>
-		<key>path</key>
-		<string>New Text File.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>Edit with Vim</string>
-		<key>path</key>
-		<string>Edit with Vim.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>New iTerm2 Window Here</string>
-		<key>path</key>
-		<string>New iTerm2 Window Here.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<true/>
-		<key>icon</key>
-		<string>icon.icns</string>
-		<key>name</key>
-		<string>Create Random Folder</string>
-		<key>path</key>
-		<string>Random Folder.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>icon</key>
-		<string>icon.icns</string>
-		<key>name</key>
-		<string>Open with Sublime Text</string>
-		<key>path</key>
-		<string>Open with Sublime Text.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<true/>
-		<key>icon</key>
-		<string>icon.icns</string>
-		<key>name</key>
-		<string>Open with Google Chrome</string>
-		<key>path</key>
-		<string>Open with Google Chrome.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<true/>
-		<key>icon</key>
-		<string>icon.icns</string>
-		<key>name</key>
-		<string>Open with Safari</string>
-		<key>path</key>
-		<string>Open with Safari.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<true/>
-		<key>icon</key>
-		<string>icon.icns</string>
-		<key>name</key>
-		<string>Convert to .jpg</string>
-		<key>options</key>
-		<dict>
-			<key>acceptDirs</key>
-			<false/>
-			<key>acceptFiles</key>
-			<true/>
-			<key>confirmExecution</key>
-			<false/>
-			<key>noSandbox</key>
-			<true/>
-			<key>showOutput</key>
-			<false/>
-		</dict>
-		<key>path</key>
-		<string>Convert to .jpg.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>Compare using BBEdit</string>
-		<key>path</key>
-		<string>Compare using BBEdit.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>Compare using Visual Studio Code</string>
-		<key>path</key>
-		<string>Compare using Visual Studio Code.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<true/>
-		<key>name</key>
-		<string>Copy Contents</string>
-		<key>path</key>
-		<string>Copy Contents.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<true/>
-		<key>name</key>
-		<string>Hide Path Extensions</string>
-		<key>path</key>
-		<string>Hide Path Extensions.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>Lock Screen</string>
-		<key>path</key>
-		<string>Lock Screen.cmaction</string>
 	</dict>
 	<dict>
 		<key>enabled</key>
@@ -288,6 +129,200 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>isGroup</key>
+		<true/>
+		<key>name</key>
+		<string>Convert</string>
+		<key>path</key>
+		<string>Convert.cmaction</string>
+		<key>subitems</key>
+		<array>
+			<dict>
+				<key>enabled</key>
+				<true/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>Convert to .webp</string>
+				<key>path</key>
+				<string>Convert to .webp.cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<true/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>Convert to .webp (video)</string>
+				<key>path</key>
+				<string>Convert to .webp (video).cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<true/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>Convert to .jpg</string>
+				<key>options</key>
+				<dict>
+					<key>acceptDirs</key>
+					<false/>
+					<key>acceptFiles</key>
+					<true/>
+					<key>confirmExecution</key>
+					<false/>
+					<key>noSandbox</key>
+					<true/>
+					<key>showOutput</key>
+					<false/>
+				</dict>
+				<key>path</key>
+				<string>Convert to .jpg.cmaction</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>New iTerm2 Tab Here</string>
+		<key>path</key>
+		<string>New iTerm2 Tab Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>New Terminal Window Here</string>
+		<key>path</key>
+		<string>New Terminal Window Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>New Terminal Tab Here</string>
+		<key>path</key>
+		<string>New Terminal Tab Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Edit with Emacs</string>
+		<key>path</key>
+		<string>Edit with Emacs.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>New Text File</string>
+		<key>path</key>
+		<string>New Text File.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Edit with Vim</string>
+		<key>path</key>
+		<string>Edit with Vim.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>New iTerm2 Window Here</string>
+		<key>path</key>
+		<string>New iTerm2 Window Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Create Random Folder</string>
+		<key>path</key>
+		<string>Random Folder.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Open with Sublime Text</string>
+		<key>path</key>
+		<string>Open with Sublime Text.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Open with Google Chrome</string>
+		<key>path</key>
+		<string>Open with Google Chrome.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Open with Safari</string>
+		<key>path</key>
+		<string>Open with Safari.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Compare using BBEdit</string>
+		<key>path</key>
+		<string>Compare using BBEdit.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Compare using Visual Studio Code</string>
+		<key>path</key>
+		<string>Compare using Visual Studio Code.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>Copy Contents</string>
+		<key>path</key>
+		<string>Copy Contents.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Hide Path Extensions</string>
+		<key>path</key>
+		<string>Hide Path Extensions.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Lock Screen</string>
+		<key>path</key>
+		<string>Lock Screen.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
 		<false/>
 		<key>name</key>
 		<string>Open new Calculator</string>
@@ -296,7 +331,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>name</key>
 		<string>Open with Visual Studio Code</string>
 		<key>path</key>
@@ -320,7 +355,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>name</key>
 		<string>Show Path Extensions</string>
 		<key>path</key>
@@ -360,16 +395,6 @@
 		</dict>
 		<key>path</key>
 		<string>Share with Droplr.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<true/>
-		<key>icon</key>
-		<string>icon.icns</string>
-		<key>name</key>
-		<string>Convert to .webp</string>
-		<key>path</key>
-		<string>Convert to .webp.cmaction</string>
 	</dict>
 </array>
 </plist>

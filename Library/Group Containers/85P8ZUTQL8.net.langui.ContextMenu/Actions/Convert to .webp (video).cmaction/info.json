@@ -1,5 +1,5 @@
 {
-  "path" : "/bin/sh",
+  "path" : "/bin/bash",
   "options" : {
     "acceptDirs" : false,
     "acceptFiles" : true,
@@ -8,7 +8,7 @@
     "showOutput" : true
   },
   "icon" : "icon.icns",
-  "name" : "Convert to .webp",
+  "name" : "Convert to .webp (video)",
   "type" : "shell",
-  "uuid" : "19B03964-0326-46B5-87F2-94A8812EC9D0"
+  "uuid" : "25AC1122-745B-43D9-89DA-A8C01D995101"
 }

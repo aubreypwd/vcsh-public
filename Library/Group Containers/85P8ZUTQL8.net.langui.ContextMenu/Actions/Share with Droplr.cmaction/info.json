@@ -1,0 +1,12 @@
+{
+  "path" : "/Applications/Droplr.app",
+  "options" : {
+    "acceptFiles" : true,
+    "confirmExecution" : false,
+    "acceptDirs" : true
+  },
+  "icon" : "icon.icns",
+  "name" : "Share with Droplr",
+  "service" : "Share with Droplr",
+  "type" : "service"
+}

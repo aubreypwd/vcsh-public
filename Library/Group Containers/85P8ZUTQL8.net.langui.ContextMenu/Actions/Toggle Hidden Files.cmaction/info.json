@@ -1,0 +1,14 @@
+{
+  "path" : "/usr/bin/osascript",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : false,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Toggle Hidden Files",
+  "type" : "shell",
+  "uuid" : "7C255A57-0AA8-4144-B14D-E08232EC3301"
+}

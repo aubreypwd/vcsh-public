@@ -1,0 +1,9 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : true
+  },
+  "type" : "shell",
+  "name" : "New Text File",
+  "uuid" : "67D318C1-450C-42CA-8AF4-8296854DF34D"
+}

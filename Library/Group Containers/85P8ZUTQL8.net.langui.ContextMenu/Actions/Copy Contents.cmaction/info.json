@@ -1,14 +1,14 @@
 {
-  "path" : "/bin/sh",
+  "path" : "/bin/bash",
   "options" : {
     "acceptDirs" : false,
     "acceptFiles" : true,
-    "noSandbox" : true,
+    "noSandbox" : false,
     "confirmExecution" : false,
-    "showOutput" : true
+    "showOutput" : false
   },
   "icon" : "icon.icns",
-  "name" : "Convert to .webp",
+  "name" : "Copy Contents",
   "type" : "shell",
-  "uuid" : "19B03964-0326-46B5-87F2-94A8812EC9D0"
+  "uuid" : "58F346A0-0F04-49E6-B201-183253204BB7"
 }

@@ -1,0 +1,13 @@
+{
+  "path" : "\/bin\/bash",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : false,
+    "noSandbox" : false,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Create Random Folder",
+  "type" : "shell"
+}
