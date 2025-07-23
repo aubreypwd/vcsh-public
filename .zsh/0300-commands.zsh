@@ -85,6 +85,16 @@ fi
 # Functions
 # =========
 
+# Goto a directory (using fuzzy), starting from $HOME.
+# Usage: gd
+# @since July 23, 2025
+function gd () {
+
+	CWD=$(pwd)
+
+	h && ffd || cd "$CWD"
+}
+
 # Copy a file or a directory.
 # Usage: copy directory1 directory2
 # @since Friday, November 15, 2024
