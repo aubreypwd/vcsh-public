@@ -1,0 +1,14 @@
+display_with_color 1
+color terminal
+bg_color terminal
+anchor_color blue
+visited_anchor_color magenta
+image_color cyan
+form_color yellow
+high-intensity 1
+display_borders 0
+display_link_number 1
+mark_all_pages 1
+display_image 0
+pseudo_inlines 1
+auto_uncompress 1

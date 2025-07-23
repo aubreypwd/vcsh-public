@@ -1,0 +1,10 @@
+[display]
+color_mode = "16bit"
+foreground = 250     # light gray
+background = 16      # black
+
+[colors]
+link = 21            # strong blue
+visited = 127        # good purple
+active = 226         # bright yellow
+highlight = 51       # cyan
