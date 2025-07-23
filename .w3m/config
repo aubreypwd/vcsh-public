@@ -7,7 +7,7 @@ image_color cyan
 form_color yellow
 high-intensity 1
 display_borders 0
-display_link_number 1
+display_link_number 0
 mark_all_pages 1
 display_image 0
 pseudo_inlines 1
