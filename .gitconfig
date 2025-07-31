@@ -96,6 +96,7 @@
 [gui]
 	tabsize = 2
 	warndetachedcommit = true
+	fontdiff = -family Menlo -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 
 [diff]
 	noprefix = true
