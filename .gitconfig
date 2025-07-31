@@ -45,8 +45,8 @@
 	sfi = ! git status --porcelain | grep '^[ MARC]M ' | cut -c4- | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git add # Stage interactively (files).
 	stage = sfi
 	unstage = ufi
+	pi = "!f() { file=$(git status --porcelain | awk '$1 ~ /M|\\?\\?/ {print $2}' | fzf --reverse --height=40% --preview='git diff --color=always -- {}'); [ -n \"$file\" ] && git add -p \"$file\"; git ds; }; f" # Patch files interactively.
 	ap = add -p
-	api = "!f() { file=$(git status --porcelain | awk '$1 ~ /M|\\?\\?/ {print $2}' | fzf --reverse --height=40% --preview='git diff --color=always -- {}'); [ -n \"$file\" ] && git add -p \"$file\"; git ds; }; f"
 	sparse = "!f() { repo=\"$1\"; folder=\"$2\"; branch=\"${3:-master}\"; target=\"${4:-$(basename \"$repo\" .git)}\"; git clone --filter=blob:none --no-checkout --branch \"$branch\" \"$repo\" \"$target\" && cd \"$target\" && git sparse-checkout init --cone && git sparse-checkout set \"$folder\" && git checkout; }; f" # e.g. git sparse git@github.com:use/repo.git sub-folder branch(master) folder(repo).
 
 [push]
