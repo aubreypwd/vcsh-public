@@ -21,12 +21,12 @@
 
 	# Stage / Unstage
 	uaf = "reset" # Unstage all files.
-	ufi = "!f() { git diff --name-only --cached | fzf --reverse --height=40% --preview='git diff --color=always --cached -- {}' --print0 -m | xargs -0 -t -o git restore --staged; }; f" # Un-stage interactively with preview.
-	sfi = "!f() { git status --porcelain | grep '^[ MARC]M ' | cut -c4- | fzf --reverse --height=40% --preview='git diff --color=always -- {}' --print0 -m | xargs -0 -t -o git add; }; f" # Stage interactively with preview.
-	stage = sfi
-	unstage = ufi
-	ap = add -p # Shorthand for add -p
-	ai = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git add -f" # Fuzzy-add modified/untracked files
+	ufi = "!f() { git diff --name-only --cached | fzf --reverse --height=40% --preview='git diff --color=always --cached -- {}' --print0 -m | xargs -0 -t -o git restore --staged; }; f" # Un-stage (files) interactively with preview.
+	sfi = "!f() { git status --porcelain | grep '^[ MARC]M ' | cut -c4- | fzf --reverse --height=40% --preview='git diff --color=always -- {}' --print0 -m | xargs -0 -t -o git add; }; f" # Stage (files) interactively with preview.
+	stage = sfi # Shorthand for staging files.
+	unstage = ufi # Shorthand for un-staging files.
+	ap = add -p # Shorthand for add -p (patch)
+	ai = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git add -f" # Fuzzy-add modified/untracked files interactively.
 	pi = "!f() { file=$(git status --porcelain | awk '$1 ~ /M|\\?\\?/ {print $2}' | fzf --reverse --height=40% --preview='git diff --color=always -- {}'); [ -n \"$file\" ] && git add -p \"$file\"; git ds; }; f" # Patch/stage files interactively.
 
 	# Reset / Clean
