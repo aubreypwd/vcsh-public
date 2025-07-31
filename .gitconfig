@@ -1,53 +1,74 @@
 [alias]
-	ai = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git add -f" # https://spin.atomicobject.com/2018/04/05/fuzzy-find-git-add/
+
+	# Branch
 	b = "! echo $(git branch --show-current)" # Show the current branch.
-	c = commit -v # Commit.
-	cm = "!f() { git commit -m \"$1\" -m \"$2\"; }; f" # Commit with full message.
-	ca = ! git add . && git c
 	cb = "! git b | pbcopy" # Copy the current branch to the clipboard.
-	clear = clean -df # Just remove new files
-	co = checkout
-	d = diff
+	nb = checkout -b # New branch
 	db = "! function f() { git branch -D $1; git push origin :$1 ;}; f" # Delete branch.
-	di = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git diff" # Interactive diff.
+
+	# Commit
+	c = commit -v # Commit.
+	cm = "!f() { git commit -m \"$1\" -m \"$2\"; }; f" # Commit with a message $2 is optional.
+	ca = ! git add . && git c
+	cf = "!f() { git commit -m \"$1\" -m \"$2\"; }; f" # Commit full (title + body)
+	pew = "! function f() { git commit -a --allow-empty-message -m '' && git pb; }; f" # Push an empty commit with all updates (dependant in other packages).
+
+	# Diff
+	d = diff
 	ds = diff --staged # Diff of staged files.
 	du = diff # Diff of unstaged files.
-	dt = "! function f() { git tag -d $1; git push origin :refs/tags/$1; }; f"
-	f = "fetch"
-	fb = "! /bin/bash -c 'source /Users/aubreypwd/Repos/github.com/aubreypwd/zsh-plugin-fzf-git-branch/fzf-git-branch.plugin.zsh && fzf-git-branch'" # See https://github.com/aubreypwd/zsh-plugin-fzf-git-branch
-	g = citool --nocommit
-	get = "! function f() { ghq get \"$1\"; }; f" # Commit all files, add message inline, and push.
-	gh = "! function f() { gh \"$@\"; }; f"
-	l = log --oneline --decorate --graph # Better log, looks better in CLI.
-	l1 = l -n 1
-	l10 = l -n 10
-	l100 = l -n 20
-	l20 = l -n 20
-	l5 = l -n 5
-	l50 = l -n 20
-	lg = "! function f() { lazygit; }; f"
-	m = merge
-	mt = "! function f() { git dt $1; git tag $1; git push --tags; }; f" # Move tag here.
-	nb = checkout -b # New branch
-	p = pull
-	pew = "! function f() { git commit -a --allow-empty-message -m '' && git pb; }; f" # Push an empty commit with all updates (dependant in other packages).
-	pp = push
-	pt = push --tags
-	review = g
-	r = review
+	di = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git diff" # Interactive diff.
+
+	# Stage / Unstage
+	uaf = "reset" # Unstage all files.
+	ufi = "!f() { git diff --name-only --cached | fzf --reverse --height=40% --preview='git diff --color=always --cached -- {}' --print0 -m | xargs -0 -t -o git restore --staged; }; f" # Un-stage interactively with preview.
+	sfi = "!f() { git status --porcelain | grep '^[ MARC]M ' | cut -c4- | fzf --reverse --height=40% --preview='git diff --color=always -- {}' --print0 -m | xargs -0 -t -o git add; }; f" # Stage interactively with preview.
+	stage = sfi
+	unstage = ufi
+	ap = add -p # Shorthand for add -p
+	ai = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git add -f" # Fuzzy-add modified/untracked files
+	pi = "!f() { file=$(git status --porcelain | awk '$1 ~ /M|\\?\\?/ {print $2}' | fzf --reverse --height=40% --preview='git diff --color=always -- {}'); [ -n \"$file\" ] && git add -p \"$file\"; git ds; }; f" # Patch/stage files interactively.
+
+	# Reset / Clean
 	rhh = reset --hard HEAD # Reset easily.
 	rhhc = "! git rhh && git clear" # Reset and remove new files.
+	clear = clean -df # Just remove new files
+
+	# Fetch / Pull / Push
+	f = "fetch"
+	p = pull
+	pp = push
+	pt = push --tags
+	get = "! function f() { ghq get \"$1\"; }; f" # Get repo via ghq
+
+	# Tag
+	dt = "! function f() { git tag -d $1; git push origin :refs/tags/$1; }; f"
+	mt = "! function f() { git dt $1; git tag $1; git push --tags; }; f" # Move tag here.
+
+	# Sparse
+	sparse = "!f() { repo=\"$1\"; folder=\"$2\"; branch=\"${3:-master}\"; target=\"${4:-$(basename \"$repo\" .git)}\"; git clone --filter=blob:none --no-checkout --branch \"$branch\" \"$repo\" \"$target\" && cd \"$target\" && git sparse-checkout init --cone && git sparse-checkout set \"$folder\" && git checkout; }; f" # e.g. git sparse git@github.com:use/repo.git sub-folder branch(master) folder(repo).
+
+	# UI
+	g = citool --nocommit
+	review = g
+	r = review
+	lg = "! function f() { lazygit; }; f"
+	fb = "! /bin/bash -c 'source /Users/aubreypwd/Repos/github.com/aubreypwd/zsh-plugin-fzf-git-branch/fzf-git-branch.plugin.zsh && fzf-git-branch'" # See https://github.com/aubreypwd/zsh-plugin-fzf-git-branch
+
+	# Log
+	l = log --oneline --decorate --graph # Better log, looks better in CLI.
+	l1 = l -n 1
+	l5 = l -n 5
+	l10 = l -n 10
+	l20 = l -n 20
+	l50 = l -n 20
+	l100 = l -n 20
+
+	# Status / Misc
 	s = status
 	stat = status
 	stow = "stash --all -m"
-	uaf = "reset" # Unstage all files.
-	ufi = ! git diff --name-only --cached | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git restore --staged # Un-stage interactively (files).
-	sfi = ! git status --porcelain | grep '^[ MARC]M ' | cut -c4- | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git add # Stage interactively (files).
-	stage = sfi
-	unstage = ufi
-	pi = "!f() { file=$(git status --porcelain | awk '$1 ~ /M|\\?\\?/ {print $2}' | fzf --reverse --height=40% --preview='git diff --color=always -- {}'); [ -n \"$file\" ] && git add -p \"$file\"; git ds; }; f" # Patch files interactively.
-	ap = add -p
-	sparse = "!f() { repo=\"$1\"; folder=\"$2\"; branch=\"${3:-master}\"; target=\"${4:-$(basename \"$repo\" .git)}\"; git clone --filter=blob:none --no-checkout --branch \"$branch\" \"$repo\" \"$target\" && cd \"$target\" && git sparse-checkout init --cone && git sparse-checkout set \"$folder\" && git checkout; }; f" # e.g. git sparse git@github.com:use/repo.git sub-folder branch(master) folder(repo).
+	co = checkout
 
 [push]
 	default = current
