@@ -2,8 +2,8 @@
 	ai = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git add -f" # https://spin.atomicobject.com/2018/04/05/fuzzy-find-git-add/
 	b = "! echo $(git branch --show-current)" # Show the current branch.
 	c = commit -v # Commit.
-	cm = ! git commit -m "$1"
-	cf = ! git commit -m "$1" -m "$2"
+	cm = ! git commit -m "$1" # Commit with single message.
+	cf = "!f() { git commit -m \"$1\" -m \"$2\"; }; f" # Commit with full message.
 	ca = ! git add . && git c
 	cb = "! git b | pbcopy" # Copy the current branch to the clipboard.
 	clear = clean -df # Just remove new files
