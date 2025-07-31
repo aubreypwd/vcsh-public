@@ -39,7 +39,8 @@ alias ss='cmatrix' # Sceeen Saver
 alias safariextconv='xcrun /Applications/Xcode.app/Contents/Developer/us/bin/safari-web-extension-converter' # Convert Chrome Extensions to Safari Extensions.
 alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 alias home="cd $HOME"
-alias repo="cd \$HOME/Repos && fd 2" # An easy way to get to a repo using my ffd command.
+alias h="cd $HOME"
+alias repo="cd \$HOME/Repos && ffd 2" # An easy way to get to a repo using my ffd command.
 alias siteurl="wp option get siteurl"
 alias wpe='wp site list --field=url | xargs -n1 -I % wp --url=%' # On each subsite, run a command.
 alias delete="rm -R"
@@ -55,9 +56,6 @@ alias unhide="chflags nohidden"
 
 # Browser in the terminal
 alias browse="carbonyl --zoom=50"
-
-# Go home quickly.
-alias h="cd $HOME"
 
 # Habit of using code => subl
 alias code="subl"
@@ -94,6 +92,8 @@ function gd () {
 
 	h && ffd || cd "$CWD"
 }
+
+	alias gf="gd" # Because it's also a typo I do.
 
 # Copy a file or a directory.
 # Usage: copy directory1 directory2
@@ -1236,6 +1236,9 @@ for repo in public private; do
 		}
 	"
 done
+
+alias pub="public"
+alias priv="private"
 
 # Additional svn functionality.
 # @since May 6th, 2025
