@@ -2,8 +2,7 @@
 	ai = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git add -f" # https://spin.atomicobject.com/2018/04/05/fuzzy-find-git-add/
 	b = "! echo $(git branch --show-current)" # Show the current branch.
 	c = commit -v # Commit.
-	cm = ! git commit -m "$1" # Commit with single message.
-	cf = "!f() { git commit -m \"$1\" -m \"$2\"; }; f" # Commit with full message.
+	cm = "!f() { git commit -m \"$1\" -m \"$2\"; }; f" # Commit with full message.
 	ca = ! git add . && git c
 	cb = "! git b | pbcopy" # Copy the current branch to the clipboard.
 	clear = clean -df # Just remove new files
@@ -47,6 +46,7 @@
 	stage = sfi
 	unstage = ufi
 	ap = add -p
+	api = "!f() { file=$(git status --porcelain | awk '$1 ~ /M|\\?\\?/ {print $2}' | fzf --reverse --height=40% --preview='git diff --color=always -- {}'); [ -n \"$file\" ] && git add -p \"$file\"; }; f"
 	sparse = "!f() { repo=\"$1\"; folder=\"$2\"; branch=\"${3:-master}\"; target=\"${4:-$(basename \"$repo\" .git)}\"; git clone --filter=blob:none --no-checkout --branch \"$branch\" \"$repo\" \"$target\" && cd \"$target\" && git sparse-checkout init --cone && git sparse-checkout set \"$folder\" && git checkout; }; f" # e.g. git sparse git@github.com:use/repo.git sub-folder branch(master) folder(repo).
 
 [push]
