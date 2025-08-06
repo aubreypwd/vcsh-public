@@ -20,11 +20,10 @@
 	di = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git diff" # Interactive diff.
 
 	# Stage / Unstage
-	uaf = "reset" # Unstage all files.
-	ufi = "!f() { git diff --name-only --cached | fzf --reverse --height=40% --preview='git diff --color=always --cached -- {}' --print0 -m | xargs -0 -t -o git restore --staged; git ds; }; f" # Un-stage (files) interactively with preview.
-	sfi = "!f() { git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}' --print0 -m | xargs -0 -t -o git add; git ds; }; f"
-	pi = "!f() { file=\"$(git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}')\"; [ -n \"$file\" ] && git add -p \"$file\"; git ds; }; f"
-
+	ua = "reset" # Unstage (all) files.
+	ui = "!f() { git diff --name-only --cached | fzf --reverse --height=40% --preview='git diff --color=always --cached -- {}' --print0 -m | xargs -0 -t -o git restore --staged; echo "====== Staged diff: ======"; git ds; }; f" # Un-stage (files) interactively with preview.
+	si = "!f() { git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}' --print0 -m | xargs -0 -t -o git add; echo "====== Staged diff: ======"; git ds; }; f" # Stage files interactively.
+	pi = "!f() { file=\"$(git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}')\"; [ -n \"$file\" ] && git add -p \"$file\"; echo "====== Staged diff: ======"; git ds; }; f" # Patch files interactively.
 
 	stage = sfi # Shorthand for staging files.
 	unstage = ufi # Shorthand for un-staging files.
