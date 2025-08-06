@@ -23,7 +23,9 @@
 	uaf = "reset" # Unstage all files.
 	ufi = "!f() { git diff --name-only --cached | fzf --reverse --height=40% --preview='git diff --color=always --cached -- {}' --print0 -m | xargs -0 -t -o git restore --staged; git ds; }; f" # Un-stage (files) interactively with preview.
 	sfi = "!f() { git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}' --print0 -m | xargs -0 -t -o git add; git ds; }; f"
-	pi = "!f() { file=$(git status --porcelain | awk '$1 ~ /M|\\?\\?/ {print $2}' | fzf --reverse --height=40% --preview='git diff --color=always -- {}'); [ -n \"$file\" ] && git add -p \"$file\"; git ds; }; f" # Patch/stage files interactively.
+	pi = "!f() { file=\"$(git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}')\"; [ -n \"$file\" ] && git add -p \"$file\"; git ds; }; f"
+
+
 	stage = sfi # Shorthand for staging files.
 	unstage = ufi # Shorthand for un-staging files.
 	ap = add -p # Shorthand for add -p (patch)
