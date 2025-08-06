@@ -4,25 +4,15 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Shift+F3 → Mission Control",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "f3",
-                                    "modifiers": { "mandatory": ["shift"] }
-                                },
-                                "to": [{ "key_code": "mission_control" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Remap F6 to Sleep Display",
+                        "description": "Remap Shift + F6 to Sleep Display",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "f6",
-                                    "modifiers": { "optional": ["any"] }
+                                    "modifiers": {
+                                        "mandatory": ["shift"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "pmset displaysleepnow" }],
                                 "type": "basic"
@@ -51,66 +41,20 @@
                         ]
                     },
                     {
-                        "description": "Cmd‑Tab ⇆ previous window (no app list)",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": {
-                                        "mandatory": ["command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/usr/bin/osascript - <<'APP'\nset domain to \"com.cmdtab.prev\"\n\ntell application \"System Events\"\n  set p to first application process whose frontmost is true\n  set curPID to unix id of p\n  set curIdx to index of front window of p\nend tell\n\ntry\n  set prevPID to (do shell script \"defaults read \" & domain & \" pid\") as integer\n  set prevIdx to (do shell script \"defaults read \" & domain & \" idx\") as integer\n  if prevPID ≠ curPID or prevIdx ≠ curIdx then\n    tell application \"System Events\"\n      set q to first application process whose unix id is prevPID\n      set frontmost of q to true\n      try\n        perform action \"AXRaise\" of (window prevIdx of q)\n      end try\n    end tell\n  end if\nend try\n\ndo shell script \"defaults write \" & domain & \" pid -int \" & curPID\ndo shell script \"defaults write \" & domain & \" idx -int \" & curIdx\nAPP" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Remap F3 (Mission Control) to CMD + `",
+                        "description": "Remap Shift + F3 to CMD + `",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "f3",
-                                    "modifiers": { "optional": ["any"] }
+                                    "modifiers": {
+                                        "mandatory": ["shift"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [
                                     {
                                         "key_code": "grave_accent_and_tilde",
                                         "modifiers": ["left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Remap Cmd+Tab to Mission Control / Cmd+` to App Exposé",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": { "mandatory": ["command"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f3",
-                                        "modifiers": []
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "grave_accent_and_tilde",
-                                    "modifiers": { "mandatory": ["command"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f3",
-                                        "modifiers": ["control"]
                                     }
                                 ],
                                 "type": "basic"
