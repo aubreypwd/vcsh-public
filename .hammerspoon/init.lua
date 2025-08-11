@@ -15,7 +15,7 @@ hs.window.filter.new():subscribe(
 
 -- When a window shows, poke HazeOver so it applies the overlay.
 hs.window.filter.new():subscribe(
-	{ "windowFocused", "windowVisible", "windowUnminimized", "windowCreated" },
+	{ "windowFocused", "windowVisible", "windowUnminimized", "windowCreated", "windowDestroyed" },
 	function()
 
 		local hazeOverIntensity = 88;
