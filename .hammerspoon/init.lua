@@ -1,37 +1,53 @@
 -- ==============================
+-- Constants
+-- ==============================
+
+SECOND = 1000000;
+
+-- ==============================
 -- Functions
 -- ==============================
 
 functions = {
 
-	-- My version of :centerOnScreen that takes into account the menubar (like rectangle).
-	centerOnScreen = function( win )
+	-- ==============================
+	-- Windows
+	-- ==============================
+	window = {
 
-		-- Apps to exclude from doing this...
-		local excludeApps = {
-			["CleanShot X"] = true,
-			["iBar Pro"] = true,
-		};
+		-- My version of :centerOnScreen.
+		centerOnScreen = function( win )
 
-		if excludeApps[win:application():name()] then
-			return; -- The window should not be fucked with.
-		end
+			-- Apps to exclude from doing this...
+			local excludeApps = {
+				["CleanShot X"] = true,
+				["iBar Pro"] = true,
+			};
 
-		win:centerOnScreen( nil, false, 0 ); -- Always center the window on screen, totally fine no matter what.
+			if excludeApps[ win:application():name() ] then
+				return; -- The window should not be fucked with.
+			end
 
-		if math.abs( win:frame().y + win:frame().h ) == math.abs( win:screen():frame().y + win:screen():frame().h ) then
-			return; -- Don't adjust it for the top menubar if the window is already at the bottom of the screen (will nudge below screen).
-		end
+			if functions.window.windowIsMaximized( win ) then
+				return; -- The window is already maximized, don't do center.
+			end
 
-		win:setFrame(
-			{
-				x = win:frame().x,
-				y = win:frame().y + 22,
-				w = win:frame().w,
-				h = win:frame().h,
-			}
-		);
-	end,
+			hs.timer.usleep( SECOND / 2 ); -- This makes it feel less jarring.
+
+			-- Use macOS built in Window > Center via keyboard shortcuts (animated).
+			hs.eventtap.keyStroke( { 'ctrl', 'fn' }, 'c' );
+
+		end,
+
+		-- A way to discover if a window is already maximized.
+		windowIsMaximized = function( win )
+
+			return math.abs(win:frame().x - win:screen():frame().x) <= 2
+				and math.abs(win:frame().y - win:screen():frame().y) <= 2
+				and math.abs((win:frame().x + win:frame().w) - (win:screen():frame().x + win:screen():frame().w)) <= 2
+				and math.abs((win:frame().y + win:frame().h) - (win:screen():frame().y + win:screen():frame().h)) <= 2
+		end,
+	},
 };
 
 -- ==============================
@@ -40,7 +56,7 @@ functions = {
 
 hs.window.animationDuration = 0; -- Never animate things.
 
-hs.window.filter.new():subscribe( "windowCreated", functions.centerOnScreen ) -- Center all newly created windows.
+hs.window.filter.new():subscribe( "windowCreated", functions.window.centerOnScreen ) -- Center all newly created windows.
 
 -- ==============================
 -- HazeOver Hacks
