@@ -96,19 +96,26 @@ hs.window.animationDuration = 0; -- Never animate things by default.
 hs.window.filter.new():subscribe( "windowCreated", fn.window.centerOnScreen ); -- Center all newly created windows.
 
 -- ==============================
--- Reload
+-- Keyboard Shortcuts
 -- ==============================
+
+-- Reload Hammerspoon.
 hs.hotkey.bind(
-	{
-		'ctrl',
-		'alt',
-		'cmd',
-	},
-	'\\',
+	{ 'ctrl', 'alt', 'cmd' }, '\\',
 	function()
 
 		hs.console.clearConsole();
 		hs.openConsole();
 		hs.reload();
+	end
+);
+
+-- Open new ChatGPT window.
+hs.hotkey.bind(
+	{ 'alt' }, '`',
+	function()
+
+		hs.application.launchOrFocus( hs.fs.pathToAbsolute( "~/Applications/ChatGPT.app" ) );
+		hs.eventtap.keyStroke( { 'cmd' }, 'n' ); -- Open new window.
 	end
 );
