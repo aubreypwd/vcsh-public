@@ -9,8 +9,6 @@
 	# Commit
 	c = commit -v # Commit.
 	cm = "!f() { git commit -m \"$1\" -m \"$2\"; }; f" # Commit with a message $2 is optional.
-	ca = ! git add . && git c
-	cf = "!f() { git commit -m \"$1\" -m \"$2\"; }; f" # Commit full (title + body)
 	pew = "! function f() { git commit -a --allow-empty-message -m '' && git pb; }; f" # Push an empty commit with all updates (dependant in other packages).
 
 	# Diff
@@ -20,10 +18,11 @@
 	di = "! git ls-files -m -o --exclude-standard | fzf --reverse --height 10 --print0 -m | xargs -0 -t -o git diff" # Interactive diff.
 
 	# Stage / Unstage
-	ua = "reset" # Unstage (all) files.
-	ui = "!f() { git diff --name-only --cached | fzf --reverse --height=40% --preview='git diff --color=always --cached -- {}' --print0 -m | xargs -0 -t -o git restore --staged; echo "====== Staged diff: ======"; git ds; }; f" # Un-stage (files) interactively with preview.
-	si = "!f() { git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}' --print0 -m | xargs -0 -t -o git add; echo "====== Staged diff: ======"; git ds; }; f" # Stage files interactively.
-	pi = "!f() { file=\"$(git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}')\"; [ -n \"$file\" ] && git add -p \"$file\"; echo "====== Staged diff: ======"; git ds; }; f" # Patch files interactively.
+	uaf = "reset" # Unstage (all) files.
+	ufi = "!f() { git diff --name-only --cached | fzf --reverse --height=40% --preview='git diff --color=always --cached -- {}' --print0 -m | xargs -0 -t -o git restore --staged; echo "====== Staged diff: ======"; git ds; }; f" # Un-stage (files) interactively with preview.
+	sfi = "!f() { git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}' --print0 -m | xargs -0 -t -o git add; echo "====== Staged diff: ======"; git ds; }; f" # Stage files interactively.
+	pfi = "!f() { file=\"$(git diff --name-only | fzf --reverse --height=40% --preview='git diff --color=always -- {}')\"; [ -n \"$file\" ] && git add -p \"$file\"; echo "====== Staged diff: ======"; git ds; }; f" # Patch files interactively.
+	smf = ! git add -u && git status
 
 	stage = sfi # Shorthand for staging files.
 	unstage = ufi # Shorthand for un-staging files.
