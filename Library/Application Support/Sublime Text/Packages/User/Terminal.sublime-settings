@@ -3,6 +3,6 @@
   // See https://github.com/wbond/sublime_terminal#examples for examples
   "terminal": "iTerm2-v3.sh",
   "parameters": [
-      "--open-in-tab"
+      // "--open-in-tab"
   ]
 }
