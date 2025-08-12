@@ -94,3 +94,20 @@ fn = {
 
 hs.window.animationDuration = 0; -- Never animate things by default.
 hs.window.filter.new():subscribe( "windowCreated", fn.window.centerOnScreen ); -- Center all newly created windows.
+
+
+-- CTRL + ALT + CMD + R will reload config
+hs.hotkey.bind(
+	{
+		'ctrl',
+		'alt',
+		'cmd',
+	},
+	'\\',
+	function()
+
+		hs.console.clearConsole();
+		hs.openConsole();
+		hs.reload();
+	end
+);
