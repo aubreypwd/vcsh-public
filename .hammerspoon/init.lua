@@ -24,6 +24,40 @@ fn = {
 	-- ==============================
 	window = {
 
+		-- HOOK: Before we modify any window.
+		before = function( win )
+
+			-- Finder: Always set the window size to this.
+			if 'Finder' == win:application():name() then
+				fn.window.setFrame( win, 0, 91, 101, 1013, 1620 );
+			end
+		end,
+
+		-- HOOK: After we modify any window.
+		after = function( win )
+
+			-- iTerm2: Move up a bit because by default my hands are in the way.
+			if 'iTerm2' == win:application():name() then
+
+				fn.sleep( 1 / 2 );
+
+				fn.window.setFrame( win, 0.4, win:frame().y - 22, nill, nill, nill );
+			end
+		end,
+
+		-- FUNCTION: My version of :setFrame.
+		setFrame = function( win, animation, y, x, h, w )
+			win:setFrame(
+				{
+					y = y or win:frame().y,
+					x = x or win:frame().x,
+					h = h or win:frame().h,
+					w = w or win:frame().w,
+				},
+				animation
+			);
+		end,
+
 		-- FUNCTION: My version of :centerOnScreen.
 		centerOnScreen = function( win )
 
@@ -45,34 +79,21 @@ fn = {
 				return; -- Only apply to standard windows.
 			end
 
-			-- Treat finder special: it never remembers window sizes correctly.
-			if 'Finder' == win:application():name() then
+			fn.window.before( win );
 
-				-- Set the window size manually.
-				win:setFrame(
-					{
-						x = 91,
-						y = 101,
-						w = 1620,
-						h = 1013,
-					},
-					0
-				);
-			end
+			fn.sleep( 1 / 4 ); -- Makes feel less janky.
 
-			fn.sleep( 1 / 4 );
+			hs.eventtap.keyStroke( { 'ctrl', 'fn' }, 'c' ); -- Use macOS built in Window > Center via keyboard shortcuts (animated).
 
-			-- Use macOS built in Window > Center via keyboard shortcuts (animated).
-			hs.eventtap.keyStroke( { 'ctrl', 'fn' }, 'c' );
+			fn.window.after( win );
 		end,
 
 		-- FUNCTION: A way to discover if a window is already maximized.
 		windowIsMaximized = function( win )
-			return
-				math.abs(win:frame().x - win:screen():frame().x) <= 2
-					and math.abs(win:frame().y - win:screen():frame().y) <= 2
-					and math.abs((win:frame().x + win:frame().w) - (win:screen():frame().x + win:screen():frame().w)) <= 2
-					and math.abs((win:frame().y + win:frame().h) - (win:screen():frame().y + win:screen():frame().h)) <= 2
+			return math.abs(win:frame().x - win:screen():frame().x) <= 2
+				and math.abs(win:frame().y - win:screen():frame().y) <= 2
+				and math.abs((win:frame().x + win:frame().w) - (win:screen():frame().x + win:screen():frame().w)) <= 2
+				and math.abs((win:frame().y + win:frame().h) - (win:screen():frame().y + win:screen():frame().h)) <= 2
 		end,
 	},
 };
