@@ -9,6 +9,7 @@
 
 MILLISECOND = 1000;
 ONE_SECOND = MILLISECOND * 1000;
+KEYBOARD_LAUNCHER_MODAL = hs.hotkey.modal.new( { 'alt' }, 'g' );
 
 -- ==============================
 -- Functions
@@ -19,6 +20,33 @@ fn = {
 	sleep = function( microseconds )
 		hs.timer.usleep( microseconds )
 	end,
+
+	-- ==============================
+	-- Keyboard Launcher
+	--
+	-- The chord alt(hold)+l - <key> will launch the app you bind to it.
+	-- e.g. fn.keyboardLauncher.bind( 'f', 'Finder' ); will launch Finder.
+	-- ==============================
+	keyboardLauncher = {
+
+		-- Bind a key to the launcher.
+		bind = function( key, app )
+
+			-- Then listen for another alt + key to launch the assigned app.
+			KEYBOARD_LAUNCHER_MODAL:bind(
+				{ 'alt' }, key,
+				nil,
+				function()
+
+					if hs.application.launchOrFocus( app ) then
+						KEYBOARD_LAUNCHER_MODAL:exit();
+					else
+						hs.alert.show( string.format( 'Unable to launch %s', app ) );
+					end
+				end
+			);
+		end
+	},
 
 	-- ==============================
 	-- Windows
@@ -99,23 +127,34 @@ hs.window.filter.new():subscribe( "windowCreated", fn.window.centerOnScreen ); -
 -- Keyboard Shortcuts
 -- ==============================
 
--- Reload Hammerspoon.
+-- Reload Hammerspoon with ctrl+alt+cmd+\.
 hs.hotkey.bind(
 	{ 'ctrl', 'alt', 'cmd' }, '\\',
 	function()
-
 		hs.console.clearConsole();
 		hs.openConsole();
 		hs.reload();
 	end
 );
 
--- Open new ChatGPT window.
+-- Open new ChatGPT window with cmd+`.
 hs.hotkey.bind(
 	{ 'alt' }, '`',
 	function()
-
 		hs.application.launchOrFocus( hs.fs.pathToAbsolute( "~/Applications/ChatGPT.app" ) );
 		hs.eventtap.keyStroke( { 'cmd' }, 'n' ); -- Open new window.
 	end
 );
+
+-- App launchers.
+fn.keyboardLauncher.bind( ',', 'System Settings' );
+fn.keyboardLauncher.bind( 'c', 'Calendar' );
+fn.keyboardLauncher.bind( 'e', 'Sublime Text' ); -- (e)ditor.
+fn.keyboardLauncher.bind( 'f', 'Finder' );
+fn.keyboardLauncher.bind( 'g', hs.fs.pathToAbsolute( "~/Applications/ChatGPT.app" ) );
+fn.keyboardLauncher.bind( 'h', 'Google Chrome' );
+fn.keyboardLauncher.bind( 'm', 'Music' );
+fn.keyboardLauncher.bind( 'n', 'Notes' );
+fn.keyboardLauncher.bind( 'r', 'Reminders' );
+fn.keyboardLauncher.bind( 't', 'iTerm' );
+fn.keyboardLauncher.bind( 'w', 'Safari' );
