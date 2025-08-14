@@ -53,6 +53,15 @@ fn = {
 	-- ==============================
 	window = {
 
+		-- FUNCTION: My version of win:isStandard() that takes into account Safari PWA's.
+		isStandard = function( win )
+
+			return win:isStandard()
+
+				-- Safari PWA's won't pass win:isStandard(), but we can manually say they are.
+				or win:application():bundleID():find( 'Safari.WebApp' );
+		end,
+
 		-- FUNCTION: My version of :setFrame.
 		setFrame = function( win, animation, y, x, h, w )
 			win:setFrame(
@@ -83,7 +92,7 @@ fn = {
 				return; -- The window is already maximized, don't do center.
 			end
 
-			if true ~= win:isStandard() then
+			if true ~= fn.window.isStandard( win ) then
 				return; -- Only apply to standard windows.
 			end
 
