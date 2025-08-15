@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "F4 Issues Help → Search (Shift+F4 navigates top menubar)",
+                        "description": "F4 → ctrl+space (Help Search), Shift+F4 → ctrl+shift+up_arrow (Menu Bar), unless KeyboardCleanTool",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -48,8 +48,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f2",
-                                        "modifiers": ["fn", "left_control"]
+                                        "key_code": "up_arrow",
+                                        "modifiers": ["left_control", "left_shift"]
                                     }
                                 ],
                                 "type": "basic"
