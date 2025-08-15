@@ -97,7 +97,7 @@ fn = {
 			end
 
 			fn.window.beforeCenter( win );
-			hs.eventtap.keyStroke( { 'ctrl', 'fn' }, 'c' ); -- Use macOS built in Window > Center via keyboard shortcuts (animated).
+			hs.application.frontmostApplication():selectMenuItem( { 'Window', 'Center' } );
 			fn.window.afterCenter( win );
 		end,
 
@@ -143,6 +143,14 @@ hs.hotkey.bind(
 		hs.console.clearConsole();
 		hs.openConsole();
 		hs.reload();
+	end
+);
+
+-- Open the Hammerspoon console.
+hs.hotkey.bind(
+	{ 'ctrl', 'alt', 'cmd', 'shift' }, '\\',
+	function()
+		hs.openConsole();
 	end
 );
 
