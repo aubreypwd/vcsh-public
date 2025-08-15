@@ -237,7 +237,7 @@
                         ]
                     },
                     {
-                        "description": "Remap Shift + F6 to Sleep Display",
+                        "description": "Remap Shift + F6 to Lock Screen",
                         "manipulators": [
                             {
                                 "from": {
@@ -247,7 +247,12 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "pmset displaysleepnow" }],
+                                "to": [
+                                    {
+                                        "key_code": "q",
+                                        "modifiers": ["left_control", "left_command"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
