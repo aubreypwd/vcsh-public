@@ -271,7 +271,7 @@
 		"SublimeLinter-phpcs",
 		"Surround",
 		"TOML",
-		"Vintage",
+		// "Vintage",
 	],
 	"ignored_words":
 	[
