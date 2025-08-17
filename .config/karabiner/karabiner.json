@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "F4 → ctrl+space (Help Search), Shift+F4 → ctrl+shift+up_arrow (Menu Bar), unless KeyboardCleanTool",
+                        "description": "F4 → ctrl+space (Help Search). Shift+F4 → globe+ctrl+F2 (Move focus to menu bar). Blocks in KeyboardCleanTool.",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -15,6 +15,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "F4 triggers Help > Search (Ctrl+Space).",
                                 "from": {
                                     "key_code": "f4",
                                     "modifiers": {
@@ -39,6 +40,7 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "Shift+F4 triggers globe+ctrl+F2 (menu bar focus).",
                                 "from": {
                                     "key_code": "f4",
                                     "modifiers": {
@@ -48,8 +50,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "up_arrow",
-                                        "modifiers": ["left_control", "left_shift"]
+                                        "key_code": "f2",
+                                        "modifiers": ["left_control", "fn"]
                                     }
                                 ],
                                 "type": "basic"
