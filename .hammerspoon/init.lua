@@ -173,6 +173,7 @@ fn.keyboardLauncher.bind( 'h', 'Google Chrome' );
 fn.keyboardLauncher.bind( 'm', 'Music' );
 fn.keyboardLauncher.bind( 'n', 'Notes' );
 fn.keyboardLauncher.bind( 'r', 'Reminders' );
+fn.keyboardLauncher.bind( 'i', 'Messages' );
 fn.keyboardLauncher.bind( 't', 'iTerm' );
 fn.keyboardLauncher.bind( 'w', 'Safari' );
 fn.keyboardLauncher.bind( 'y', 'YouTube' ); -- Fuck why did I add this?
