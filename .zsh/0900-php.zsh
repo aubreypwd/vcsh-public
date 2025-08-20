@@ -24,30 +24,29 @@ MY_PHP_VERSION="8.3"
 reset-php () {
 
 	brew update
+
 	brew tap shivammathur/php
 	brew tap shivammathur/extensions
 
-	# Fully uninstall old versions...
+	echo "• Un-pinning any currently pinned versions of PHP..."
+
+	# Unlink all versions of PHP.
 	for VERSION in "${MY_PHP_VERSIONS[@]}"; do
-
-		# Un-pin just in case it is (otherwise you cannot uninstall).
-		brew unpin "php@$VERSION"
-
-		# Fully uninstall any version of PHP...
-		brew uninstall --zap --ignore-dependencies "php@$VERSION"
-		brew uninstall --zap --ignore-dependencies "shivammathur/php/php/php@$VERSION"
+		brew unpin "php@$VERSION" --quiet
 	done
-
-	brew cleanup --prune=all
 
 	CONF_FILES=( 'php.ini' 'xdebug-3.ini' ) # In ~/.config/php/conf.d/ that I want symlinked.
 
 	# For each version...
 	for VERSION in "${MY_PHP_VERSIONS[@]}"; do
 
-		# Install a fresh install (w/ xDebug)...
-		brew install "shivammathur/php/php@$VERSION" && \
-			brew install "shivammathur/extensions/xdebug@$VERSION"
+		echo "• Installing php@$VERSION... and xdebug@$VERSION..."
+
+		# Install w/ xDebug...
+		brew install "shivammathur/php/php@$VERSION" --quiet && \
+			brew install "shivammathur/extensions/xdebug@$VERSION" --quiet
+
+		echo "• Symlinking your ./config/php/conf.d/*.ini files..."
 
 		# Add custom configs...
 		for CONF_FILE in "${CONF_FILES[@]}"; do
@@ -55,18 +54,25 @@ reset-php () {
 		done
 
 		# Make sure it isn't linked, we'll link the preferred (my) version later.
-		brew unlink "php@$VERSION"
-
+		brew unlink "php@$VERSION" --quiet
 	done
 
-	brew cleanup --prune=all
+	brew cleanup --prune=all --quiet
 
 	# Link and pin the final PHP version (my version).
 	brew unlink php # Unlink whatever version might be linked.
 
+	echo "• Linking and pinning php@$MY_PHP_VERSION..."
+
 	# Link my preferred version of PHP.
-	brew link "php@$MY_PHP_VERSION"
-	brew pin "php@$MY_PHP_VERSION"
+	brew link "php@$MY_PHP_VERSION" --quiet
+	brew pin "php@$MY_PHP_VERSION" --quiet
+
+	echo "• Updating Valet..."
+
+	# Install and setup Laravel Valet
+	composer global require laravel/valet
+	valet install --silent --quiet --no-interaction
 }
 
 for VERSION in "${MY_PHP_VERSIONS[@]}"; do
