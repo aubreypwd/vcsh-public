@@ -400,12 +400,6 @@
 		<array>
 			<dict>
 				<key>path</key>
-				<string>/Applications/Safari Technology Preview.app</string>
-				<key>type</key>
-				<string>ChoosyBrowser</string>
-			</dict>
-			<dict>
-				<key>path</key>
 				<string>/Applications/Google Chrome.app</string>
 				<key>type</key>
 				<string>ChoosyBrowser</string>
