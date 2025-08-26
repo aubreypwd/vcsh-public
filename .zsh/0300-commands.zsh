@@ -42,7 +42,6 @@ alias home="cd $HOME"
 alias h="cd $HOME"
 alias repo="cd \$HOME/Repos && ffd 2" # An easy way to get to a repo using my ffd command.
 alias siteurl="wp option get siteurl"
-alias wpe='wp site list --field=url | xargs -n1 -I % wp --url=%' # On each subsite, run a command.
 alias delete="rm -R"
 alias pwdcp="pwd | pbcopy"
 
