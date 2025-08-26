@@ -1261,3 +1261,10 @@ function svn () {
 		command svn "$@"
 	fi
 }
+
+# Run WP CLI on the latest with PHP 7.4 to avoid warnings/errors.
+# @since August 26th 2025
+wp () {
+	/opt/homebrew/opt/php@7.4/bin/php /usr/local/bin/wp cli update --quiet && \
+		/opt/homebrew/opt/php@7.4/bin/php /usr/local/bin/wp $@
+}
