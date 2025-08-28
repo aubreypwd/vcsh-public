@@ -10,7 +10,6 @@
     "cursor.diffs.useCharacterLevelDiffs": true,
     "cursor.preferNotificationsSameAsChat": true,
     "cursor.composer.shouldChimeAfterChatFinishes": true,
-    "editor.minimap.enabled": true,
     "git.openRepositoryInParentFolders": "never",
     "window.commandCenter": true
 }
