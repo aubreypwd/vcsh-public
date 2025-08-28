@@ -5,6 +5,7 @@
                 "rules": [
                     {
                         "description": "Mouse Keys",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
