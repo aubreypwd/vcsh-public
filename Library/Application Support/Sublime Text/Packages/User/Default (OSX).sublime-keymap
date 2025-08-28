@@ -78,11 +78,11 @@
     { "keys": ["alt+f", "alt+-"], "command": "fold_by_level", "args": {"level": 1 } },  /* Fold Level 1 */
     { "keys": ["alt+f", "alt+="], "command": "unfold_all" },  /* Unfold All */
 
-    /* Gotos */
-    { "keys": ["alt+g", "alt+p", "alt+1"], "command": "focus_group", "args": { "group": 0 } },  /* Select Pane 1 */
-    { "keys": ["alt+g", "alt+p", "alt+["], "command": "focus_group", "args": { "group": 0 } },  // Alternate. /* Select Pane with [ */
-    { "keys": ["alt+g", "alt+p", "alt+2"], "command": "focus_group", "args": { "group": 1 } },  /* Select Pane 2 */
-    { "keys": ["alt+g", "alt+p", "alt+]"], "command": "focus_group", "args": { "group": 1 } },  // Alternate. /* Select Pane with ] */
+    // /* Gotos */
+    // { "keys": ["alt+g", "alt+p", "alt+1"], "command": "focus_group", "args": { "group": 0 } },  /* Select Pane 1 */
+    // { "keys": ["alt+g", "alt+p", "alt+["], "command": "focus_group", "args": { "group": 0 } },  // Alternate. /* Select Pane with [ */
+    // { "keys": ["alt+g", "alt+p", "alt+2"], "command": "focus_group", "args": { "group": 1 } },  /* Select Pane 2 */
+    // { "keys": ["alt+g", "alt+p", "alt+]"], "command": "focus_group", "args": { "group": 1 } },  // Alternate. /* Select Pane with ] */
     { "keys": ["alt+g", "alt+t", "alt+]"], "command": "next_view" },  /* Select Tab (right) */
     { "keys": ["alt+g", "alt+t", "alt+["], "command": "prev_view" },  /* Select Tab (left) */
     { "keys": ["alt+g", "alt+w", "alt+]"], "command": "next_os_tab" },  /* Switch to Next Window */
@@ -166,5 +166,13 @@
                 "key": "setting.copilot.completion.is_visible"
             }
         ]
-    }
+    },
+
+    // Move focus left/right between panes with Cmd+Alt+[ and Cmd+Alt+]
+    { "keys": ["super+alt+["], "command": "focus_neighboring_group", "args": {"forward": false} },
+    { "keys": ["super+alt+]"], "command": "focus_neighboring_group", "args": {"forward": true} },
+
+    // Move the CURRENT FILE (tab) to the neighboring pane with Cmd+Alt+Shift+[ / ]
+    { "keys": ["super+alt+shift+["], "command": "move_to_neighboring_group", "args": { "forward": false } }, // move tab to pane on the left
+    { "keys": ["super+alt+shift+]"], "command": "move_to_neighboring_group", "args": { "forward": true } },  // move tab to pane on the right
 ]
