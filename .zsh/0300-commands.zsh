@@ -1281,6 +1281,7 @@ econf () {
 		config "$HOME/.config"
 		php    "$HOME/.config/php/conf.d"
 		hs     "$HOME/.hammerspoon/init.lua"
+		git    "$HOME/.gitconfig"
 	)
 
 	if [ -z "$1" ]; then
