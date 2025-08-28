@@ -4,61 +4,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "F4 → ctrl+space (Help Search). Shift+F4 → globe+ctrl+F2 (Move focus to menu bar). Blocks in KeyboardCleanTool.",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "description": "F4 triggers Help > Search (Ctrl+Space).",
-                                "from": {
-                                    "key_code": "f4",
-                                    "modifiers": {
-                                        "mandatory": [],
-                                        "optional": []
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "spacebar",
-                                        "modifiers": ["left_control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "description": "Shift+F4 triggers globe+ctrl+F2 (menu bar focus).",
-                                "from": {
-                                    "key_code": "f4",
-                                    "modifiers": {
-                                        "mandatory": ["shift"],
-                                        "optional": []
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f2",
-                                        "modifiers": ["left_control", "fn"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Mouse Keys",
                         "manipulators": [
                             {
@@ -194,7 +139,7 @@
                         ]
                     },
                     {
-                        "description": "F3 → Show Notification Center / Shift + F3 → Mission Control",
+                        "description": "F4 (Search) Remappings",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -205,6 +150,87 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "Option+F4 triggers Show Dock (ctrl+shift+down_arrow).",
+                                "from": {
+                                    "key_code": "f4",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": []
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": ["left_control", "left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "F4 triggers Help > Search (Ctrl+Space).",
+                                "from": {
+                                    "key_code": "f4",
+                                    "modifiers": {
+                                        "mandatory": [],
+                                        "optional": []
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "Shift+F4 triggers globe+ctrl+F2 (menu bar focus).",
+                                "from": {
+                                    "key_code": "f4",
+                                    "modifiers": {
+                                        "mandatory": ["shift"],
+                                        "optional": []
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f2",
+                                        "modifiers": ["left_control", "fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "F3 (App Expose) Remappings",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "Shift+F3 → Mission Control (apple vendor key); disabled when KeyboardCleanTool is frontmost",
                                 "from": {
                                     "key_code": "f3",
                                     "modifiers": {
@@ -224,14 +250,59 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
+                                "description": "Option(Alt)+F3 → Notification Center via fn+N (macOS default); disabled when KeyboardCleanTool is frontmost",
+                                "from": {
+                                    "key_code": "f3",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "n",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "F3 → App Exposé (shows windows of current app) via Control+Down; disabled when KeyboardCleanTool is frontmost",
                                 "from": {
                                     "key_code": "f3",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_arrow",
-                                        "modifiers": ["left_command", "left_shift", "left_control", "left_option"]
+                                        "key_code": "down_arrow",
+                                        "modifiers": ["left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "F3 media key → App Exposé (for macOS where F3 sends media function); disabled when KeyboardCleanTool is frontmost",
+                                "from": { "apple_vendor_keyboard_key_code": "mission_control" },
+                                "to": [
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": ["left_control"]
                                     }
                                 ],
                                 "type": "basic"
@@ -239,7 +310,7 @@
                         ]
                     },
                     {
-                        "description": "Remap Shift + F6 to Lock Screen",
+                        "description": "F6 (Do Not Distrub) Remappings",
                         "manipulators": [
                             {
                                 "from": {
@@ -260,7 +331,7 @@
                         ]
                     },
                     {
-                        "description": "Remap Shift+F5 to ⌃⌥⌘⇧T (Superwhisper)",
+                        "description": "Remap Shift+F5 to Superwhisper",
                         "manipulators": [
                             {
                                 "from": {
