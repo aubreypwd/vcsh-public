@@ -271,7 +271,7 @@
 		"SublimeLinter-phpcs",
 		"Surround",
 		"TOML",
-		// "Vintage",
+		"Vintage",
 	],
 	"ignored_words":
 	[
@@ -305,6 +305,6 @@
 	"vintage_use_clipboard": false,
 	"vintage_ctrl_keys": true,
 	"auto_complete": true,
-	"relative_line_numbers": true,
+	// "relative_line_numbers": true,
 	"sub_word_separators": "",
 }
