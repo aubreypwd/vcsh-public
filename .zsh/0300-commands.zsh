@@ -1280,6 +1280,7 @@ econf () {
 		zsh    "$HOME/.zsh"
 		config "$HOME/.config"
 		php    "$HOME/.config/php/conf.d"
+		hs     "$HOME/.hammerspoon/init.lua"
 	)
 
 	if [ -z "$1" ]; then
