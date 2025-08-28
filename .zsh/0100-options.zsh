@@ -30,13 +30,14 @@ export GPG_TTY=$(tty) # GPG Suite.
 # Editors.
 # @since Thursday, 5/13/2021
 
+# Terminal editor.
 if [[ "$TERM_PROGRAM" == 'vscode' ]]; then
 	export EDITOR='code'
 else
 	export EDITOR='micro'
 fi
 
-export VISUAL="$EDITOR"
+export VISUAL="subl" # Visual Editor.
 
 # export PAGER="highlight --out-format ansi --syntax=html --force --no-trailing-nl" # I can scroll and highlist
 export PAGER="cat" # Just use cat for now.
