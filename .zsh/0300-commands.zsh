@@ -44,6 +44,7 @@ alias repo="cd \$HOME/Repos && ffd 2" # An easy way to get to a repo using my ff
 alias siteurl="wp option get siteurl"
 alias delete="rm -R"
 alias pwdcp="pwd | pbcopy"
+alias mp="multipass"
 
 # iTerm2 Tab Aliases
 alias nt='ttab' # New tab.
@@ -57,7 +58,9 @@ alias unhide="chflags nohidden"
 alias browse="carbonyl --zoom=50"
 
 # Habit of using code => subl
-alias code="subl"
+alias code="$VISUAL" # Bad habits break hard.
+# alias edit="$EDITOR" # In-terminal editor.
+alias edit="$VISUAL" # Graphical editor.
 
 # Exit Alias.
 if [[ ( "$TERM_PROGRAM" == 'vscode' ) ]]; then
@@ -1267,4 +1270,25 @@ function svn () {
 wp () {
 	/opt/homebrew/opt/php@7.4/bin/php /usr/local/bin/wp cli update --quiet && \
 		/opt/homebrew/opt/php@7.4/bin/php /usr/local/bin/wp $@
+}
+
+# An easy way to call my editor and configure.
+# @since August 27th 2025
+econf () {
+
+	declare -A CONFMAP=(
+		zsh    "$HOME/.zsh"
+		config "$HOME/.config"
+		php    "$HOME/.config/php/conf.d"
+	)
+
+	if [ -z "$1" ]; then
+		for key in "${(@k)CONFMAP}"; do
+		  echo "$key: ${CONFMAP[$key]}"
+		done
+
+		return 0
+	fi
+
+	"$VISUAL" "${CONFMAP[$1]}"
 }
