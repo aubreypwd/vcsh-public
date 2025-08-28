@@ -97,7 +97,7 @@ fn = {
 			end
 
 			fn.window.beforeCenter( win );
-			hs.application.frontmostApplication():selectMenuItem( { 'Window', 'Center' } );
+			hs.eventtap.keyStroke( { 'cmd', 'alt' }, 'space' ); -- Center by issuing the key combo for Rectangle Pro.
 			fn.window.afterCenter( win );
 		end,
 
@@ -154,21 +154,12 @@ hs.hotkey.bind(
 	end
 );
 
--- Open new ChatGPT window with cmd+`.
-hs.hotkey.bind(
-	{ 'alt' }, '`',
-	function()
-		hs.application.launchOrFocus( hs.fs.pathToAbsolute( "~/Applications/ChatGPT.app" ) );
-		hs.eventtap.keyStroke( { 'cmd' }, 'n' ); -- Open new window.
-	end
-);
-
 -- App launchers.
 fn.keyboardLauncher.bind( ',', 'System Settings' );
 fn.keyboardLauncher.bind( 'c', 'Calendar' );
 fn.keyboardLauncher.bind( 'e', 'Sublime Text' ); -- (e)ditor.
 fn.keyboardLauncher.bind( 'f', 'Finder' );
-fn.keyboardLauncher.bind( 'g', hs.fs.pathToAbsolute( "~/Applications/ChatGPT.app" ) );
+fn.keyboardLauncher.bind( 'g', 'ChatGPT' );
 fn.keyboardLauncher.bind( 'h', 'Google Chrome' );
 fn.keyboardLauncher.bind( 'm', 'Music' );
 fn.keyboardLauncher.bind( 'n', 'Notes' );
