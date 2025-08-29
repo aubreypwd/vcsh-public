@@ -45,6 +45,7 @@ alias siteurl="wp option get siteurl"
 alias delete="rm -R"
 alias pwdcp="pwd | pbcopy"
 alias mp="multipass"
+alias allowapp="xattr -rc"
 
 # iTerm2 Tab Aliases
 alias nt='ttab' # New tab.
