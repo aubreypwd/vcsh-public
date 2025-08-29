@@ -9,7 +9,7 @@
 	# Commit
 	c = commit -v # Commit.
 	cm = "!f() { git commit -m \"$1\" -m \"$2\"; }; f" # Commit with a message $2 is optional.
-	pew = "! function f() { git commit -a --allow-empty-message -m '' && git pb; }; f" # Push an empty commit with all updates (dependant in other packages).
+	pew = "! function f() { git commit -a --allow-empty-message -m '' && git pp; }; f" # Push an empty commit with all updates (dependant in other packages).
 
 	# Diff
 	d = diff
