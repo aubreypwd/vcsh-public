@@ -11,5 +11,8 @@
     "cursor.preferNotificationsSameAsChat": true,
     "cursor.composer.shouldChimeAfterChatFinishes": true,
     "git.openRepositoryInParentFolders": "never",
-    "window.commandCenter": true
+    "window.commandCenter": true,
+    "cursor.composer.shouldAutoScrollToBottom": false,
+    "cursor.composer.shouldAutoAcceptDiffs": false,
+    "cursor.composer.shouldAllowCustomModes": true
 }
