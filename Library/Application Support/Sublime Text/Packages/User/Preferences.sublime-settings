@@ -8,7 +8,7 @@
 	"show_sidebar_on_close": true,
 	"adaptive_dividers": true,
 	"allow_git_home_dir": false,
-	"always_prompt_for_file_reload": true,
+	"always_prompt_for_file_reload": false,
 	"always_show_minimap_viewport": false,
 	"ancestor_gutter": true,
 	"animation_enabled": false,
@@ -265,12 +265,8 @@
 	],
 	"ignored_packages":
 	[
-		"AlpineJS",
 		"LSP-eslint",
 		"SublimeLinter-php",
-		"SublimeLinter-phpcs",
-		"Surround",
-		"TOML",
 		"Vintage",
 	],
 	"ignored_words":
