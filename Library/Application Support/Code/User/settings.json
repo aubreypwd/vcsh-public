@@ -282,10 +282,10 @@
   "window.autoDetectHighContrast": false,
   // "window.density.editorTabHeight": "compact",
   "window.nativeTabs": true,
-  "window.newWindowDimensions": "maximized",
-  "window.openFilesInNewWindow": "off",
-  "window.openFoldersInNewWindow": "off",
-  "window.openWithoutArgumentsInNewWindow": "off",
+  "window.newWindowDimensions": "inherit",
+  "window.openFilesInNewWindow": "on",
+  "window.openFoldersInNewWindow": "on",
+  "window.openWithoutArgumentsInNewWindow": "on",
   "window.title": "${rootPath}${separator}${activeEditorMedium}",
 
   // Workspace settings
@@ -794,5 +794,6 @@
   "terminal.explorerKind": "external",
   "ddevManager.showProjectsList": "Current Workspace",
   "workbench.activityBar.location": "hidden",
-  "explorer.confirmDragAndDrop": false
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true
 }
