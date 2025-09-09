@@ -37,7 +37,7 @@ else
 	export EDITOR='micro'
 fi
 
-export VISUAL="subl" # Visual Editor.
+export VISUAL="code" # Visual Editor.
 
 # export PAGER="highlight --out-format ansi --syntax=html --force --no-trailing-nl" # I can scroll and highlist
 export PAGER="cat" # Just use cat for now.
