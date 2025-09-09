@@ -41,6 +41,7 @@ reset-mac-defaults () {
 	defaults write com.apple.dock autohide-time-modifier -int 1 # Animation speed.
 	defaults write com.apple.dock show-recents -bool true;
 	defaults write com.apple.dock show-recent-count -int 3;
+	defaults write com.apple.dock scroll-to-open -bool true; # Enable the ability to swipe up with two fingers to see App Expose.
 
 	# Finder
 	defaults write com.apple.Finder QuitMenuItem 1 # Add Quit to Finder
