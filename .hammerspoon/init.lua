@@ -4,12 +4,20 @@
 -- ===============================================
 
 -- ==============================
--- Constants
+-- Global Vars
 -- ==============================
 
-MILLISECOND = 1000;
-ONE_SECOND = MILLISECOND * 1000;
-KEYBOARD_LAUNCHER_MODAL = hs.hotkey.modal.new( { 'alt' }, 'g' );
+millisecond = 1000;
+one_second = millisecond * 1000;
+keyboard_launcher_modal = hs.hotkey.modal.new( { 'alt' }, 'g' );
+
+-- Exclude these apps from being messed with.
+always_excluded_apps = {
+	["CleanShot X"] = true,
+	["iBar Pro"] = true,
+	["Hammerspoon"] = true,
+	["superwhisper"] = true,
+};
 
 -- ==============================
 -- Functions
@@ -33,13 +41,13 @@ fn = {
 		bind = function( key, app )
 
 			-- Then listen for another alt + key to launch the assigned app.
-			KEYBOARD_LAUNCHER_MODAL:bind(
+			keyboard_launcher_modal:bind(
 				{ 'alt' }, key,
 				nil,
 				function()
 
 					if hs.application.launchOrFocus( app ) then
-						KEYBOARD_LAUNCHER_MODAL:exit();
+						keyboard_launcher_modal:exit();
 					else
 						hs.alert.show( string.format( 'Unable to launch %s', app ) );
 					end
@@ -80,11 +88,10 @@ fn = {
 
 			-- Apps to exclude from doing this...
 			local excludeApps = {
-				["CleanShot X"] = true,
-				["iBar Pro"] = true,
+				-- ["CleanShot X"] = true,
 			};
 
-			if excludeApps[ win:application():name() ] then
+			if ( excludeApps[ win:application():name() ] or always_excluded_apps[ win:application():name()] ) then
 				return; -- The window should not be fucked with.
 			end
 
@@ -97,30 +104,61 @@ fn = {
 			end
 
 			fn.window.beforeCenter( win );
-			hs.eventtap.keyStroke( { 'cmd', 'alt' }, 'space' ); -- Center by issuing the key combo for Rectangle Pro.
-			fn.window.afterCenter( win );
+				hs.eventtap.keyStroke( { 'cmd', 'alt' }, 'space' ); -- Center by issuing the key combo for Rectangle Pro.
+					fn.window.afterCenter( win );
 		end,
 
 			-- HOOK: Before we center any window.
 			beforeCenter = function( win )
-				if 'Finder' == win:application():name() then fn.window.setFrame( win, 0, 91, 101, 1013, 1620 ); end -- Always set the window size to this.
-				if 'PLIST Editor' == win:application():name() then fn.window.setFrame( win, 0, 91, 101, 1013, 1620 ); end -- pList can make super tiny annoying windows.
+				-- Nothing now.
 			end,
 
 			-- HOOK: After we center any window.
 			afterCenter = function( win )
-
-				fn.sleep( ONE_SECOND / 2 ); -- Always give MacOS time to finish the animation of centering.
-
-				if 'iTerm2' == win:application():name() then fn.window.setFrame( win, 0.2, win:frame().y - 22, nill, nill, nill ); end -- iTerm needs to be bumped up after centering because the bottom line gets hidden by my hands.
+				-- Nothing now.
 			end,
+
+		-- FUNCTION: Set the window's size based on application.
+		setApplicationWindowSize = function( win )
+
+			-- Apps to exclude from doing this...
+			local excludeApps = {
+				-- ["CleanShot X"] = true,
+			};
+
+			if ( excludeApps[ win:application():name() ] or always_excluded_apps[ win:application():name()] ) then
+				return; -- The window should not be fucked with.
+			end
+
+			local mapping = ( {
+				['Finder']        = { mods = { "cmd", "alt" }, key = "8" },
+				['TablePlus']     = { mods = { "cmd", "alt" }, key = "9" },
+				['iTerm']         = { mods = { "cmd", "alt" }, key = "8" },
+				['Notes']         = { mods = { "cmd", "alt" }, key = "9" },
+				['Code']          = { mods = { "cmd", "alt" }, key = "9" },
+				['Google Chrome'] = { mods = { "cmd", "alt" }, key = "9" },
+				['Reminders']     = { mods = { "cmd", "alt" }, key = "7" },
+				['Calendar']      = { mods = { "cmd", "alt" }, key = "9" },
+				['News Explorer'] = { mods = { "cmd", "alt" }, key = "9" },
+				['Twitter']       = { mods = { "cmd", "alt" }, key = "7" },
+				['Mastodon']      = { mods = { "cmd", "alt", "shift" }, key = "7" },
+				['Slack']         = { mods = { "cmd", "alt" }, key = "9" },
+				['Messages']      = { mods = { "cmd", "alt" }, key = "7" },
+				['WhatsApp']      = { mods = { "cmd", "alt" }, key = "7" },
+			} )[ win:application():name() ]
+				or { mods = { "cmd", "alt" }, key = "8" }; -- Default app size.
+
+			-- Trigger rectangle's combo for the app.
+			hs.eventtap.keyStroke( mapping.mods, mapping.key, 0 );
+		end,
 
 		-- FUNCTION: A way to discover if a window is already maximized.
 		windowIsMaximized = function( win )
+
 			return math.abs( win:frame().x - win:screen():frame().x ) <= 2
 				 and math.abs( win:frame().y - win:screen():frame().y ) <= 2
 				 and math.abs( ( win:frame().x + win:frame().w ) - ( win:screen():frame().x + win:screen():frame().w) ) <= 2
-				 and math.abs( ( win:frame().y + win:frame().h ) - ( win:screen():frame().y + win:screen():frame().h) ) <= 2
+				 and math.abs( ( win:frame().y + win:frame().h ) - ( win:screen():frame().y + win:screen():frame().h) ) <= 2;
 		end,
 	},
 };
@@ -130,7 +168,18 @@ fn = {
 -- ==============================
 
 hs.window.animationDuration = 0; -- Never animate things by default.
-hs.window.filter.new():subscribe( "windowCreated", fn.window.centerOnScreen ); -- Center all newly created windows.
+
+hs.window.filter.new():subscribe(
+	"windowCreated",
+	function( win )
+
+		hs.printf( win:application():name() ); -- Easy way to get app name in console.
+
+		-- Apply things to the windows.
+		fn.window.centerOnScreen( win );
+		fn.window.setApplicationWindowSize( win );
+	end
+); -- Center all newly created windows.
 
 -- ==============================
 -- Keyboard Shortcuts
@@ -146,13 +195,8 @@ hs.hotkey.bind(
 	end
 );
 
--- Open the Hammerspoon console.
-hs.hotkey.bind(
-	{ 'ctrl', 'alt', 'cmd', 'shift' }, '\\',
-	function()
-		hs.openConsole();
-	end
-);
+-- Open the Hammerspoon console easily.
+hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
 
 -- App launchers.
 fn.keyboardLauncher.bind( ',', 'System Settings' );
