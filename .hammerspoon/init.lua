@@ -8,17 +8,17 @@
 -- ==============================
 
 millisecond = 1000;
-one_second = millisecond * 1000;
-keyboard_launcher_modal = hs.hotkey.modal.new( { 'alt' }, 'g' );
+oneSecond = millisecond * 1000;
 
 -- Exclude these apps from being messed with.
-always_excluded_apps = {
+alwaysExcludeApps = {
 	['CleanShot X'] = true,
 	['iBar Pro'] = true,
 	['Hammerspoon'] = true,
 	['superwhisper'] = true,
 	['System Settings'] = true,
 	['DockHelper'] = true,
+	['Itsycal'] = true,
 };
 
 -- ==============================
@@ -30,33 +30,6 @@ fn = {
 	sleep = function( microseconds )
 		hs.timer.usleep( microseconds )
 	end,
-
-	-- ==============================
-	-- Keyboard Launcher
-	--
-	-- The chord alt(hold)+l - <key> will launch the app you bind to it.
-	-- e.g. fn.keyboardLauncher.bind( 'f', 'Finder' ); will launch Finder.
-	-- ==============================
-	keyboardLauncher = {
-
-		-- Bind a key to the launcher.
-		bind = function( key, app )
-
-			-- Then listen for another alt + key to launch the assigned app.
-			keyboard_launcher_modal:bind(
-				{ 'alt' }, key,
-				nil,
-				function()
-
-					if hs.application.launchOrFocus( app ) then
-						keyboard_launcher_modal:exit();
-					else
-						hs.alert.show( string.format( 'Unable to launch %s', app ) );
-					end
-				end
-			);
-		end
-	},
 
 	-- ==============================
 	-- Windows
@@ -88,21 +61,21 @@ fn = {
 		-- FUNCTION: My version of :centerOnScreen.
 		centerOnScreen = function( win )
 
-			-- Apps to exclude from doing this...
-			local excludeApps = {
-				-- ["CleanShot X"] = true,
-			};
-
-			if ( excludeApps[ win:application():name() ] or always_excluded_apps[ win:application():name()] ) then
-				return; -- The window should not be fucked with.
-			end
-
 			if fn.window.windowIsMaximized( win ) then
 				return; -- The window is already maximized, don't do center.
 			end
 
 			if true ~= fn.window.isStandard( win ) then
 				return; -- Only apply to standard windows.
+			end
+
+			-- Apps to exclude from doing this...
+			local excludeApps = {
+				-- ["CleanShot X"] = true,
+			};
+
+			if ( excludeApps[ win:application():name() ] or alwaysExcludeApps[ win:application():name()] ) then
+				return; -- The window should not be fucked with.
 			end
 
 			fn.window.beforeCenter( win );
@@ -123,42 +96,56 @@ fn = {
 		-- FUNCTION: Set the window's size based on application.
 		setApplicationWindowSize = function( win )
 
+			if fn.window.windowIsMaximized( win ) then
+				return; -- The window is already maximized, don't do center.
+			end
+
+			if true ~= fn.window.isStandard( win ) then
+				return; -- Only apply to standard windows.
+			end
+
 			-- Apps to exclude from doing this...
 			local excludeApps = {
 				-- ["CleanShot X"] = true,
 			};
 
-			if ( excludeApps[ win:application():name() ] or always_excluded_apps[ win:application():name()] ) then
+			if ( excludeApps[ win:application():name() ] or alwaysExcludeApps[ win:application():name()] ) then
 				return; -- The window should not be fucked with.
 			end
 
-			local mapping = ( {
-				['Finder']        = { mods = { 'cmd', 'alt' }, key = '8' },
-				['ChatGPT']       = { mods = { 'cmd', 'alt' }, key = '8' },
-				['TablePlus']     = { mods = { 'cmd', 'alt' }, key = '9' },
-				['YouTube']       = { mods = { 'cmd', 'alt' }, key = '9' },
-				['iTerm2']        = { mods = { 'cmd', 'alt' }, key = '8' },
-				['Mail']          = { mods = { 'cmd', 'alt' }, key = '8' },
-				['Music']         = { mods = { 'cmd', 'alt' }, key = '8' },
-				['Notes']         = { mods = { 'cmd', 'alt' }, key = '9' },
-				['Code']          = { mods = { 'cmd', 'alt' }, key = '9' },
-				['Google Chrome'] = { mods = { 'cmd', 'alt' }, key = '9' },
-				['Reminders']     = { mods = { 'cmd', 'alt' }, key = '7' },
-				['Calendar']      = { mods = { 'cmd', 'alt' }, key = '9' },
-				['News Explorer'] = { mods = { 'cmd', 'alt' }, key = '9' },
-				['Twitter']       = { mods = { 'cmd', 'alt' }, key = '7' },
-				['Mastodon']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-				['Facebook']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-				['Voice']         = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-				['Slack']         = { mods = { 'cmd', 'alt' }, key = '9' },
-				['Messages']      = { mods = { 'cmd', 'alt' }, key = '7' },
-				['WhatsApp']      = { mods = { 'cmd', 'alt' }, key = '7' },
-				['LinkedIn']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-			} )[ win:application():name() ]
-				or { mods = { 'cmd', 'alt' }, key = '8' }; -- Default app size.
+			local mapping = (
+				{
+					['Calendar']      = { mods = { 'cmd', 'alt' }, key = '9' },
+					['ChatGPT']       = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
+					['Code']          = { mods = { 'cmd', 'alt' }, key = '9' },
+					['Facebook']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
+					['Finder']        = { mods = { 'cmd', 'alt' }, key = '8' },
+					['Google Chrome'] = { mods = { 'cmd', 'alt' }, key = '9' },
+					['iTerm2']        = { mods = { 'cmd', 'alt' }, key = '8' },
+					['LinkedIn']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
+					['Mail']          = { mods = { 'cmd', 'alt' }, key = '8' },
+					['Mastodon']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
+					['Messages']      = { mods = { 'cmd', 'alt' }, key = '7' },
+					['Music']         = { mods = { 'cmd', 'alt' }, key = '8' },
+					['News Explorer'] = { mods = { 'cmd', 'alt' }, key = '9' },
+					['Notes']         = { mods = { 'cmd', 'alt' }, key = '9' },
+					['Reminders']     = { mods = { 'cmd', 'alt' }, key = '7' },
+					['Slack']         = { mods = { 'cmd', 'alt' }, key = '9' },
+					['TablePlus']     = { mods = { 'cmd', 'alt' }, key = '9' },
+					['Twitter']       = { mods = { 'cmd', 'alt' }, key = '7' },
+					['Voice']         = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
+					['YouTube']       = { mods = { 'cmd', 'alt' }, key = '9' },
+				}
+			)[ win:application():name() ] or { mods = { 'cmd', 'alt' }, key = '8' };
 
-			-- Trigger rectangle's combo for the app.
-			hs.eventtap.keyStroke( mapping.mods, mapping.key, 0 );
+			hs.printf( hs.inspect( win:application():name() ) );
+
+			-- Focus the window (in case the system has moved away for whatever reason)...
+			win:focus();
+
+				-- Trigger rectangle's combo for the app.
+				hs.eventtap.keyStroke( mapping.mods, mapping.key, 0 );
+			win:focus(); -- Focus again, in case the key combo moved windows.
 		end,
 
 		-- FUNCTION: A way to discover if a window is already maximized.
@@ -172,7 +159,7 @@ fn = {
 	},
 
 	-- FUNCTION: Reload hammerspoon.
-	reloadHammerspoon = function( args )
+	reload = function( args )
 
 		hs.console.clearConsole();
 		hs.openConsole();
@@ -193,7 +180,7 @@ hs.window.filter.new():subscribe(
 		hs.printf( win:application():name() ); -- Easy way to get app name in console.
 
 		-- Apply things to the windows.
-		fn.window.centerOnScreen( win );
+		-- fn.window.centerOnScreen( win );
 		fn.window.setApplicationWindowSize( win );
 	end
 ); -- Center all newly created windows.
@@ -203,22 +190,36 @@ hs.window.filter.new():subscribe(
 -- ==============================
 
 -- Reload Hammerspoon with ctrl+alt+cmd+\.
-hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reloadHammerspoon );
+hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reload );
 
 -- Open the Hammerspoon console easily.
 hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
 
--- App launchers.
-fn.keyboardLauncher.bind( ',', 'System Settings' );
-fn.keyboardLauncher.bind( 'c', 'Calendar' );
-fn.keyboardLauncher.bind( 'e', 'Sublime Text' ); -- (e)ditor.
-fn.keyboardLauncher.bind( 'f', 'Finder' );
-fn.keyboardLauncher.bind( 'g', 'ChatGPT' );
-fn.keyboardLauncher.bind( 'h', 'Google Chrome' );
-fn.keyboardLauncher.bind( 'm', 'Music' );
-fn.keyboardLauncher.bind( 'n', 'Notes' );
-fn.keyboardLauncher.bind( 'r', 'Reminders' );
-fn.keyboardLauncher.bind( 'i', 'Messages' );
-fn.keyboardLauncher.bind( 't', 'iTerm' );
-fn.keyboardLauncher.bind( 'w', 'Safari' );
-fn.keyboardLauncher.bind( 'y', 'YouTube' ); -- Fuck why did I add this?
+-- ==============================
+-- Desktop Switching
+-- ==============================
+
+-- Setup modal to catch chord.
+desktopSwitcherModal = hs.hotkey.modal.new(
+	{ 'alt' },
+	'd',
+	function()
+		desktopSwitcherModal:enter();
+	end
+);
+
+-- Set Destkops 0 - 9 to alt + d + 0..9.
+for i = 0, 9 do
+
+	desktopSwitcherModal:bind(
+		{ 'alt' },
+		tostring( i ),
+		function()
+			hs.eventtap.keyStroke( {'ctrl'}, tostring( i ), 0 ); -- Requires e.g. ctrl + 1 to be in Keyboard Shortcuts.
+			desktopSwitcherModal:exit();
+			return false;
+		end,
+		nil,
+		nil
+	);
+end
