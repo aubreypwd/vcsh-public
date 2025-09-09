@@ -13,10 +13,10 @@ keyboard_launcher_modal = hs.hotkey.modal.new( { 'alt' }, 'g' );
 
 -- Exclude these apps from being messed with.
 always_excluded_apps = {
-	["CleanShot X"] = true,
-	["iBar Pro"] = true,
-	["Hammerspoon"] = true,
-	["superwhisper"] = true,
+	['CleanShot X'] = true,
+	['iBar Pro'] = true,
+	['Hammerspoon'] = true,
+	['superwhisper'] = true,
 };
 
 -- ==============================
@@ -131,22 +131,24 @@ fn = {
 			end
 
 			local mapping = ( {
-				['Finder']        = { mods = { "cmd", "alt" }, key = "8" },
-				['TablePlus']     = { mods = { "cmd", "alt" }, key = "9" },
-				['iTerm']         = { mods = { "cmd", "alt" }, key = "8" },
-				['Notes']         = { mods = { "cmd", "alt" }, key = "9" },
-				['Code']          = { mods = { "cmd", "alt" }, key = "9" },
-				['Google Chrome'] = { mods = { "cmd", "alt" }, key = "9" },
-				['Reminders']     = { mods = { "cmd", "alt" }, key = "7" },
-				['Calendar']      = { mods = { "cmd", "alt" }, key = "9" },
-				['News Explorer'] = { mods = { "cmd", "alt" }, key = "9" },
-				['Twitter']       = { mods = { "cmd", "alt" }, key = "7" },
-				['Mastodon']      = { mods = { "cmd", "alt", "shift" }, key = "7" },
-				['Slack']         = { mods = { "cmd", "alt" }, key = "9" },
-				['Messages']      = { mods = { "cmd", "alt" }, key = "7" },
-				['WhatsApp']      = { mods = { "cmd", "alt" }, key = "7" },
+				['Finder']        = { mods = { 'cmd', 'alt' }, key = '8' },
+				['TablePlus']     = { mods = { 'cmd', 'alt' }, key = '9' },
+				['iTerm2']        = { mods = { 'cmd', 'alt' }, key = '8' },
+				['Notes']         = { mods = { 'cmd', 'alt' }, key = '9' },
+				['Code']          = { mods = { 'cmd', 'alt' }, key = '9' },
+				['Google Chrome'] = { mods = { 'cmd', 'alt' }, key = '9' },
+				['Reminders']     = { mods = { 'cmd', 'alt' }, key = '7' },
+				['Calendar']      = { mods = { 'cmd', 'alt' }, key = '9' },
+				['News Explorer'] = { mods = { 'cmd', 'alt' }, key = '9' },
+				['Twitter']       = { mods = { 'cmd', 'alt' }, key = '7' },
+				['Mastodon']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
+				['Voice']         = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
+				['Slack']         = { mods = { 'cmd', 'alt' }, key = '9' },
+				['Messages']      = { mods = { 'cmd', 'alt' }, key = '7' },
+				['WhatsApp']      = { mods = { 'cmd', 'alt' }, key = '7' },
+				['LinkedIn']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
 			} )[ win:application():name() ]
-				or { mods = { "cmd", "alt" }, key = "8" }; -- Default app size.
+				or { mods = { 'cmd', 'alt' }, key = '8' }; -- Default app size.
 
 			-- Trigger rectangle's combo for the app.
 			hs.eventtap.keyStroke( mapping.mods, mapping.key, 0 );
@@ -157,8 +159,8 @@ fn = {
 
 			return math.abs( win:frame().x - win:screen():frame().x ) <= 2
 				 and math.abs( win:frame().y - win:screen():frame().y ) <= 2
-				 and math.abs( ( win:frame().x + win:frame().w ) - ( win:screen():frame().x + win:screen():frame().w) ) <= 2
-				 and math.abs( ( win:frame().y + win:frame().h ) - ( win:screen():frame().y + win:screen():frame().h) ) <= 2;
+				 	and math.abs( ( win:frame().x + win:frame().w ) - ( win:screen():frame().x + win:screen():frame().w) ) <= 2
+					 and math.abs( ( win:frame().y + win:frame().h ) - ( win:screen():frame().y + win:screen():frame().h) ) <= 2;
 		end,
 	},
 };
