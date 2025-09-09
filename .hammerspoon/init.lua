@@ -17,6 +17,8 @@ always_excluded_apps = {
 	['iBar Pro'] = true,
 	['Hammerspoon'] = true,
 	['superwhisper'] = true,
+	['System Settings'] = true,
+	['DockHelper'] = true,
 };
 
 -- ==============================
@@ -132,8 +134,12 @@ fn = {
 
 			local mapping = ( {
 				['Finder']        = { mods = { 'cmd', 'alt' }, key = '8' },
+				['ChatGPT']       = { mods = { 'cmd', 'alt' }, key = '8' },
 				['TablePlus']     = { mods = { 'cmd', 'alt' }, key = '9' },
+				['YouTube']       = { mods = { 'cmd', 'alt' }, key = '9' },
 				['iTerm2']        = { mods = { 'cmd', 'alt' }, key = '8' },
+				['Mail']          = { mods = { 'cmd', 'alt' }, key = '8' },
+				['Music']         = { mods = { 'cmd', 'alt' }, key = '8' },
 				['Notes']         = { mods = { 'cmd', 'alt' }, key = '9' },
 				['Code']          = { mods = { 'cmd', 'alt' }, key = '9' },
 				['Google Chrome'] = { mods = { 'cmd', 'alt' }, key = '9' },
@@ -142,6 +148,7 @@ fn = {
 				['News Explorer'] = { mods = { 'cmd', 'alt' }, key = '9' },
 				['Twitter']       = { mods = { 'cmd', 'alt' }, key = '7' },
 				['Mastodon']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
+				['Facebook']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
 				['Voice']         = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
 				['Slack']         = { mods = { 'cmd', 'alt' }, key = '9' },
 				['Messages']      = { mods = { 'cmd', 'alt' }, key = '7' },
@@ -163,6 +170,14 @@ fn = {
 					 and math.abs( ( win:frame().y + win:frame().h ) - ( win:screen():frame().y + win:screen():frame().h) ) <= 2;
 		end,
 	},
+
+	-- FUNCTION: Reload hammerspoon.
+	reloadHammerspoon = function( args )
+
+		hs.console.clearConsole();
+		hs.openConsole();
+		hs.reload();
+	end
 };
 
 -- ==============================
@@ -188,14 +203,7 @@ hs.window.filter.new():subscribe(
 -- ==============================
 
 -- Reload Hammerspoon with ctrl+alt+cmd+\.
-hs.hotkey.bind(
-	{ 'ctrl', 'alt', 'cmd' }, '\\',
-	function()
-		hs.console.clearConsole();
-		hs.openConsole();
-		hs.reload();
-	end
-);
+hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reloadHammerspoon );
 
 -- Open the Hammerspoon console easily.
 hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
