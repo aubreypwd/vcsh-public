@@ -5,7 +5,7 @@
 reset-mac-defaults () {
 
 	# iTerm2
-	defaults write com.googlecode.iterm2 OpenFileInNewWindows -bool false # false always opens in a tab, true opens a new window
+	defaults write com.googlecode.iterm2 OpenFileInNewWindows -bool true # false always opens in a tab, true opens a new window
 
 	# Misc
 	defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
