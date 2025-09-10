@@ -115,6 +115,7 @@ fn = {
 
 			local mapping = (
 				{
+					-- ['@aubreypwd']    = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
 					['Calendar']      = { mods = { 'cmd', 'alt' }, key = '9' },
 					['ChatGPT']       = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
 					['Code']          = { mods = { 'cmd', 'alt' }, key = '9' },
@@ -126,10 +127,10 @@ fn = {
 					['Mail']          = { mods = { 'cmd', 'alt' }, key = '8' },
 					['Mastodon']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
 					['Messages']      = { mods = { 'cmd', 'alt' }, key = '7' },
-					['Reminders']     = { mods = { 'cmd', 'alt' }, key = '7' },
 					['Music']         = { mods = { 'cmd', 'alt' }, key = '8' },
 					['News Explorer'] = { mods = { 'cmd', 'alt' }, key = '9' },
 					['Notes']         = { mods = { 'cmd', 'alt' }, key = '9' },
+					['Reminders']     = { mods = { 'cmd', 'alt' }, key = '7' },
 					['Slack']         = { mods = { 'cmd', 'alt' }, key = '9' },
 					['TablePlus']     = { mods = { 'cmd', 'alt' }, key = '9' },
 					['Twitter']       = { mods = { 'cmd', 'alt' }, key = '7' },
@@ -180,7 +181,7 @@ hs.window.filter.new():subscribe(
 		hs.printf( win:application():name() ); -- Easy way to get app name in console.
 
 		-- Apply things to the windows.
-		-- fn.window.centerOnScreen( win );
+		fn.window.centerOnScreen( win );
 		fn.window.setApplicationWindowSize( win );
 	end
 ); -- Center all newly created windows.
@@ -194,32 +195,3 @@ hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reload );
 
 -- Open the Hammerspoon console easily.
 hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
-
--- ==============================
--- Desktop Switching
--- ==============================
-
--- Setup modal to catch chord.
-desktopSwitcherModal = hs.hotkey.modal.new(
-	{ 'alt' },
-	'd',
-	function()
-		desktopSwitcherModal:enter();
-	end
-);
-
--- Set Destkops 0 - 9 to alt + d + 0..9.
-for i = 0, 9 do
-
-	desktopSwitcherModal:bind(
-		{ 'alt' },
-		tostring( i ),
-		function()
-			hs.eventtap.keyStroke( {'ctrl'}, tostring( i ), 0 ); -- Requires e.g. ctrl + 1 to be in Keyboard Shortcuts.
-			desktopSwitcherModal:exit();
-			return false;
-		end,
-		nil,
-		nil
-	);
-end
