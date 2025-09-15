@@ -132,6 +132,7 @@
 
   // Editor settings
   "editor.autoIndent": "full",
+  "editor.autoIndentOnPaste": true,
   "editor.colorDecoratorsActivatedOn": "click",
   "editor.cursorStyle": "line-thin",
   "editor.detectIndentation": true,
@@ -140,7 +141,7 @@
   "editor.fontFamily": "Menlo",
   "editor.fontSize": 12,
   "editor.glyphMargin": true,
-  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairs": true,
   "editor.insertSpaces": false,
   "editor.language.colorizedBracketPairs": [],
   "editor.largeFileOptimizations": false,
@@ -795,5 +796,6 @@
   "ddevManager.showProjectsList": "Current Workspace",
   "workbench.activityBar.location": "hidden",
   "explorer.confirmDragAndDrop": false,
-  "extensions.ignoreRecommendations": true
+  "extensions.ignoreRecommendations": true,
+  "RainbowBrackets.depreciation-notice": false
 }
