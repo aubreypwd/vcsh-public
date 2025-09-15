@@ -19,12 +19,19 @@ alwaysExcludeApps = {
 	['System Settings'] = true,
 	['DockHelper'] = true,
 	['Itsycal'] = true,
+	['PastePal'] = true,
+	['AppCleaner'] = true,
 };
 
 -- ==============================
 -- Functions
 -- ==============================
 fn = {
+
+	-- FUNCTION: That does nothing.
+	doNothing = function()
+		return false;
+	end,
 
 	-- FUNCTION: Easy sleep function (so I don't have to remember the other one).
 	sleep = function( microseconds )
@@ -115,10 +122,10 @@ fn = {
 
 			local mapping = (
 				{
-					-- ['@aubreypwd']    = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
+					['@aubreypwd']    = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
 					['Calendar']      = { mods = { 'cmd', 'alt' }, key = '9' },
 					['ChatGPT']       = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-					['Code']          = { mods = { 'cmd', 'alt' }, key = '9' },
+					['Code']          = { mods = { 'cmd', 'alt' }, key = '0' },
 					['Facebook']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
 					['Finder']        = { mods = { 'cmd', 'alt' }, key = '8' },
 					['Google Chrome'] = { mods = { 'cmd', 'alt' }, key = '9' },
@@ -135,7 +142,7 @@ fn = {
 					['TablePlus']     = { mods = { 'cmd', 'alt' }, key = '9' },
 					['Twitter']       = { mods = { 'cmd', 'alt' }, key = '7' },
 					['Voice']         = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-					['YouTube']       = { mods = { 'cmd', 'alt' }, key = '9' },
+					['YouTube']       = { mods = { 'cmd', 'alt', 'shift' }, key = '9' },
 				}
 			)[ win:application():name() ] or { mods = { 'cmd', 'alt' }, key = '8' };
 
@@ -195,3 +202,6 @@ hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reload );
 
 -- Open the Hammerspoon console easily.
 hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
+
+-- Disable CMD+Q on Apps.
+hs.hotkey.bind( {'cmd' }, 'q', fn.doNothing );
