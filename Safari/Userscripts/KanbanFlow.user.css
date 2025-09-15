@@ -1,0 +1,9 @@
+/* ==UserStyle==
+@name            KanbanFlow
+@include         https://kanbanflow.com/board/*
+@run-at          document-start
+==/UserStyle== */
+
+.header-logoImg {
+    display: none;
+}
