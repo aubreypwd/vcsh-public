@@ -40,7 +40,7 @@ reset-php () {
 	# For each version...
 	for VERSION in "${MY_PHP_VERSIONS[@]}"; do
 
-		echo "• Installing php@$VERSION... and xdebug@$VERSION..."
+		echo "• Installing php@$VERSION and modules..."
 
 		# Install w/ xDebug...
 		brew install "shivammathur/php/php@$VERSION" --quiet && \

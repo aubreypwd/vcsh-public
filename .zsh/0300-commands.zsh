@@ -1295,3 +1295,30 @@ econf () {
 
 	"$VISUAL" "${CONFMAP[$1]}"
 }
+
+# Convert Xdebug .xt to .svg flamegraph
+# @since September 24th 2025
+# @usage xt2fg "/path/to/file.xt" > file.xt.svg
+xt2fg () {
+
+	if [ ! -e "$HOME/Repos/github.com/brendangregg/FlameGraph/flamegraph.pl" ]; then
+		echo "Please clone github.com:brendangregg/FlameGraph";
+		return 1;
+	fi
+
+	cat "$1" | "$HOME/Repos/github.com/brendangregg/FlameGraph/flamegraph.pl" > "$1.svg" \
+		&& open -a "Google Chrome" "$1.svg"
+}
+
+# Convert Xdebug .xt to .json for e.g. SpeedScope
+# @since September 24th 2025
+# @usage xt2json "/path/to/file.xt" > file.xt.json
+xt2json () {
+
+	if [ ! -e "$HOME/Repos/github.com/ilnytskyi/xdebug-to-chromium-trace-converter/xtc" ]; then
+		echo "Please clone github.com:ilnytskyi/xdebug-to-chromium-trace-converter";
+		return 1;
+	fi
+
+	"$HOME/Repos/github.com/ilnytskyi/xdebug-to-chromium-trace-converter/xtc" convert --file="$1" --out="$1.json"
+}
