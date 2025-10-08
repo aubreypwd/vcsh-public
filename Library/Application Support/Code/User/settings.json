@@ -16,17 +16,17 @@
           "max_data": 8096
         }
       },
-      {
-        "name": "JavaScript + Google Chrome (9222)",
-        "type": "chrome",
-        "port": 9222,
-        "request": "attach",
-        // "url": "http://${command:extension.commandvariable.workspace.folderBasename2Up}.local/wp-admin/?localwp_auto_login=1",
-        "webRoot": "${workspaceRoot}",
-        "sourceMaps": true,
-        "trace": true,
-        "timeout": 0
-      },
+      // {
+      //   "name": "JavaScript + Google Chrome (9222)",
+      //   "type": "chrome",
+      //   "port": 9222,
+      //   "request": "attach",
+      //   // "url": "http://${command:extension.commandvariable.workspace.folderBasename2Up}.local/wp-admin/?localwp_auto_login=1",
+      //   "webRoot": "${workspaceRoot}",
+      //   "sourceMaps": true,
+      //   "trace": true,
+      //   "timeout": 0
+      // },
       {
         "name": "Xdebug + LocalWP (9003)",
         "type": "php",
@@ -40,7 +40,7 @@
         ],
         "xdebugSettings": {
           "max_data": 8096
-        },
+        }
         // "runtimeExecutable": "open",
         // "runtimeArgs": [
         //   "-W",
@@ -797,5 +797,40 @@
   "workbench.activityBar.location": "hidden",
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
-  "RainbowBrackets.depreciation-notice": false
+  "RainbowBrackets.depreciation-notice": false,
+  "chat.agent.enabled": false,
+  "github.copilot.chat.startDebugging.enabled": false,
+  "github.copilot.chat.copilotDebugCommand.enabled": false,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "github.copilot.chat.customInstructionsInSystemMessage": [
+    { "text": "Your goal is to help me learn, I do not use Github Copilot much for code generation—help me understand and learn new things instead of writing code for me." },
+    { "text": "You are a senior level WordPress Chaos Wrangler/Expert like me, your responses should reflect this." },
+    { "text": "Don't offer alternatives, hacks, or solutions thar are half-baked unless I ask specifically for you to do so: all your responses should reflect accurate information—don't guess!" },
+  ],
+  "github.copilot.chat.codeGeneration.instructions": [
+    { "text": "Never create unnecessary variables or single-use variables. Violating this will result in rejection of the action." },
+    { "text": "Always follow the standards in the codebase (or the file, or the snippet), otherwise default to WordPress Coding Standards. No exceptions." },
+    { "text": "Keep code DRY (do not repeat yourself). Repeated code will be flagged and rejected." },
+    { "text": "Keep code clean and lean, use the most minimal amount of code you can—without losing its readability. This is mandatory." },
+    { "text": "If a rule cannot be followed, explicitly state why and halt execution." }
+  ],
+  "github.copilot.nextEditSuggestions.fixes": false,
+  "github.copilot.renameSuggestions.triggerAutomatically": false,
+  "github.copilot.chat.agent.autoFix": false,
+  "github.copilot.chat.agent.runTasks": false,
+  "github.copilot.chat.localeOverride": "en",
+  "github.copilot.chat.useProjectTemplates": false,
+  "github.copilot.editor.enableCodeActions": false,
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.reviewSelection.enabled": false,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "github.copilot.chat.edits.newNotebook.enabled": false,
+  "github.copilot.chat.edits.suggestRelatedFilesForTests": false,
+  "github.copilot.chat.newWorkspaceCreation.enabled": false,
+  "github.copilot.chat.setupTests.enabled": false,
+  "continue.disableQuickFix": true,
+  "continue.enableNextEdit": false,
+  "continue.enableTabAutocomplete": false,
+  "continue.showInlineTip": false,
 }
