@@ -21,6 +21,7 @@ alwaysExcludeApps = {
 	['Itsycal'] = true,
 	['PastePal'] = true,
 	['AppCleaner'] = true,
+	['Keka'] = true,
 };
 
 -- ==============================
@@ -120,31 +121,44 @@ fn = {
 				return; -- The window should not be fucked with.
 			end
 
+			-- Rectangle key combos.
+			local max             = { mods = { 'cmd', 'alt', 'shift' }, key = '9' };
+			local medium          = { mods = { 'cmd', 'alt' }, key = '9' };
+			local almostMaximized = { mods = { 'cmd', 'alt' }, key = '8' };
+			local slim            = { mods = { 'cmd', 'alt' }, key = '7' };
+			local fat             = { mods = { 'cmd', 'alt', 'shift' }, key = '7' };
+			local maximized       = { mods = { 'cmd', 'alt' }, key = '0' };
+
+			-- App mapping.
 			local mapping = (
 				{
-					['@aubreypwd']    = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-					['Calendar']      = { mods = { 'cmd', 'alt' }, key = '9' },
-					['ChatGPT']       = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-					['Code']          = { mods = { 'cmd', 'alt' }, key = '0' },
-					['Facebook']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-					['Finder']        = { mods = { 'cmd', 'alt' }, key = '8' },
-					['Google Chrome'] = { mods = { 'cmd', 'alt' }, key = '9' },
-					['iTerm2']        = { mods = { 'cmd', 'alt' }, key = '8' },
-					['LinkedIn']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-					['Mail']          = { mods = { 'cmd', 'alt' }, key = '8' },
-					['Mastodon']      = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-					['Messages']      = { mods = { 'cmd', 'alt' }, key = '7' },
-					['Music']         = { mods = { 'cmd', 'alt' }, key = '8' },
-					['News Explorer'] = { mods = { 'cmd', 'alt' }, key = '9' },
-					['Notes']         = { mods = { 'cmd', 'alt' }, key = '9' },
-					['Reminders']     = { mods = { 'cmd', 'alt' }, key = '7' },
-					['Slack']         = { mods = { 'cmd', 'alt' }, key = '9' },
-					['TablePlus']     = { mods = { 'cmd', 'alt' }, key = '9' },
-					['Twitter']       = { mods = { 'cmd', 'alt' }, key = '7' },
-					['Voice']         = { mods = { 'cmd', 'alt', 'shift' }, key = '7' },
-					['YouTube']       = { mods = { 'cmd', 'alt', 'shift' }, key = '9' },
+					['@aubreypwd'] = fat,
+					['Books'] = fat,
+					['Calendar'] = maximized,
+					['ChatGPT'] = fat,
+					['Code'] = maximized,
+					['Facebook'] = fat,
+					['Finder'] = almostMaximized,
+					['Freedcamp'] = fat,
+					['Google Chrome'] = medium,
+					['iTerm2'] = almostMaximized,
+					['KanbanFlow'] = max,
+					['LinkedIn'] = fat,
+					['Mail'] = almostMaximized,
+					['Mastodon'] = fat,
+					['Messages'] = slim,
+					['Music'] = almostMaximized,
+					['News Explorer'] = medium,
+					['Notes'] = medium,
+					['Reminders'] = slim,
+					['Safari'] = medium,
+					['Slack'] = medium,
+					['TablePlus'] = medium,
+					['Twitter'] = slim,
+					['Voice'] = fat,
+					['YouTube'] = maximized,
 				}
-			)[ win:application():name() ] or { mods = { 'cmd', 'alt' }, key = '8' };
+			)[ win:application():name() ] or almostMaximized;
 
 			hs.printf( hs.inspect( win:application():name() ) );
 
@@ -204,4 +218,4 @@ hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reload );
 hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
 
 -- Disable CMD+Q on Apps.
-hs.hotkey.bind( {'cmd' }, 'q', fn.doNothing );
+-- hs.hotkey.bind( {'cmd' }, 'q', fn.doNothing );
