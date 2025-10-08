@@ -989,6 +989,23 @@
 	</dict>
 	<dict>
 		<key>behaviour</key>
+		<integer>6</integer>
+		<key>behaviourArgument</key>
+		<dict>
+			<key>path</key>
+			<string>/Users/aubreypwd/Applications/Speedscope.app</string>
+			<key>type</key>
+			<string>ChoosyBrowser</string>
+		</dict>
+		<key>enabled</key>
+		<false/>
+		<key>predicate</key>
+		<string>URL CONTAINS "speedscope-"</string>
+		<key>title</key>
+		<string>Speedscope</string>
+	</dict>
+	<dict>
+		<key>behaviour</key>
 		<integer>8</integer>
 		<key>behaviourArgument</key>
 		<string></string>

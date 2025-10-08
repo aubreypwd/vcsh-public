@@ -11,14 +11,5 @@
   {
     "key": "cmd+r cmd+w",
     "command": "-workbench.action.closeAllEditors"
-  },
-  {
-    "key": "cmd+e",
-    "command": "composerMode.background"
-  },
-  // {
-  //   "key": "cmd+n",
-  //   "command": "extension.multiCommand.newFileAndCloseEditors",
-  //   "when": "focusedView == 'workbench.panel.composerViewPane2.view'"
-  // }
+  }
 ]
