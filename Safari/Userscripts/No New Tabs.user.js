@@ -6,8 +6,55 @@
 // @run-at      document-start
 // ==/UserScript==
 
-// Convert all links to not open in a new tab or window.
-setTimeout( () => document.querySelectorAll( 'a[target="_blank"]' ).forEach( ( link ) => link.removeAttribute('target') ), 250 );
+( function() {
+	'use strict';
 
-// Top window.open from opening new windows.
-window.open = ( url ) => window.location.href = url;
+	/**
+	 * Override window.open to prevent new windows or tabs.
+	 * Instead, navigate in the current tab if a URL is provided.
+	 */
+	window.open = function( url ) {
+		if ( url ) {
+			location.href = url;
+		}
+
+		// Return null to prevent default window.open behavior.
+		return null;
+	};
+
+	/**
+	 * Remove target attributes that open links in new tabs/windows.
+	 *
+	 * @param {Element} root - The root element to scan from.
+	 */
+	function sanitize_links( root ) {
+		document.querySelectorAll( 'a[target]' ).forEach( function( el ) {
+			el.removeAttribute( 'target' );
+		} );
+	}
+
+	/**
+	 * Run on initial page load to sanitize existing links.
+	 */
+	addEventListener( 'DOMContentLoaded', sanitize_links );
+
+	/**
+	 * Observe DOM changes and sanitize any newly added links.
+	 */
+	new MutationObserver( function( mutations ) {
+		mutations.forEach( function( mutation ) {
+			mutation.addedNodes.forEach( function( node ) {
+				if ( node.nodeType !== 1 ) {
+					sanitize_links( node );
+				}
+			} );
+		} );
+	} ).observe( 
+        document.documentElement, 
+        {
+		    childList: true,
+		    subtree: true,
+	    } 
+    );
+
+} )();
