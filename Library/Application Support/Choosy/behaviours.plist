@@ -406,6 +406,12 @@
 			</dict>
 			<dict>
 				<key>path</key>
+				<string>/Applications/ChatGPT Atlas.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
 				<string>/Applications/Copy URL.app</string>
 				<key>type</key>
 				<string>ChoosyBrowser</string>
