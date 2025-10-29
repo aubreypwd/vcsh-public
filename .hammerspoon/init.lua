@@ -22,6 +22,7 @@ alwaysExcludeApps = {
 	['PastePal'] = true,
 	['AppCleaner'] = true,
 	['Keka'] = true,
+	['Choosy'] = true,
 };
 
 -- ==============================
@@ -122,12 +123,12 @@ fn = {
 			end
 
 			-- Rectangle key combos.
+			local maximized       = { mods = { 'cmd', 'alt' }, key = '0' };
 			local max             = { mods = { 'cmd', 'alt', 'shift' }, key = '9' };
 			local medium          = { mods = { 'cmd', 'alt' }, key = '9' };
 			local almostMaximized = { mods = { 'cmd', 'alt' }, key = '8' };
-			local slim            = { mods = { 'cmd', 'alt' }, key = '7' };
 			local fat             = { mods = { 'cmd', 'alt', 'shift' }, key = '7' };
-			local maximized       = { mods = { 'cmd', 'alt' }, key = '0' };
+			local slim            = { mods = { 'cmd', 'alt' }, key = '7' };
 
 			-- App mapping.
 			local mapping = (
@@ -140,7 +141,7 @@ fn = {
 					['Facebook'] = fat,
 					['Finder'] = almostMaximized,
 					['Freedcamp'] = fat,
-					['Google Chrome'] = medium,
+					['Chrome'] = medium,
 					['iTerm2'] = almostMaximized,
 					['KanbanFlow'] = max,
 					['LinkedIn'] = fat,
@@ -156,7 +157,7 @@ fn = {
 					['TablePlus'] = medium,
 					['Twitter'] = slim,
 					['Voice'] = fat,
-					['YouTube'] = maximized,
+					['YouTube'] = max,
 				}
 			)[ win:application():name() ] or almostMaximized;
 
@@ -200,9 +201,15 @@ hs.window.filter.new():subscribe(
 	function( win )
 
 		hs.printf( win:application():name() ); -- Easy way to get app name in console.
+		hs.printf( win:title() ); -- Display window title.
 
-		-- Apply things to the windows.
+		-- Apply things to the windows..
 		fn.window.centerOnScreen( win );
+
+		if string.find( win:title() or '', 'Quick Command' ) then
+			return -- Do not resize the Quick Command iTerm2 window.
+		end
+
 		fn.window.setApplicationWindowSize( win );
 	end
 ); -- Center all newly created windows.
