@@ -337,6 +337,7 @@
                     },
                     {
                         "description": "F6 (Do Not Distrub) Remappings",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
