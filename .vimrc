@@ -80,6 +80,7 @@ call plug#end()
 
 " UI
 colorscheme vim-monokai-tasty
+"colorscheme default
 
 hi Normal ctermbg=16 guibg=NONE
 hi LineNr ctermbg=16 guibg=NONE

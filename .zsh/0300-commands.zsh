@@ -63,6 +63,10 @@ alias code="$VISUAL" # Bad habits break hard.
 # alias edit="$EDITOR" # In-terminal editor.
 alias edit="$VISUAL" # Graphical editor.
 
+if [ "$ITERM_PROFILE" = "Quick Command" ]; then
+	alias vim='vim -u NONE -U NONE --noplugin +"syntax off" +"set notermguicolors"'
+fi
+
 # Exit Alias.
 if [[ ( "$TERM_PROGRAM" == 'vscode' ) ]]; then
 
