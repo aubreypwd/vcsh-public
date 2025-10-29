@@ -151,7 +151,57 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "Option+F4 triggers Show Dock (ctrl+shift+down_arrow).",
+                                "description": "F4 triggers Raycast File Search (⌘⇧Space)",
+                                "from": {
+                                    "key_code": "f4",
+                                    "modifiers": {
+                                        "mandatory": [],
+                                        "optional": []
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["left_command", "left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "Shift+F4 triggers Menu Search (⌃Space)",
+                                "from": {
+                                    "key_code": "f4",
+                                    "modifiers": {
+                                        "mandatory": ["shift"],
+                                        "optional": []
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "Option+F4 triggers Show Dock (⌃⇧↓)",
                                 "from": {
                                     "key_code": "f4",
                                     "modifiers": {
@@ -176,43 +226,18 @@
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "F4 triggers Help > Search (Ctrl+Space).",
+                                "description": "Ctrl+F4 triggers Emoji Picker (⌃⌘Space)",
                                 "from": {
                                     "key_code": "f4",
                                     "modifiers": {
-                                        "mandatory": [],
+                                        "mandatory": ["control"],
                                         "optional": []
                                     }
                                 },
                                 "to": [
                                     {
                                         "key_code": "spacebar",
-                                        "modifiers": ["left_control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.hegenberg\\.KeyboardCleanTool$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "description": "Shift+F4 triggers globe+ctrl+F2 (menu bar focus).",
-                                "from": {
-                                    "key_code": "f4",
-                                    "modifiers": {
-                                        "mandatory": ["shift"],
-                                        "optional": []
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f2",
-                                        "modifiers": ["left_control", "fn"]
+                                        "modifiers": ["left_control", "left_command"]
                                     }
                                 ],
                                 "type": "basic"
