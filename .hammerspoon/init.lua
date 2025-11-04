@@ -23,6 +23,7 @@ alwaysExcludeApps = {
 	['AppCleaner'] = true,
 	['Keka'] = true,
 	['Choosy'] = true,
+	['Homerow'] = true,
 };
 
 -- ==============================
@@ -71,10 +72,14 @@ fn = {
 		centerOnScreen = function( win )
 
 			if fn.window.windowIsMaximized( win ) then
+
+				hs.printf( 'Already maximized: ' .. win:application():name() ); -- Easy way to get app name in console.
 				return; -- The window is already maximized, don't do center.
 			end
 
 			if true ~= fn.window.isStandard( win ) then
+
+				hs.printf( 'Not a standard window: ' .. win:application():name() ); -- Easy way to get app name in console.
 				return; -- Only apply to standard windows.
 			end
 
@@ -84,8 +89,12 @@ fn = {
 			};
 
 			if ( excludeApps[ win:application():name() ] or alwaysExcludeApps[ win:application():name()] ) then
+
+				hs.printf( 'App excluded: ' .. win:application():name() ); -- Easy way to get app name in console.
 				return; -- The window should not be fucked with.
 			end
+
+			hs.printf( 'Centering: ' .. win:application():name() ); -- Easy way to get app name in console.
 
 			fn.window.beforeCenter( win );
 				hs.eventtap.keyStroke( { 'cmd', 'alt' }, 'space' ); -- Center by issuing the key combo for Rectangle Pro.
@@ -105,11 +114,9 @@ fn = {
 		-- FUNCTION: Set the window's size based on application.
 		setApplicationWindowSize = function( win )
 
-			if fn.window.windowIsMaximized( win ) then
-				return; -- The window is already maximized, don't do center.
-			end
-
 			if true ~= fn.window.isStandard( win ) then
+
+				hs.printf( '[Adjusting Window Size] Not a Standard Window: ' .. win:application():name() ); -- Easy way to get app name in console.
 				return; -- Only apply to standard windows.
 			end
 
@@ -119,6 +126,8 @@ fn = {
 			};
 
 			if ( excludeApps[ win:application():name() ] or alwaysExcludeApps[ win:application():name()] ) then
+
+				hs.printf( '[Adjusting Window Size] Excluded App: ' .. win:application():name() ); -- Easy way to get app name in console.
 				return; -- The window should not be fucked with.
 			end
 
@@ -161,14 +170,14 @@ fn = {
 				}
 			)[ win:application():name() ] or almostMaximized;
 
-			hs.printf( hs.inspect( win:application():name() ) );
-
 			-- Focus the window (in case the system has moved away for whatever reason)...
 			win:focus();
 
 				-- Trigger rectangle's combo for the app.
-				hs.eventtap.keyStroke( mapping.mods, mapping.key, 0 );
+			hs.eventtap.keyStroke( mapping.mods, mapping.key, 0 );
 			win:focus(); -- Focus again, in case the key combo moved windows.
+
+			hs.printf( 'Set window size of: ' .. win:application():name() ); -- Easy way to get app name in console.
 		end,
 
 		-- FUNCTION: A way to discover if a window is already maximized.
@@ -187,6 +196,8 @@ fn = {
 		hs.console.clearConsole();
 		hs.openConsole();
 		hs.reload();
+
+		hs.printf( 'Reloaded Config' ); -- Easy way to get app name in console.
 	end
 };
 
