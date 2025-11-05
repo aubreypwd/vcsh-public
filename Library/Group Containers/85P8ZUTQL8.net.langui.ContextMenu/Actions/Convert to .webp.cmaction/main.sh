@@ -1,1 +1,1 @@
-/opt/homebrew/bin/cwebp -q 80  "$@" -o "$@.webp"
+/opt/homebrew/bin/cwebp -q 100  "$@" -o "$@.webp"
