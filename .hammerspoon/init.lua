@@ -17,6 +17,7 @@ alwaysExcludeApps = {
 	['Hammerspoon'] = true,
 	['superwhisper'] = true,
 	['System Settings'] = true,
+	['Raycast'] = true,
 	['DockHelper'] = true,
 	['Itsycal'] = true,
 	['PastePal'] = true,
