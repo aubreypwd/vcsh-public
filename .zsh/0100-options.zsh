@@ -87,3 +87,10 @@ export WALK_REMOVE_CMD=trash
 
 # k6 Options
 export K6_SUMMARY_MODE=full
+
+# When using Quick Command, do not use color.
+if [ "$ITERM_PROFILE" = "Quick Command" ]; then
+	unset CLICOLOR
+	unset LSCOLORS
+	export NO_COLOR=1
+fi
