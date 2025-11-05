@@ -833,4 +833,5 @@
   "continue.enableNextEdit": false,
   "continue.enableTabAutocomplete": false,
   "continue.showInlineTip": false,
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
 }
