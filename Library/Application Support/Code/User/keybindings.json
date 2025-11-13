@@ -980,5 +980,17 @@
 	{
 		"key": "shift+cmd+e",
 		"command": "workbench.files.action.collapseExplorerFolders"
+	},
+	{
+		"key": "alt+s alt+t",
+		"command": "extension.surroundWithTag"
+	},
+	{
+		"key": "cmd+i",
+		"command": "-extension.surroundWithTag"
+	},
+	{
+		"key": "alt+s alt+p",
+		"command": "editor.action.surroundWithSnippet"
 	}
 ]
