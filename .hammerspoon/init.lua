@@ -25,6 +25,7 @@ alwaysExcludeApps = {
 	['Keka'] = true,
 	['Choosy'] = true,
 	['Homerow'] = true,
+	['Stickies'] = true,
 };
 
 -- ==============================
@@ -143,6 +144,7 @@ fn = {
 			-- App mapping.
 			local mapping = (
 				{
+					['Claude'] = fat,
 					['@aubreypwd'] = fat,
 					['Books'] = fat,
 					['Calendar'] = maximized,
@@ -159,6 +161,7 @@ fn = {
 					['Mastodon'] = fat,
 					['Messages'] = slim,
 					['Music'] = almostMaximized,
+					['Instagram'] = slim,
 					['News Explorer'] = medium,
 					['Notes'] = medium,
 					['Reminders'] = slim,
