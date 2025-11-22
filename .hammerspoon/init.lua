@@ -26,6 +26,8 @@ alwaysExcludeApps = {
 	['Choosy'] = true,
 	['Homerow'] = true,
 	['Stickies'] = true,
+	['Blankie'] = true,
+	['Rectangle'] = true,
 };
 
 -- ==============================
