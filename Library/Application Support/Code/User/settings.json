@@ -823,5 +823,7 @@
   "continue.showInlineTip": false,
   "workbench.editor.pinnedTabsOnSeparateRow": true,
   "html-css-class-completion.enableEmmetSupport": true,
-  "tailwindCSS.emmetCompletions": true
+  "tailwindCSS.emmetCompletions": true,
+  "editor.inlayHints.enabled": "off"
+
 }
