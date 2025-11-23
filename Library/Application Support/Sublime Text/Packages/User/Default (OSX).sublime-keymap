@@ -175,4 +175,13 @@
     // Move the CURRENT FILE (tab) to the neighboring pane with Cmd+Alt+Shift+[ / ]
     { "keys": ["super+alt+shift+["], "command": "move_to_neighboring_group", "args": { "forward": false } }, // move tab to pane on the left
     { "keys": ["super+alt+shift+]"], "command": "move_to_neighboring_group", "args": { "forward": true } },  // move tab to pane on the right
+
+    // Use g+r to go to the result when searching in files w/ keyboard (double-click in mouse).
+    {
+      "keys": ["alt+g", "alt+r"],
+      "command": "prev_result",
+      "context": [
+        { "key": "selector", "operator": "equal", "operand": "text.find-in-files" }
+      ]
+    }
 ]
