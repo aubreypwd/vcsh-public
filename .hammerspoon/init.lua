@@ -169,6 +169,7 @@ fn = {
 					['Reminders'] = slim,
 					['Safari'] = medium,
 					['Slack'] = medium,
+					['Sublime Text'] = maximized,
 					['TablePlus'] = medium,
 					['Twitter'] = slim,
 					['Voice'] = fat,
