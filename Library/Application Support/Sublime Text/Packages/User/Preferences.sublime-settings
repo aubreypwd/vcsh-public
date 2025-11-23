@@ -1,17 +1,90 @@
 {
+
+	// UI / Appearance
+	"adaptive_dividers": true,
+	"animation_enabled": false,
+	"auto_hide_menu": true,
+	"auto_hide_status_bar": false,
+	"auto_hide_tabs": false,
+	"bold_folder_labels": false,
+	"caret_extra_bottom": 0,
+	"caret_extra_top": 0,
+	"caret_extra_width": 0,
+	"caret_style": "phase",
+	"centurion_color_orange": true,
+	"color_scheme": "Packages/DarkMosquito Color Scheme/DarkMosquito.tmTheme",
+	"draw_indent_guides": true,
+	"draw_shadows": false,
+	"draw_white_space": "all",
+	"fade_fold_buttons": false,
+	"file_tab_style": "rounded",
+	"font_face": "Menlo",
+	// "font_face": "JetBrains Mono NL Regular",
+	"font_options":
+	[
+		// "gray_antialias",
+		// "no_round",
+		"no_bold",
+		"no_italic",
+		"no_liga",
+	],
+	"font_size": 12,
+	"gpu_window_buffer": false,
+	"gutter": true,
+	"hardware_acceleration": "opengl",
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"margin": 0,
+	"overlay_scroll_bars": "enabled",
+	"preview_on_click": true,
+	"ruler_width": 0.3,
+	"rulers":
+	[
+		50,
+		72,
+		80
+	],
+	"show_encoding": false,
+	"show_full_path": false,
+	"show_git_status": false,
+	"show_git_status_in_status_bar": false,
+	"show_indentation": false,
+	"show_line_endings": false,
+	"show_minimap": false,
+	"show_navigation_bar": false,
+	"show_only_filename": true,
+	"show_project_first": true,
+	"show_rel_path": true,
+	"show_spelling_errors": false,
+	"show_syntax": true,
+	"sidebar_font_small": true,
+	"spell_check": false,
+	"tab_size": 2,
+	"tabs_small": true,
+	"theme": "Delta.sublime-theme",
+	"tree_animation_enabled": false,
+	"ui_separator": true,
+
+	// Window / Startup / Tabs
+	"close_deleted_files": false,
+	"close_windows_when_empty": false,
+	"create_window_at_startup": false,
+	"enable_tab_scrolling": true,
 	"hide_sidebar_change_count_trigger": 5,
+	"hide_tab_scrolling_buttons": true,
+	"native_tabs": "system",
+	"open_files_in_new_window": "always",
+	"remember_full_screen": true,
+	"remember_layout": true,
 	"show_sidebar_on_activated": false,
-	"show_sidebar_on_save": false,
-	"show_sidebar_on_load": false,
-	"show_sidebar_on_new": false,
 	"show_sidebar_on_clone": true,
 	"show_sidebar_on_close": true,
-	"adaptive_dividers": true,
-	"allow_git_home_dir": false,
+	"show_sidebar_on_load": false,
+	"show_sidebar_on_new": false,
+
+	// Editing Behavior
 	"always_prompt_for_file_reload": false,
-	"always_show_minimap_viewport": false,
-	"ancestor_gutter": true,
-	"animation_enabled": false,
+	"auto_complete": true,
 	"auto_complete_commit_on_tab": true,
 	"auto_complete_include_snippets": true,
 	"auto_complete_include_snippets_when_typing": true,
@@ -22,105 +95,82 @@
 	"auto_complete_use_index": true,
 	"auto_complete_with_fields": false,
 	"auto_find_in_selection": true,
-	"auto_hide_menu": true,
-	"auto_hide_status_bar": false,
-	"auto_hide_tabs": false,
 	"auto_indent": true,
-	"bold_folder_labels": false,
-	"caret_extra_bottom": 0,
-	"caret_extra_top": 0,
-	"caret_extra_width": 0,
-	"caret_style": "phase",
-	"centurion_color_orange": true,
-	"close_deleted_files": false,
-	"close_windows_when_empty": false,
-	"color_scheme": "Packages/DarkMosquito Color Scheme/DarkMosquito.tmTheme",
-	"console_max_history_lines": 100,
 	"copy_with_empty_selection": true,
-	"create_window_at_startup": false,
 	"default_line_ending": "unix",
 	"detect_indentation": false,
 	"drag_text": false,
-	"draw_indent_guides": true,
-	"draw_shadows": false,
-	"draw_white_space": "all",
-	"enable_tab_scrolling": true,
 	"ensure_newline_at_eof_on_save": true,
-	"hide_tab_scrolling_buttons": true,
-	"fade_fold_buttons": false,
-	"fallback_encoding": "UTF-16",
-	"file_tab_style": "rounded",
-	// "font_face": "JetBrains Mono NL Regular",
-	"font_face": "Menlo",
-	"font_size": 12,
-	"gpu_window_buffer": false,
-	"gutter": true,
-	"hardware_acceleration": "opengl",
-	"highlight_line": true,
-	"highlight_modified_tabs": true,
-	"hot_exit": true,
+	"highlight_selection": true,
 	"indent_to_bracket": true,
-	"index_exclude_gitignore": false,
-	"index_files": true,
-	// "index_workers": 8,
 	"line_padding_bottom": 0,
 	"line_padding_top": 1,
 	"live_matching": true,
-	"margin": 0,
-	"match_brackets" : true,
-	"match_brackets_angle" : true,
-	"match_brackets_braces" : true,
-	"match_brackets_content" : true,
-	"match_brackets_square" : true,
-	"match_selection" : true,
-	"match_tags" : true,
+	"match_brackets": true,
+	"match_brackets_angle": true,
+	"match_brackets_braces": true,
+	"match_brackets_content": true,
+	"match_brackets_square": true,
+	"match_selection": true,
+	"match_tags": true,
 	"matching_scope": "invalid",
-	"mde.auto_fold_link.enabled": false,
-	"mini_diff": true,
-	"native_tabs": "system",
-	"open_files_in_new_window": "always",
-	"ours_gutter": true,
-	"overlay_scroll_bars": "enabled",
-	"preview_on_click": true,
-	"reload_file_on_change": true,
-	"remember_full_screen": true,
-	"remember_layout": true,
 	"scroll_past_end": true,
 	"shift_tab_unindent": true,
-	"show_definitions": true,
-	"show_full_path": false,
-	"show_git_status": false,
-	"show_git_status_in_status_bar": false,
-	"show_encoding": false,
-	"show_line_endings": false,
-	"show_indentation": false,
-	"show_syntax": true,
-	"show_minimap": false,
-	"show_navigation_bar": false,
-	"show_spelling_errors": false,
-	"show_only_filename": true,
-	"show_project_first": true,
-	"show_rel_path": true,
 	"show_tab_close_buttons": true,
 	"show_tab_close_buttons_on_left": true,
-	"sidebar_font_small": true,
-	"spell_check": false,
-	"sublime_merge_path": null,
+	"sub_word_separators": "",
 	"tab_completion": false,
-	"tab_size": 2,
-	"tabs_small": true,
-	"theirs_gutter": true,
-	"theme": "Delta.sublime-theme",
 	"translate_tabs_to_spaces": false,
-	"tree_animation_enabled": false,
 	"trim_automatic_white_space": true,
 	"trim_only_modified_white_space": true,
 	"trim_trailing_white_space_on_save": "all",
-	"ui_separator": true,
-	"update_check": true,
-	"use_simple_full_screen": true,
 	"use_tab_stops": false,
 	"word_wrap": false,
+
+	// Vintage Mode
+	"relative_line_numbers": true,
+	"vintage_ctrl_keys": true,
+	"vintage_start_in_command_mode": true,
+	"vintage_use_clipboard": false,
+
+	// Indexing / Search
+	"allow_git_home_dir": false,
+	"ancestor_gutter": true,
+	"file_exclude_patterns":
+	[
+		"._*",
+		".DS_Store"
+	],
+	"folder_exclude_patterns":
+	[
+	],
+	"index_exclude_gitignore": false,
+	"index_exclude_patterns":
+	[
+		"*.gif",
+		"*.jpg",
+		"*.png",
+		"*.webp",
+		"*.zip",
+		"*.log",
+		"*.min.*"
+	],
+	"index_files": true,
+	// "index_workers": 8,
+
+	// Git / Merge
+	"ours_gutter": true,
+	"theirs_gutter": true,
+
+	// Build / Console
+	"console_max_history_lines": 100,
+	"fallback_encoding": "UTF-16",
+	"hot_exit": true,
+
+	// External Tools / Paths
+	"sublime_merge_path": null,
+
+	// Added Words
 	"added_words":
 	[
 		"admin",
@@ -205,8 +255,17 @@
 		"globals",
 		"env",
 		"usr",
-		"invisibles",
+		"invisibles"
 	],
+
+	// Ignored Words
+	"ignored_words":
+	[
+		"atts",
+		"formatters"
+	],
+
+	// File Patterns
 	"binary_file_patterns":
 	[
 		"*.dds",
@@ -241,66 +300,27 @@
 		"debug.log",
 		"logs/*",
 		"node_modules/*",
-		"vendor/*",
+		"vendor/*"
 	],
-	"file_exclude_patterns":
-	[
-		// "*.min.*",
-		"._*",
-		".DS_Store",
-	],
-	"folder_exclude_patterns":
-	[
-		".php*/",
-		// "node_modules/",
-		// "vendor/",
-	],
-	"font_options":
-	[
-		"no_bold",
-		"no_italic",
-		// "gray_antialias",
-		"no_liga",
-		// "no_round"
-	],
+
+	// Disabled Packages
 	"ignored_packages":
 	[
 		"LSP-eslint",
 		"SublimeLinter-php",
-		// "Vintage",
+		// "Vintage"
 	],
-	"ignored_words":
-	[
-		"atts",
-		"formatters",
-	],
+
+	// Indenting.
 	"indent_guide_options":
 	[
 		"draw_normal",
 		"draw_active",
-		"draw_active_single",
+		"draw_active_single"
 	],
-	"index_exclude_patterns":
-	[
-		"*.gif",
-		"*.jpg",
-		"*.png",
-		"*.webp",
-		"*.zip",
-		"*.log",
-		"*.min.*",
-	],
-	"rulers":
-	[
-		50, // Commit subjects.
-		72, // Commit comments.
-		80, // Normal rulers.
-	],
-	"ruler_width": 0.3,
-	"vintage_start_in_command_mode": true,
-	"vintage_use_clipboard": false,
-	"vintage_ctrl_keys": true,
-	"auto_complete": true,
-	// "relative_line_numbers": true,
-	"sub_word_separators": "",
+
+	// Misc
+	"reload_file_on_change": true,
+	"update_check": true,
+	"use_simple_full_screen": true
 }
