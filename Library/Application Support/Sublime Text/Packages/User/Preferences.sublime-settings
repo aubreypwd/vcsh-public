@@ -267,7 +267,7 @@
 	[
 		"LSP-eslint",
 		"SublimeLinter-php",
-		"Vintage",
+		// "Vintage",
 	],
 	"ignored_words":
 	[
