@@ -1,0 +1,42 @@
+{
+	"folds":
+	{
+		"/Users/aubreypwd/Sites/affwp-dev/wp-content/plugins/affiliatewp-affiliate-portal/includes/lib/affwp/class-affiliatewp-requirements-check-v1-1.php":
+		{
+			"0xeed470ee":
+			[
+				[
+					9,
+					315
+				],
+				[
+					386,
+					574
+				]
+			]
+		},
+	},
+	"selections":
+	{
+		"/Users/aubreypwd/Library/Mobile Documents/com~apple~CloudDocs/Application Support/Sublime Text/Packages/User/Default (OSX).sublime-keymap":
+		{
+			"0x1528e7":
+			[
+				[
+					3379,
+					3379
+				]
+			],
+		},
+		"/Users/aubreypwd/Sites/affwp-dev/wp-content/plugins/affiliatewp-affiliate-portal/includes/lib/affwp/class-affiliatewp-requirements-check-v1-1.php":
+		{
+			"0xeed470ee":
+			[
+				[
+					574,
+					574
+				]
+			]
+		},
+	},
+}

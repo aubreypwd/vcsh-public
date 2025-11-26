@@ -309,6 +309,7 @@
 		"LSP-eslint",
 		"SublimeLinter-php",
 		// "Vintage"
+/*"Tailwind CSS",*/
 	],
 
 	// Indenting.
@@ -322,5 +323,5 @@
 	// Misc
 	"reload_file_on_change": true,
 	"update_check": true,
-	"use_simple_full_screen": true
+	"use_simple_full_screen": true,
 }

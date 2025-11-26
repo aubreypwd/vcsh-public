@@ -1,0 +1,7 @@
+// overrides settings in ProjectAndWorkspaceManagement/ProjectAndWorkspaceManagement.sublime-settings
+{
+	"workspaces_subpath": ".sublime-workspaces",
+	"default_project_path": "<project_name>",
+	"default_gitignore_file_text": "\n#sublime text files\n.sublime-workspaces/\n",
+	"default_project_file_text": "{\n\t\"folders\": [\n\t\t{\n\t\t\t\"path\": \".\",\n\t\t\t\"folder_exclude_patterns\": [\".sublime-workspaces\"]\n\t\t}\n\t]\n}",
+}
