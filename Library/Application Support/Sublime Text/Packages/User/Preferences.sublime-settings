@@ -324,4 +324,5 @@
 	"reload_file_on_change": true,
 	"update_check": true,
 	"use_simple_full_screen": true,
+	"show_color_previews": false,
 }
