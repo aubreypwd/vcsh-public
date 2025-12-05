@@ -8,13 +8,118 @@
 // from the command palette or from `Zed` application menu.
 {
   // "theme": "Andromeda",
-  "theme": "macOS Classic Dark2",
+  "languages": {
+    "HTML": {
+      "jsx_tag_auto_close": {
+        "enabled": true
+      }
+    }
+  },
+  "toolbar": {
+    "breadcrumbs": true
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Colored Zed Icons Theme Dark"
+  },
+  "gutter": {
+    "min_line_number_digits": 2
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "lsp_document_colors": "inlay",
+  "inlay_hints": {
+    "show_background": false,
+    "show_other_hints": true,
+    "show_parameter_hints": true,
+    "show_value_hints": true,
+    "show_type_hints": true,
+    "enabled": true
+  },
+  "use_on_type_format": true,
+  "format_on_save": "off",
+  "auto_update": true,
+  "audio": {
+    "experimental.auto_speaker_volume": true
+  },
+  "git": {
+    "inline_blame": {
+      "delay_ms": 0
+    },
+    "blame": {
+      "show_avatar": false
+    }
+  },
+  "agent": {
+    "button": false,
+    "model_parameters": []
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "project_panel": {
+    "hide_root": false,
+    "entry_spacing": "comfortable"
+  },
+  "preview_tabs": {
+    "enable_preview_from_code_navigation": true,
+    "enable_preview_from_file_finder": true
+  },
+  "status_bar": {
+    "cursor_position_button": false
+  },
+  "terminal": {
+    "button": false
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_user_picture": false,
+    "show_onboarding_banner": false,
+    "show_project_items": false,
+    "show_branch_name": false,
+    "show_sign_in": false
+  },
+  "show_whitespaces": "all",
+  "use_system_window_tabs": false,
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": true
+  },
+  "tabs": {
+    "show_diagnostics": "off",
+    "show_close_button": "hover",
+    "git_status": false,
+    "close_position": "left",
+    "file_icons": false
+  },
+  "hard_tabs": true,
+  "when_closing_with_no_tabs": "platform_default",
+  "ui_font_weight": 400.0,
+  "ui_font_size": 16.0,
+  "ui_font_family": ".SystemUIFont",
+  "buffer_font_weight": 450.0,
+  "disable_ai": true,
+  "theme": "VSCode Dark Polished",
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
   "base_keymap": "SublimeText",
-  "buffer_font_size": 12,
-  "buffer_font_family": "Jetbrains Mono",
-  "tab_size": 2
+  "buffer_font_size": 13.0,
+  "buffer_font_family": "Menlo",
+  "tab_size": 2,
+  "theme_overrides": {
+  	"VSCode Dark Polished": {
+   		"title_bar.background": "#333334",
+     	"tab.active_background": "#1f1f1f",
+      "toolbar.background": "#1f1f1f",
+      "syntax": {
+	     	"comment": {
+		      "color": "#808080"
+				}
+      }
+   	}
+  }
 }
