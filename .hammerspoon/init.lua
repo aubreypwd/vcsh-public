@@ -28,6 +28,7 @@ alwaysExcludeApps = {
 	['Stickies'] = true,
 	['Blankie'] = true,
 	['Rectangle'] = true,
+	['Ice'] = true,
 };
 
 -- ==============================
