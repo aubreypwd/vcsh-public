@@ -59,7 +59,7 @@ alias unhide="chflags nohidden"
 alias browse="carbonyl --zoom=50"
 
 # Habit of using code => subl
-alias code="$VISUAL" # Bad habits break hard.
+# alias code="$VISUAL" # Bad habits break hard.
 # alias edit="$EDITOR" # In-terminal editor.
 alias edit="$VISUAL" # Graphical editor.
 
