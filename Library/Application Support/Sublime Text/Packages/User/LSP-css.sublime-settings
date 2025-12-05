@@ -2,11 +2,7 @@
 
 {
 	"settings": {
-		"css.lint.unknownAtRules": "ignore"
+		"css.lint.unknownAtRules": "ignore",
 	},
-	"disabled_capabilities": {
-		"colorProvider": true,
-		"ColorHelper": true,
-		"Color Highlighter": true,
-	},
+	"enabled": true,
 }

@@ -102,7 +102,7 @@
 	"drag_text": false,
 	"ensure_newline_at_eof_on_save": true,
 	"highlight_selection": true,
-	"indent_to_bracket": true,
+	"indent_to_bracket": false, // Why the fuck would I ever want this on?
 	"line_padding_bottom": 0,
 	"line_padding_top": 1,
 	"live_matching": true,
@@ -128,7 +128,7 @@
 	"word_wrap": false,
 
 	// Vintage Mode
-	"relative_line_numbers": true,
+	// "relative_line_numbers": true,
 	"vintage_ctrl_keys": true,
 	"vintage_start_in_command_mode": true,
 	"vintage_use_clipboard": false,
@@ -306,10 +306,12 @@
 	// Disabled Packages
 	"ignored_packages":
 	[
+		"AlpineJS",
+		"JSHint Gutter",
 		"LSP-eslint",
+		"SublimeLinter-jshint",
 		"SublimeLinter-php",
-		// "Vintage"
-/*"Tailwind CSS",*/
+		"Vintage",
 	],
 
 	// Indenting.
