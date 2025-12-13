@@ -131,7 +131,6 @@
   "debug.toolBarLocation": "docked",
 
   // Editor settings
-  "editor.autoIndent": "full",
   "editor.autoIndentOnPaste": true,
   "editor.colorDecoratorsActivatedOn": "click",
   "editor.cursorStyle": "line-thin",
