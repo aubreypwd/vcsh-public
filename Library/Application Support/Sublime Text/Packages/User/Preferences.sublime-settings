@@ -312,6 +312,7 @@
 		"SublimeLinter-jshint",
 		"SublimeLinter-php",
 		"Vintage",
+		"Xdebug Client",
 	],
 
 	// Indenting.
