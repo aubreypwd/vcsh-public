@@ -136,18 +136,26 @@
     { "keys": ["alt+w", "c"], "command": "close_window" },  /* Close Window */
     // { "keys": ["super+q"], "command": "close_window" },  /* Close Window */
 
+    /* Debugger: https://packagecontrol.io/packages/Debugger */
+    { "keys": ["alt+d", "alt+o"], "command": "debugger", "args": { "action": "open" } },
+    { "keys": ["alt+d", "alt+q"], "command": "debugger", "args": { "action": "quit" } },
+    { "keys": ["alt+d", "alt+s"], "command": "debugger", "args": { "action": "start" } },
+    { "keys": ["alt+d", "alt+x"], "command": "debugger", "args": { "action": "stop" } },
+    { "keys": ["alt+d", "alt+f"], "command": "debugger", "args": { "action": "continue" } },
+    { "keys": ["alt+d", "alt+i"], "command": "debugger", "args": { "action": "input_command" } },
+    { "keys": ["alt+d", "alt+k"], "command": "debugger", "args": { "action": "clear_breakpoints" } },
+    { "keys": ["alt+d", "alt+w"], "command": "debugger", "args": { "action": "add_watch_expression" } },
+    { "keys": ["alt+d", "alt+l"], "command": "debugger", "args": { "action": "lldb_display" } },
+
     /* Vintage */
     {"keys": [ "g", "t" ], "command": "next_view", "context": [ {"key": "setting.command_mode"} ] },
     {"keys": [ "g", "n" ], "command": "focus_side_bar", "context": [{"key": "setting.command_mode"}]},
     {"keys": [ "v", "p" ], "command": "expand_selection_to_paragraph", "context": [{"key": "setting.command_mode"}]},
     {"keys": ["ctrl+j"], "command": "select_lines", "args": {"forward": true}},
     {"keys": ["ctrl+k"], "command": "select_lines", "args": {"forward": false}},
-
     {"keys": [ ",", "," ], "command": "show_overlay", "args": { "overlay": "command_palette" }, "context": [ { "key": "setting.command_mode" } ] }, // Leader, or command pallet.
-
     {"keys": [ ",", "t", "m" ], "command": "toggle_bookmark", "context": [ { "key": "setting.command_mode" } ] }, // Toggle Mark
     {"keys": [ ",", "v", "m" ], "command": "view_bookmarks", "context": [ { "key": "setting.command_mode" } ] }, // View all Marks
-
     { "keys": [",", "x", ","], "command": "xdebug_settings", "context": [ { "key": "setting.command_mode" } ] },  /* Settings */
     { "keys": [",", "x", "b"], "command": "xdebug_breakpoint", "context": [ { "key": "setting.command_mode" } ] },  /* Add Breakpoint */
     { "keys": [",", "x", "k"], "command": "xdebug_clear_all_breakpoints", "context": [ { "key": "setting.command_mode" } ] },  /* Clear All Breakpoints */
