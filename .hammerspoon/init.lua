@@ -20,6 +20,7 @@ alwaysExcludeApps = {
 	['Raycast'] = true,
 	['DockHelper'] = true,
 	['Itsycal'] = true,
+	['Instagram'] = true,
 	['PastePal'] = true,
 	['AppCleaner'] = true,
 	['Keka'] = true,
@@ -167,6 +168,7 @@ fn = {
 					['Instagram'] = slim,
 					['News Explorer'] = medium,
 					['Notes'] = medium,
+					['Passwords'] = fat,
 					['Reminders'] = slim,
 					['Safari'] = medium,
 					['Slack'] = medium,
@@ -245,3 +247,19 @@ hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
 
 -- Disable CMD+Q on Apps.
 -- hs.hotkey.bind( {'cmd' }, 'q', fn.doNothing );
+
+-- Self-contained function that sets up an "idle minimize" watcher
+-- Call this once (e.g., in your init.lua) to start it.
+-- Example:
+--   local idleWatcher = startIdleMinimizeWatcher(60, 3)
+
+-- Self-contained per-window inactivity minimizer for Hammerspoon
+-- Any window that is inactive (no keyboard/mouse activity "associated" with it)
+-- for idleThreshold seconds will be minimized.
+--
+-- Usage (in init.lua):
+--   windowIdleMin = startPerWindowIdleMinimizer(10, 1)
+--   -- 10 = idle threshold in seconds
+--   -- 1  = how often we scan windows in seconds
+
+-- Minimizes any non-minimized window after 10 seconds of inactivity (no focus).
