@@ -63,6 +63,8 @@ alias browse="carbonyl --zoom=50"
 # alias edit="$EDITOR" # In-terminal editor.
 alias edit="$VISUAL" # Graphical editor.
 
+alias jekyll="bundle exec jekyll"
+
 if [ "$ITERM_PROFILE" = "Quick Command" ]; then
 	alias vim='vim -u NONE -U NONE --noplugin +"syntax off" +"set notermguicolors"'
 fi
