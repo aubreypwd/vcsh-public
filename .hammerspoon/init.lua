@@ -138,12 +138,12 @@ fn = {
 			end
 
 			-- Rectangle key combos.
-			local maximized       = { mods = { 'cmd', 'alt' }, key = '0' };
-			local max             = { mods = { 'cmd', 'alt', 'shift' }, key = '9' };
-			local medium          = { mods = { 'cmd', 'alt' }, key = '9' };
-			local almostMaximized = { mods = { 'cmd', 'alt' }, key = '8' };
-			local fat             = { mods = { 'cmd', 'alt', 'shift' }, key = '7' };
 			local slim            = { mods = { 'cmd', 'alt' }, key = '7' };
+			local fat             = { mods = { 'cmd', 'alt', 'shift' }, key = '7' };
+			local almostMaximized = { mods = { 'cmd', 'alt' }, key = '8' };
+			local medium          = { mods = { 'cmd', 'alt' }, key = '9' };
+			local max             = { mods = { 'cmd', 'alt', 'shift' }, key = '9' };
+			local maximized       = { mods = { 'cmd', 'alt' }, key = '0' };
 
 			-- App mapping.
 			local mapping = (
@@ -151,7 +151,7 @@ fn = {
 					['Claude'] = fat,
 					['@aubreypwd'] = fat,
 					['Books'] = fat,
-					['Calendar'] = maximized,
+					['Calendar'] = max,
 					['ChatGPT'] = fat,
 					['Code'] = maximized,
 					['Facebook'] = fat,
@@ -175,7 +175,9 @@ fn = {
 					['Sublime Text'] = maximized,
 					['TablePlus'] = medium,
 					['Twitter'] = slim,
+					['PageSpeed Insights'] = slim,
 					['Voice'] = fat,
+					['WhatsApp'] = fat,
 					['YouTube'] = max,
 				}
 			)[ win:application():name() ] or almostMaximized;
