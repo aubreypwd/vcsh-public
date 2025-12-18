@@ -8,7 +8,10 @@
 #items .ytd-guide-section-renderer:nth-child(2), /* Desktop */
 #app ytm-pivot-bar-renderer ytm-pivot-bar-item-renderer:nth-child(2) /* Mobile */
 #items a[title="Home"],
-#items a[title="Shorts"]
+#items a[title="Shorts"],
+
+/* Hides shorts navigation: scroll. */
+.navigation-container.style-scope.ytd-shorts
 { 
     display: none !important;
 }
