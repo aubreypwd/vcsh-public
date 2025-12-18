@@ -307,12 +307,12 @@
 	"ignored_packages":
 	[
 		"AlpineJS",
+		"Debugger",
 		"JSHint Gutter",
 		"LSP-eslint",
 		"SublimeLinter-jshint",
 		"SublimeLinter-php",
 		"Vintage",
-		"Xdebug Client",
 	],
 
 	// Indenting.
