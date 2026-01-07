@@ -30,6 +30,9 @@ alwaysExcludeApps = {
 	['Blankie'] = true,
 	['Rectangle'] = true,
 	['Ice'] = true,
+	['Find Any File'] = true,
+	['UTM'] = true,
+	['Good Task'] = true,
 };
 
 -- ==============================
@@ -149,11 +152,12 @@ fn = {
 			local mapping = (
 				{
 					['Claude'] = fat,
+					['Contacts'] = fat,
 					['@aubreypwd'] = fat,
 					['Books'] = fat,
 					['Calendar'] = max,
 					['ChatGPT'] = fat,
-					['Code'] = maximized,
+					['Code'] = max,
 					['Facebook'] = fat,
 					['Finder'] = almostMaximized,
 					['Freedcamp'] = fat,
@@ -179,6 +183,7 @@ fn = {
 					['Voice'] = fat,
 					['WhatsApp'] = fat,
 					['YouTube'] = max,
+					['Voice Memos'] = slim,
 				}
 			)[ win:application():name() ] or almostMaximized;
 
@@ -265,3 +270,53 @@ hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
 --   -- 1  = how often we scan windows in seconds
 
 -- Minimizes any non-minimized window after 10 seconds of inactivity (no focus).
+
+
+local spaces = require("hs.spaces")
+local last = {}
+
+-- ===============================================================================================
+-- When activating an application, if the current space does not have a window, open a new window.
+-- ===============================================================================================
+
+-- Watch for new applications being launched.
+appActivateWatcher = hs.application.watcher.new( function (_, e, app)
+
+	-- Only react when an application becomes the active/focused application.
+	if e ~= hs.application.watcher.activated or not app then return end
+
+	-- Get the currently focused Space (Desktop). If we can’t, bail out safely.
+	local sid = spaces.focusedSpace()
+
+	if not sid then return end
+
+	-- Check whether the activated app already has a *standard* (normal) window on the currently focused Space.
+	for _, w in ipairs( app:allWindows() ) do
+
+		-- Ignore weird/non-window UI elements and minimized windows.
+		if w:isStandard() and not w:isMinimized() then
+
+			-- A window can belong to one or more Spaces; compare to the focused Space id.
+			for _, wsid in ipairs( spaces.windowSpaces(w:id()) or {} ) do
+
+				-- If we find any qualifying window on this Space, do nothing.
+				if wsid == sid then return end
+			end
+		end
+	end
+
+	-- If we got here: the app is active, but it has no standard non-minimized window on this Space, so we create a new one.
+
+	-- Debounce: prevent opening multiple windows if activation fires repeatedly.
+	local n, t = app:name(), hs.timer.secondsSinceEpoch()
+	if last[n] and t - last[n] < 0.7 then return end
+	last[n] = t
+
+	-- Prefer selecting the menu item (more reliable than keystrokes if available)—fallback to Cmd+N if the menu item path isn’t found / doesn’t work.
+	if not app:selectMenuItem( { "File", "New Window" } ) then
+		hs.eventtap.keyStroke( { "cmd" }, "n", 0, app )
+	end
+end )
+
+-- Start the watcher so it runs continuously.
+appActivateWatcher:start()
