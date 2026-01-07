@@ -229,7 +229,7 @@
 		<key>behaviourArgument</key>
 		<dict>
 			<key>path</key>
-			<string>/Users/aubreypwd/Applications/Google Drive.app</string>
+			<string>/Users/aubreypwd/Applications/Unite Apps/Google Drive.app</string>
 			<key>type</key>
 			<string>ChoosyBrowser</string>
 		</dict>
@@ -365,7 +365,7 @@
 		<key>behaviourArgument</key>
 		<dict>
 			<key>path</key>
-			<string>/Users/aubreypwd/Applications/Unite Apps/GitHub.app</string>
+			<string>/Users/aubreypwd/Applications/Unite Apps/Github.app</string>
 			<key>type</key>
 			<string>ChoosyBrowser</string>
 		</dict>
