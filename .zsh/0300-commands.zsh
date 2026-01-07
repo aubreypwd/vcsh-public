@@ -58,11 +58,7 @@ alias unhide="chflags nohidden"
 # Browser in the terminal
 alias browse="carbonyl --zoom=50"
 
-# Habit of using code => subl
-# alias code="$VISUAL" # Bad habits break hard.
-# alias edit="$EDITOR" # In-terminal editor.
 alias edit="$VISUAL" # Graphical editor.
-
 alias jekyll="bundle exec jekyll"
 
 if [ "$ITERM_PROFILE" = "Quick Command" ]; then
@@ -1013,105 +1009,6 @@ comment () {
 }
 
 ###
- # Update Dotfiles
- #
- # @usage <command> "Message to leave in the backup file comments."
- #
- # @since Sunday, November 24, 2024
- #/
-udf () {
-
-	# Ensure the file list exists.
-	if [[ ! -f $DOTFILES_FILE_LIST ]]; then
-		touch "$DOTFILES_FILE_LIST"
-		chflags hidden "$DOTFILES_FILE_LIST" # Make sure the file list is hidden.
-	fi
-
-	# Ensure the backup directory exists.
-	mkdir -p "$DOTFILES_BAK_DIR"
-
-	COMMENT="$1"
-
-	# Create a timestamped archive name.
-	TIMESTAMP=$(date +"%m-%d-%Y-%I-%M-%S%p" | tr '[:upper:]' '[:lower:]')
-	DOTFILES_ARCHIVE="$DOTFILES_BAK_DIR/Dotfiles-$TIMESTAMP.zip"
-
-	# Initialize an array for log messages and files to add to the ZIP.
-	LOG_MESSAGES=()
-	FILES_TO_ZIP=()
-
-	# Process each entry in the file list.
-	while IFS= read -r FILE || [[ -n $FILE ]]; do
-
-		# Skip empty lines or lines starting with #.
-		[[ -z $FILE || $FILE == \#* ]] && continue
-
-		# Expand the entry (handles glob patterns, directories, and single files).
-		IFS=$'\n' EXPANDED_FILES=($(eval echo "$FILE"))
-
-		for CLEAN_FILE in "${EXPANDED_FILES[@]}"; do
-			if [[ -f $CLEAN_FILE ]]; then
-				FILES_TO_ZIP+=("$CLEAN_FILE") # Add file to the ZIP list.
-				LOG_MESSAGES+=("[Info] Added file: $CLEAN_FILE")
-			elif [[ -d $CLEAN_FILE ]]; then
-				# Recursively add all files in the directory.
-				while IFS= read -r -d '' SUBFILE; do
-					FILES_TO_ZIP+=("$SUBFILE")
-				done < <(find "$CLEAN_FILE" -type f -print0)
-				LOG_MESSAGES+=("[Info] Added directory contents: $CLEAN_FILE")
-			else
-				LOG_MESSAGES+=("[Error] Skipped invalid path or unmatched glob: $CLEAN_FILE.")
-			fi
-		done
-	done < "$DOTFILES_FILE_LIST"
-
-	echo "\nBacking up dotfiles to $DOTFILES_ARCHIVE archive...\n"
-
-	# Add files to the ZIP archive.
-	if [[ ${#FILES_TO_ZIP[@]} -eq 0 ]]; then
-		LOG_MESSAGES+=("[Error] No files to add to the ZIP archive. Update $DOTFILES_FILE_LIST.")
-	else
-		if zip -vr9 -FS "$DOTFILES_ARCHIVE" "${FILES_TO_ZIP[@]}"; then
-			LOG_MESSAGES+=("[Success] Files successfully added to ZIP archive: $DOTFILES_ARCHIVE.")
-		else
-			LOG_MESSAGES+=("[Error] Failed to add files to ZIP archive.")
-			return 1
-		fi
-	fi
-
-	# Add file comment on the update.
-	comment "$DOTFILES_ARCHIVE" "$COMMENT"
-
-	# Ensure the symlink directory exists.
-	mkdir -p "$DOTFILES_SYMLINK_DIR"
-
-	echo "\nCreating dotfile symlinks in $DOTFILES_SYMLINK_DIR/** for easy dotfiles management...\n"
-
-	rm -Rf "$DOTFILES_SYMLINK_DIR" # Delete so we can re-build.
-
-	# Create symlinks after zipping.
-	for FILE in "${FILES_TO_ZIP[@]}"; do
-
-		RELATIVE_PATH="${FILE#$HOME/}" # Remove $HOME prefix.
-		TARGET_PATH="$DOTFILES_SYMLINK_DIR/$RELATIVE_PATH" # Destination symlink path.
-
-		# Ensure the target directory exists.
-		mkdir -p "$(dirname "$TARGET_PATH")"
-
-		# Create the symlink.
-		ln -sf "$FILE" "$TARGET_PATH" && \
-			LOG_MESSAGES+=("[Success] Symlinked $FILE > $TARGET_PATH")
-		done
-
-	# Echo all log messages at the end.
-	for MESSAGE in "${LOG_MESSAGES[@]}"; do
-		echo "$MESSAGE"
-	done
-
-	echo "Done!"
-}
-
-###
  # Startup Operations
  #
  # @since Dec 14, 2023
@@ -1299,7 +1196,7 @@ econf () {
 		return 0
 	fi
 
-	"$VISUAL" "${CONFMAP[$1]}"
+	"$EDITOR" "${CONFMAP[$1]}"
 }
 
 # Convert Xdebug .xt to .svg flamegraph

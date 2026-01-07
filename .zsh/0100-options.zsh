@@ -8,11 +8,6 @@
  # shellcheck disable=SC2155
  ##
 
-export DOTFILES_FILE_LIST="$HOME/.Dotfiles.list" # Where you list all your dotfiles at.
-#export DOTFILES_ZIP_ARCHIVE="$HOME/iCloud/dotfiles.bak.zip" # Path to a ZIP archive where we can backup your dotfiles.
-export DOTFILES_BAK_DIR="$HOME/iCloud/Dotfiles" # Path to a ZIP archive where we can backup your dotfiles.
-export DOTFILES_SYMLINK_DIR="$HOME/Dotfiles" # A location where we can create symlinked versions of all your dotfiles for easy management.
-
 unsetopt INC_APPEND_HISTORY # Append history to new shells.
 unsetopt SHARE_HISTORY
 
@@ -37,7 +32,7 @@ else
 	export EDITOR='micro'
 fi
 
-export VISUAL="subl" # Visual Editor.
+export VISUAL="code" # Visual Editor.
 
 # export PAGER="highlight --out-format ansi --syntax=html --force --no-trailing-nl" # I can scroll and highlist
 export PAGER="cat" # Just use cat for now.
