@@ -823,6 +823,12 @@
   "workbench.editor.pinnedTabsOnSeparateRow": true,
   "html-css-class-completion.enableEmmetSupport": true,
   "tailwindCSS.emmetCompletions": true,
-  "editor.inlayHints.enabled": "off"
-
+  "editor.inlayHints.enabled": "off",
+  "liquid.engine": "standard",
+  "liquid.format.rules": {
+    "json": {
+      "braceAllman": true
+    }
+  },
+  "liquid.config.method": "workspace"
 }
