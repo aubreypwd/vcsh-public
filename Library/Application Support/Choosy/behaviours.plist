@@ -234,7 +234,7 @@
 			<string>ChoosyBrowser</string>
 		</dict>
 		<key>enabled</key>
-		<false/>
+		<true/>
 		<key>predicate</key>
 		<string>URL CONTAINS "docs.google.com" OR URL CONTAINS "drive.google.com"</string>
 		<key>title</key>
