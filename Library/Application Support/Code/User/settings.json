@@ -820,7 +820,6 @@
   "continue.enableNextEdit": false,
   "continue.enableTabAutocomplete": false,
   "continue.showInlineTip": false,
-  "workbench.editor.pinnedTabsOnSeparateRow": true,
   "html-css-class-completion.enableEmmetSupport": true,
   "tailwindCSS.emmetCompletions": true,
   "editor.inlayHints.enabled": "off",
@@ -830,5 +829,10 @@
       "braceAllman": true
     }
   },
-  "liquid.config.method": "workspace"
+  "liquid.config.method": "workspace",
+  "html.autoCreateQuotes": false,
+  "intelephense.shortOpenEchoAutoClose": false,
+  "html.autoClosingTags": false,
+  "editor.autoClosingDelete": "never",
+  "editor.autoClosingOvertype": "always"
 }

@@ -246,6 +246,7 @@
                     },
                     {
                         "description": "F3 (App Expose) Remappings",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
