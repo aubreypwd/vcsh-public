@@ -45,10 +45,12 @@
 
 font-family = Menlo-Regular
 font-size = 12
-font-thicken = 1
+font-thicken = 0
 cursor-style = bar
 cursor-style-blink = true
 
+# Background
+	background = #1e1e1e
 # Black
 	palette = 0=#2a2929
 # Red
@@ -65,7 +67,6 @@ cursor-style-blink = true
 	palette = 6=#ff9e36
 # White
 	palette = 7=#898989
-
 # Bright Black
 	palette = 8=#898989
 # Bright Red
@@ -83,8 +84,6 @@ cursor-style-blink = true
 # Bright White
 	palette = 15=#bdbabd
 
-background = #1e1e1e
-
 window-padding-x = 8
 window-padding-y = 4
 window-width = 189
@@ -92,3 +91,4 @@ window-height = 55
 window-save-state = never
 
 macos-titlebar-style = native
+macos-dock-drop-behavior = new-window
