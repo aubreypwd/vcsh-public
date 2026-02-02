@@ -1,0 +1,94 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /Users/aubreypwd/Library/Application Support/com.mitchellh.ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+# font-family = Iosevka
+# window-padding-x = 2
+# window-padding-y = 2
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+# # Any line beginning with a # is a comment. It's not possible to put
+# # a comment after a config option, since it would be interpreted as a
+# # part of the value. For example, this will have a value of "#123abc":
+# background = #123abc
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+
+font-family = Menlo-Regular
+font-size = 12
+font-thicken = 1
+cursor-style = bar
+cursor-style-blink = true
+
+# Black
+	palette = 0=#2a2929
+# Red
+	palette = 1=#ee534b
+# Green
+	palette = 2=#a1f7b5
+# Yellow
+	palette = 3=#ebf0ad
+# Blue
+	palette = 4=#9abadc
+# Magenta
+	palette = 5=#9a7fd5
+# Cyan
+	palette = 6=#ff9e36
+# White
+	palette = 7=#898989
+
+# Bright Black
+	palette = 8=#898989
+# Bright Red
+	palette = 9=#fe6666
+# Bright Green
+	palette = 10=#71c9c2
+# Bright Yellow
+	palette = 11=#d2c05a
+# Bright Blue
+	palette = 12=#5db0d7
+# Bright Magenta
+	palette = 13=#987dd2
+# Bright Cyan
+	palette = 14=#f29666
+# Bright White
+	palette = 15=#bdbabd
+
+background = #1e1e1e
+
+window-padding-x = 8
+window-padding-y = 4
+window-width = 189
+window-height = 55
+window-save-state = never
+
+macos-titlebar-style = native
