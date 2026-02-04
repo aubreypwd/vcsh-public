@@ -92,3 +92,5 @@ window-save-state = never
 
 macos-titlebar-style = native
 #macos-dock-drop-behavior = new-window # Not sure why this doesn't work.
+
+keybind = cmd+enter=unbind
