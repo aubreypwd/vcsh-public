@@ -834,5 +834,6 @@
   "intelephense.shortOpenEchoAutoClose": false,
   "html.autoClosingTags": false,
   "editor.autoClosingDelete": "never",
-  "editor.autoClosingOvertype": "always"
+  "editor.autoClosingOvertype": "always",
+  "telemetry.telemetryLevel": "off"
 }
