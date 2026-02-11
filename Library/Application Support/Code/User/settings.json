@@ -138,7 +138,7 @@
   "editor.dragAndDrop": false,
   "editor.emptySelectionClipboard": true,
   "editor.fontFamily": "Menlo",
-  "editor.fontSize": 12,
+  "editor.fontSize": 12.3,
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": true,
   "editor.insertSpaces": false,
