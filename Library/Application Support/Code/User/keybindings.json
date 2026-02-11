@@ -76,7 +76,7 @@
 		"when": "inEditorsPicker && inQuickOpen"
 	},
 	{
-		"key": "shift+cmd+t",
+		"key": "alt+f alt+f",
 		"command": "workbench.action.showAllEditors"
 	},
 	{
@@ -992,5 +992,13 @@
 	{
 		"key": "alt+s alt+p",
 		"command": "editor.action.surroundWithSnippet"
+	},
+	{
+		"key": "alt+[ alt+t",
+		"command": "editor.action.indentationToTabs"
+	},
+	{
+		"key": "alt+[ alt+s",
+		"command": "editor.action.indentationToSpaces"
 	}
 ]
