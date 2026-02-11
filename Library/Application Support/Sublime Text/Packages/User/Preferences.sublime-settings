@@ -18,7 +18,7 @@
 	"draw_white_space": "all",
 	"fade_fold_buttons": false,
 	"file_tab_style": "rounded",
-	"font_face": "Menlo",
+	"font_face": "Menlo Regular",
 	// "font_face": "JetBrains Mono NL Regular",
 	"font_options":
 	[
@@ -57,7 +57,7 @@
 	"show_rel_path": true,
 	"show_spelling_errors": false,
 	"show_syntax": true,
-	"sidebar_font_small": true,
+	"sidebar_font_small": false,
 	"spell_check": false,
 	"tab_size": 2,
 	"tabs_small": true,
