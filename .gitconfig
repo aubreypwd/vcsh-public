@@ -75,8 +75,8 @@
 	signingkey = 8691F6F5E25C5E23
 
 [core]
+	editor    = "micro" # For git always use in-terminal editor.
 	excludesfile  = "$HOME/.gitignore"
-	editor    = "$EDITOR"
 	hooksPath = "$HOME/.githooks"
 	# editor        = "micro --clipboard external --infobar false --keepautoindent false --savecursor false --diffgutter false --colorcolumn 72 --ruler false --softwrap true --wordwrap true --eofnewline false --rmtrailingws true"
 	# editor        = open -W -a 'CommitEdit'
