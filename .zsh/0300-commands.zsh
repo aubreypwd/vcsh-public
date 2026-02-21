@@ -59,7 +59,7 @@ alias unhide="chflags nohidden"
 alias browse="carbonyl --zoom=50"
 
 alias edit="$VISUAL" # Graphical editor.
-alias jekyll="bundle exec jekyll"
+#alias jekyll="bundle exec jekyll"
 
 if [ "$ITERM_PROFILE" = "Quick Command" ]; then
 	alias vim='vim -u NONE -U NONE --noplugin +"syntax off" +"set notermguicolors"'
@@ -1186,6 +1186,7 @@ econf () {
 		php    "$HOME/.config/php/conf.d"
 		hs     "$HOME/.hammerspoon/init.lua"
 		git    "$HOME/.gitconfig"
+		gh     "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 	)
 
 	if [ -z "$1" ]; then
