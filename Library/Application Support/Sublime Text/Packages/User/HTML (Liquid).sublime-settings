@@ -1,6 +1,7 @@
 // These settings override both User and Default settings for the HTML (Liquid) syntax
 {
 	"extensions": [
-		"html"
-	]
+		"html",
+		"njk",
+	],
 }
