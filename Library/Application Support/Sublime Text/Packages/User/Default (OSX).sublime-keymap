@@ -55,7 +55,6 @@
     /* Misc */
     { "keys": ["super+alt+shift+p"], "command": "tab_filter" },  /* Trigger Tab Filter */
     { "keys": ["super+alt+p"], "command": "tab_filter", "args": { "active_group_only": true } },  /* Trigger Tab Filter */
-    { "keys": ["ctrl+c"], "command": "close_window" },  // Alternate. /* Close Window with CTRL+C  */
     { "keys": ["super+shift+'"], "command": "change_quotes" },  /* Toggle Quote w/ " */
 
     /* Moving */
