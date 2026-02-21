@@ -97,3 +97,6 @@ keybind = cmd+enter=unbind
 
 # Remap Cmd+, to open the Ghostty config in Sublime (and wait)
 keybind = cmd+,=text:subl -w "~/Library/Application Support/com.mitchellh.ghostty/config"\n
+
+bell-features = system
+
