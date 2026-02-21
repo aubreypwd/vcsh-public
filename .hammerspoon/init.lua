@@ -171,6 +171,7 @@ fn = {
 					-- ['Code'] = max,
 					-- ['Facebook'] = fat,
 					['Finder'] = almostMaximized,
+					['Perplexity'] = slim,
 					-- ['Freedcamp'] = fat,
 					-- ['Chrome'] = medium,
 					-- ['iTerm2'] = almostMaximized,
