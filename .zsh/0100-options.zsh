@@ -29,7 +29,7 @@ export GPG_TTY=$(tty) # GPG Suite.
 if [[ "$TERM_PROGRAM" == 'vscode' ]]; then
 	export EDITOR='code'
 else
-	export EDITOR='micro'
+	export EDITOR='subl'
 fi
 
 export VISUAL="subl" # Visual Editor.
