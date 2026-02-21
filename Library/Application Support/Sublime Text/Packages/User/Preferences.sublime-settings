@@ -23,7 +23,7 @@
 	"font_options":
 	[
 		// "gray_antialias",
-		// "no_round",
+		"no_round",
 		"no_bold",
 		"no_italic",
 		"no_liga",
@@ -325,7 +325,7 @@
 
 	// Misc
 	"reload_file_on_change": true,
-	"update_check": true,
+	"update_check": false,
 	"use_simple_full_screen": true,
 	"show_color_previews": false,
 }
