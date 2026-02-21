@@ -16,6 +16,5 @@ if [ "$TERM_PROGRAM" = "Terminus-Sublime" ]; then
 else
 
 	# Use eza outside of Terminus.
-	alias ls='eza -l -g --icons --tree --level=1 -a --group-directories-first' # Enhance eza ls defaults.
-	alias ll='eza -l -g --icons --tree --level=2 -a --group-directories-first' # Enhance eza ls defaults, but show 2 levels deep.
+	alias ls='eza -l -g --icons --tree --level=2 -a --group-directories-first' # Enhance eza ls defaults.
 fi
