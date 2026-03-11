@@ -60,6 +60,7 @@ alias browse="carbonyl --zoom=50"
 
 alias edit="$VISUAL" # Graphical editor.
 #alias jekyll="bundle exec jekyll"
+alias codex="codex -s workspace-write -a untrusted"
 
 if [ "$ITERM_PROFILE" = "Quick Command" ]; then
 	alias vim='vim -u NONE -U NONE --noplugin +"syntax off" +"set notermguicolors"'
@@ -1225,4 +1226,11 @@ xt2json () {
 	fi
 
 	"$HOME/Repos/github.com/ilnytskyi/xdebug-to-chromium-trace-converter/xtc" convert --file="$1" --out="$1.json"
+}
+
+# What's running on a specific port.
+# @since March 11th 2026
+# @usage port 8081
+port () {
+	lsof -i ":$1"
 }
