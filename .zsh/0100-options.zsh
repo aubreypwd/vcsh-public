@@ -29,10 +29,10 @@ export GPG_TTY=$(tty) # GPG Suite.
 if [[ "$TERM_PROGRAM" == 'vscode' ]]; then
 	export EDITOR='code'
 else
-	export EDITOR='subl'
+	export EDITOR='code'
 fi
 
-export VISUAL="subl" # Visual Editor.
+export VISUAL="code" # Visual Editor.
 
 # export PAGER="highlight --out-format ansi --syntax=html --force --no-trailing-nl" # I can scroll and highlist
 export PAGER="cat" # Just use cat for now.
