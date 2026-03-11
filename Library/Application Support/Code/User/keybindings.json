@@ -1000,5 +1000,39 @@
 	{
 		"key": "alt+[ alt+s",
 		"command": "editor.action.indentationToSpaces"
+	},
+	{
+		"key": "ctrl+cmd+up",
+		"command": "editor.action.moveLinesUpAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "alt+up",
+		"command": "-editor.action.moveLinesUpAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+cmd+down",
+		"command": "editor.action.moveLinesDownAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "alt+down",
+		"command": "-editor.action.moveLinesDownAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "shift+cmd+d",
+		"command": "editor.action.duplicateSelection"
+	},
+	{
+		"key": "cmd+y",
+		"command": "redo",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "cmd+y",
+		"command": "-redo",
+		"when": "editorTextFocus && !editorReadonly"
 	}
 ]

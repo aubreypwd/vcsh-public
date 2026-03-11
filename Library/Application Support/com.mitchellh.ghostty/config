@@ -44,7 +44,7 @@
 # resize-overlay-duration = 4s 200ms
 
 font-family = Menlo-Regular
-font-size = 12
+font-size = 13
 font-thicken = 0
 cursor-style = bar
 cursor-style-blink = true
@@ -92,8 +92,6 @@ window-save-state = never
 
 macos-titlebar-style = native
 #macos-dock-drop-behavior = new-window # Not sure why this doesn't work.
-
-keybind = cmd+enter=unbind
 
 # Remap Cmd+, to open the Ghostty config in Sublime (and wait)
 keybind = cmd+,=text:subl -w "~/Library/Application Support/com.mitchellh.ghostty/config"\n
