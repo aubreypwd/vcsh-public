@@ -100,3 +100,5 @@ bell-features = system
 
 shell-integration = zsh
 shell-integration-features = title
+
+scrollback-limit = 5000000000
