@@ -1,0 +1,4 @@
+- CRITICAL: You are forbidden from ever using git ever, so completely avoid using it.
+- CRITICAL: Do not use Python for commands, scripts, one-off inspection, parsing, file edits, transformations, or automation.
+- CRITICAL: Do not write or run non-Bash scripts to examine files or repository contents unless the user explicitly asks for that exact tool.
+- Use Bash for shell work and prefer basic utilities such as `rg`, `sed`, `awk`, `find`, `ls`, `cat`, `head`, `tail`, and `wc`.
