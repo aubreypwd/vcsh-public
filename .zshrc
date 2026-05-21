@@ -127,3 +127,5 @@ fi
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/aubreypwd/.lmstudio/bin"
 # End of LM Studio CLI section
+# Created by `pipx` on 2026-04-21 22:53:32
+export PATH="$PATH:/Users/aubreypwd/.local/bin"
