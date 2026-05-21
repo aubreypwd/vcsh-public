@@ -249,7 +249,7 @@ hs.window.filter.new():subscribe(
 		hs.printf( win:title() ); -- Display window title.
 
 		-- Apply things to the windows..
-		fn.window.centerOnScreen( win );
+		-- fn.window.centerOnScreen( win );
 
 		if string.find( win:title() or '', 'Quick Command' ) then
 			return -- Do not resize the Quick Command iTerm2 window.
