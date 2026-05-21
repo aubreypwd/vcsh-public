@@ -60,7 +60,7 @@ alias browse="carbonyl --zoom=50"
 
 alias edit="$VISUAL" # Graphical editor.
 #alias jekyll="bundle exec jekyll"
-alias codex="codex -s workspace-write -a untrusted"
+# alias codex="codex --sandbox workspace-write --ask-for-approval untrusted"
 
 if [ "$ITERM_PROFILE" = "Quick Command" ]; then
 	alias vim='vim -u NONE -U NONE --noplugin +"syntax off" +"set notermguicolors"'

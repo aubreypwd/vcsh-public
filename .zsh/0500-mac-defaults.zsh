@@ -36,8 +36,11 @@ reset-mac-defaults () {
 	defaults write com.apple.TextEdit SmartQuotes -bool false
 	defaults write com.apple.TextEdit SmartDashes -bool false
 
+	# Mission Control/App Expose
+	defaults write com.apple.dock expose-animation-duration -float 0 # Set Expose/Mission Control timing.
+
 	# Dock
-	defaults write com.apple.Dock autohide-delay -float 0 # Show dock after X seconds.
+	defaults write com.apple.Dock autohide-delay -float -1 # Show dock after X seconds.
 	defaults write com.apple.dock autohide-time-modifier -int 1 # Animation speed.
 	defaults write com.apple.dock show-recents -bool true;
 	defaults write com.apple.dock show-recent-count -int 3;
@@ -75,4 +78,5 @@ reset-mac-defaults () {
 	# Reset apps.
 	killall "Dock"
 	killall "Finder"
+	killall "WindowManager"
 }

@@ -89,3 +89,6 @@ if [ "$ITERM_PROFILE" = "Quick Command" ]; then
 	unset LSCOLORS
 	export NO_COLOR=1
 fi
+
+# So puppeteer works.
+export PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
