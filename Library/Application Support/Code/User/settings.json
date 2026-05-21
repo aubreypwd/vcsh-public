@@ -835,5 +835,9 @@
   "html.autoClosingTags": false,
   "editor.autoClosingDelete": "never",
   "editor.autoClosingOvertype": "always",
-  "telemetry.telemetryLevel": "off"
+  "telemetry.telemetryLevel": "off",
+  "editor.pasteAs.preferences": [
+    "text.plain"
+  ],
+  "js/ts.updateImportsOnFileMove.enabled": "always"
 }
