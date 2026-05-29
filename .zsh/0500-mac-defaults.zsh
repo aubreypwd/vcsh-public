@@ -38,6 +38,7 @@ reset-mac-defaults () {
 
 	# Mission Control/App Expose
 	defaults write com.apple.dock expose-animation-duration -float 0 # Set Expose/Mission Control timing.
+	defaults write com.apple.dock launchanim -bool false # Disable application animation.
 
 	# Dock
 	defaults write com.apple.Dock autohide-delay -float -1 # Show dock after X seconds.
