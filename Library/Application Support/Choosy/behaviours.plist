@@ -166,7 +166,7 @@
 			<string>ChoosyBrowser</string>
 		</dict>
 		<key>enabled</key>
-		<false/>
+		<true/>
 		<key>predicate</key>
 		<string>URL CONTAINS "://google.com/search" OR URL CONTAINS "://www.google.com/search"</string>
 		<key>title</key>
@@ -398,6 +398,12 @@
 		<integer>5</integer>
 		<key>behaviourArgument</key>
 		<array>
+			<dict>
+				<key>path</key>
+				<string>/Applications/Chromium.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
 			<dict>
 				<key>path</key>
 				<string>/Applications/Google Chrome.app</string>
@@ -651,14 +657,34 @@
 	</dict>
 	<dict>
 		<key>behaviour</key>
-		<integer>6</integer>
+		<integer>5</integer>
 		<key>behaviourArgument</key>
-		<dict>
-			<key>path</key>
-			<string>/Users/aubreypwd/Applications/Unite Apps/Google Drive.app</string>
-			<key>type</key>
-			<string>ChoosyBrowser</string>
-		</dict>
+		<array>
+			<dict>
+				<key>path</key>
+				<string>/Users/aubreypwd/Applications/Drive.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
+				<string>/Users/aubreypwd/Applications/Google Docs.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
+				<string>/Users/aubreypwd/Applications/Google Sheets.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+			<dict>
+				<key>path</key>
+				<string>/Users/aubreypwd/Applications/Google Forms.app</string>
+				<key>type</key>
+				<string>ChoosyBrowser</string>
+			</dict>
+		</array>
 		<key>enabled</key>
 		<false/>
 		<key>predicate</key>
