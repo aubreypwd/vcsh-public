@@ -92,9 +92,9 @@ fn = {
 				return;
 			end
 
-			if fn.window.windowIsMaximized( win ) then
-				hs.printf( '[Centering Window] Already maximized: ' .. win:application():name() ); -- Easy way to get app name in console.
-				return; -- The window is already maximized, don't do center.
+			if fn.window.windowIsFull( win ) then
+				hs.printf( '[Centering Window] Already full: ' .. win:application():name() ); -- Easy way to get app name in console.
+				return; -- The window is already full, don't do center.
 			end
 
 			if true ~= fn.window.isStandard( win ) then
@@ -154,41 +154,53 @@ fn = {
 			-- Rectangle key combos.
 			local slim            = { mods = { 'cmd', 'alt' }, key = '7' };
 			local fat             = { mods = { 'cmd', 'alt', 'shift' }, key = '7' };
-			local almostMaximized = { mods = { 'cmd', 'alt' }, key = '8' };
+			local chubby          = { mods = { 'cmd', 'alt' }, key = '8' };
+			local big             = { mods = { 'cmd', 'alt', 'shift' }, key = '8' };
 			local medium          = { mods = { 'cmd', 'alt' }, key = '9' };
 			local max             = { mods = { 'cmd', 'alt', 'shift' }, key = '9' };
-			local maximized       = { mods = { 'cmd', 'alt' }, key = '0' };
+			local full            = { mods = { 'cmd', 'alt' }, key = '0' };
 
 			-- App mapping.
 			local mapping = (
 				{
+					-- Finder
+					['Finder'] = chubby,
+
+					-- AI
+					['ChatGPT Atlas'] = slim,
+					['ChatGPT'] = slim,
+					['Perplexity'] = slim,
+
+					-- Coding
+					['Code'] = medium,
+					['Sublime Text'] = medium,
+
+					-- Browsers
+					['Safari'] = big,
+					['Chrome'] = big,
+					['Chromium'] = big,
+
+					-- Misc
 					-- ['Claude'] = fat,
 					-- ['Contacts'] = fat,
 					-- ['@aubreypwd'] = fat,
 					-- ['Books'] = fat,
 					-- ['Calendar'] = max,
-					-- ['ChatGPT'] = fat,
-					-- ['Code'] = max,
 					-- ['Facebook'] = fat,
-					['Finder'] = almostMaximized,
-					['Perplexity'] = slim,
 					-- ['Freedcamp'] = fat,
-					-- ['Chrome'] = medium,
-					-- ['iTerm2'] = almostMaximized,
+					-- ['iTerm2'] = chubby,
 					-- ['KanbanFlow'] = max,
 					-- ['LinkedIn'] = fat,
-					-- ['Mail'] = almostMaximized,
+					-- ['Mail'] = chubby,
 					-- ['Mastodon'] = fat,
 					-- ['Messages'] = slim,
-					-- ['Music'] = almostMaximized,
+					-- ['Music'] = chubby,
 					-- ['Instagram'] = slim,
 					-- ['News Explorer'] = medium,
 					-- ['Notes'] = medium,
 					-- ['Passwords'] = fat,
 					-- ['Reminders'] = slim,
-					-- ['Safari'] = medium,
 					-- ['Slack'] = medium,
-					-- ['Sublime Text'] = maximized,
 					-- ['TablePlus'] = medium,
 					-- ['Twitter'] = slim,
 					-- ['PageSpeed Insights'] = slim,
@@ -214,8 +226,8 @@ fn = {
 			hs.printf( '[Adjusting Window Size] Set window size of: ' .. win:application():name() ); -- Easy way to get app name in console.
 		end,
 
-		-- FUNCTION: A way to discover if a window is already maximized.
-		windowIsMaximized = function( win )
+		-- FUNCTION: A way to discover if a window is already full.
+		windowIsFull = function( win )
 
 			return math.abs( win:frame().x - win:screen():frame().x ) <= 2
 				 and math.abs( win:frame().y - win:screen():frame().y ) <= 2
