@@ -1,14 +1,19 @@
 {
-  "path" : "/bin/bash",
+  "name" : "Convert to .webp (video)",
+  "isTemplateIcon" : false,
+  "uuid" : "25AC1122-745B-43D9-89DA-A8C01D995101",
+  "type" : "shell",
   "options" : {
-    "acceptDirs" : false,
     "acceptFiles" : true,
-    "noSandbox" : true,
+    "outputsText" : false,
+    "acceptTextFrom" : "copy",
+    "showOutput" : false,
+    "acceptsText" : false,
+    "outputTextTo" : "paste",
     "confirmExecution" : false,
-    "showOutput" : true
+    "noSandbox" : true,
+    "acceptDirs" : false
   },
   "icon" : "icon.icns",
-  "name" : "Convert to .webp (video)",
-  "type" : "shell",
-  "uuid" : "25AC1122-745B-43D9-89DA-A8C01D995101"
+  "path" : "/bin/bash"
 }

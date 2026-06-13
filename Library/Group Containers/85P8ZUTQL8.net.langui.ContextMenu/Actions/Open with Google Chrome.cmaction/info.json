@@ -1,5 +1,5 @@
 {
-  "path" : "\/Applications\/Google Chrome.app",
+  "path" : "/Applications/Google Chrome.app",
   "options" : {
     "acceptDirs" : false,
     "acceptFiles" : true,
@@ -7,5 +7,6 @@
     "confirmExecution" : false
   },
   "name" : "Open with Google Chrome",
-  "type" : "application"
+  "type" : "application",
+  "uuid" : "121FF861-1F83-4B6E-8C2B-284FB9130209"
 }

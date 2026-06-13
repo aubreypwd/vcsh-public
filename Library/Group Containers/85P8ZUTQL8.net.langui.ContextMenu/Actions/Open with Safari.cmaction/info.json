@@ -1,5 +1,5 @@
 {
-  "path" : "\/Applications\/Safari.app",
+  "path" : "/Applications/Safari.app",
   "options" : {
     "acceptDirs" : false,
     "acceptFiles" : true,
@@ -7,5 +7,6 @@
     "confirmExecution" : false
   },
   "name" : "Open with Safari",
-  "type" : "application"
+  "type" : "application",
+  "uuid" : "7796CDE8-5260-4073-A579-AC30F095C16E"
 }

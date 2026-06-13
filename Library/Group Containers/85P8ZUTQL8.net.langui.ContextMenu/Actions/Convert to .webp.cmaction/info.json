@@ -1,14 +1,19 @@
 {
-  "path" : "/bin/sh",
+  "name" : "Convert to .webp",
+  "isTemplateIcon" : false,
+  "uuid" : "19B03964-0326-46B5-87F2-94A8812EC9D0",
+  "type" : "shell",
   "options" : {
-    "acceptDirs" : false,
     "acceptFiles" : true,
-    "noSandbox" : true,
+    "outputsText" : false,
+    "acceptTextFrom" : "copy",
+    "showOutput" : false,
+    "acceptsText" : false,
+    "outputTextTo" : "paste",
     "confirmExecution" : false,
-    "showOutput" : true
+    "noSandbox" : true,
+    "acceptDirs" : false
   },
   "icon" : "icon.icns",
-  "name" : "Convert to .webp",
-  "type" : "shell",
-  "uuid" : "19B03964-0326-46B5-87F2-94A8812EC9D0"
+  "path" : "/bin/sh"
 }

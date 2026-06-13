@@ -1,4 +1,7 @@
 {
+  "service" : "Share with Droplr",
+  "type" : "service",
+  "uuid" : "168D6168-4A42-4C77-8D19-C1DCF430EF35",
   "path" : "/Applications/Droplr.app",
   "options" : {
     "acceptFiles" : true,
@@ -6,7 +9,5 @@
     "acceptDirs" : true
   },
   "icon" : "icon.icns",
-  "name" : "Share with Droplr",
-  "service" : "Share with Droplr",
-  "type" : "service"
+  "name" : "Share with Droplr"
 }

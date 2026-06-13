@@ -1,5 +1,5 @@
 {
-  "path" : "\/bin\/bash",
+  "path" : "/bin/bash",
   "options" : {
     "acceptDirs" : false,
     "acceptFiles" : false,
@@ -9,5 +9,6 @@
   },
   "icon" : "icon.icns",
   "name" : "Create Random Folder",
-  "type" : "shell"
+  "type" : "shell",
+  "uuid" : "706E8EC5-8679-4035-9F9E-61996FA543EF"
 }

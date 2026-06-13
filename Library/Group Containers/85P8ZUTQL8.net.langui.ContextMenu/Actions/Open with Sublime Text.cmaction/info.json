@@ -1,5 +1,5 @@
 {
-  "path" : "\/Applications\/Sublime Text.app",
+  "path" : "/Applications/Sublime Text.app",
   "options" : {
     "acceptDirs" : true,
     "acceptFiles" : true,
@@ -7,5 +7,6 @@
     "confirmExecution" : false
   },
   "name" : "Open with Sublime Text",
-  "type" : "application"
+  "type" : "application",
+  "uuid" : "C7314B6A-2BD8-44F2-B69A-20F9B0BA2216"
 }

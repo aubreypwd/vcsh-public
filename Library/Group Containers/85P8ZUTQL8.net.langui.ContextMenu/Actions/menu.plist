@@ -145,6 +145,8 @@
 				<true/>
 				<key>icon</key>
 				<string>icon.icns</string>
+				<key>isTemplateIcon</key>
+				<false/>
 				<key>name</key>
 				<string>Convert to .webp</string>
 				<key>path</key>
@@ -155,6 +157,8 @@
 				<true/>
 				<key>icon</key>
 				<string>icon.icns</string>
+				<key>isTemplateIcon</key>
+				<false/>
 				<key>name</key>
 				<string>Convert to .webp (video)</string>
 				<key>path</key>
@@ -165,6 +169,8 @@
 				<true/>
 				<key>icon</key>
 				<string>icon.icns</string>
+				<key>isTemplateIcon</key>
+				<false/>
 				<key>name</key>
 				<string>Convert to .jpg</string>
 				<key>options</key>
@@ -187,27 +193,28 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>New iTerm2 Tab Here</string>
-		<key>path</key>
-		<string>New iTerm2 Tab Here.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
 		<true/>
-		<key>name</key>
-		<string>New Terminal Window Here</string>
-		<key>path</key>
-		<string>New Terminal Window Here.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>isGroup</key>
+		<true/>
+		<key>isTemplateIcon</key>
 		<false/>
 		<key>name</key>
-		<string>New Terminal Tab Here</string>
+		<string>iTerm</string>
 		<key>path</key>
-		<string>New Terminal Tab Here.cmaction</string>
+		<string>iTerm.cmaction</string>
+		<key>subitems</key>
+		<array>
+			<dict>
+				<key>enabled</key>
+				<true/>
+				<key>name</key>
+				<string>New iTerm2 Window Here</string>
+				<key>path</key>
+				<string>New iTerm2 Window Here.cmaction</string>
+			</dict>
+		</array>
 	</dict>
 	<dict>
 		<key>enabled</key>
@@ -232,14 +239,6 @@
 		<string>Edit with Vim</string>
 		<key>path</key>
 		<string>Edit with Vim.cmaction</string>
-	</dict>
-	<dict>
-		<key>enabled</key>
-		<false/>
-		<key>name</key>
-		<string>New iTerm2 Window Here</string>
-		<key>path</key>
-		<string>New iTerm2 Window Here.cmaction</string>
 	</dict>
 	<dict>
 		<key>enabled</key>
@@ -340,6 +339,8 @@
 	<dict>
 		<key>enabled</key>
 		<true/>
+		<key>isTemplateIcon</key>
+		<false/>
 		<key>name</key>
 		<string>Permanently Delete</string>
 		<key>path</key>
@@ -410,7 +411,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>name</key>
 		<string>Clear Clipboard</string>
 		<key>path</key>
@@ -448,7 +449,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<integer>1</integer>
 		<key>name</key>
@@ -462,7 +463,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<true/>
 		<key>name</key>
@@ -476,7 +477,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<true/>
 		<key>name</key>
@@ -518,7 +519,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<integer>1</integer>
 		<key>name</key>
@@ -529,6 +530,132 @@
 		<false/>
 		<key>type</key>
 		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>isTemplateIcon</key>
+		<true/>
+		<key>name</key>
+		<string>Mute Sound</string>
+		<key>path</key>
+		<string>Mute Sound.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>shell</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>isTemplateIcon</key>
+		<true/>
+		<key>name</key>
+		<string>Unmute Sound</string>
+		<key>path</key>
+		<string>Unmute Sound.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>shell</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>isTemplateIcon</key>
+		<true/>
+		<key>name</key>
+		<string>Toggle Mute</string>
+		<key>path</key>
+		<string>Toggle Mute.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>shell</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>isTemplateIcon</key>
+		<true/>
+		<key>name</key>
+		<string>Increase Volume</string>
+		<key>path</key>
+		<string>Increase Volume.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>shell</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>isTemplateIcon</key>
+		<true/>
+		<key>name</key>
+		<string>Decrease Volume</string>
+		<key>path</key>
+		<string>Decrease Volume.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>shell</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>isTemplateIcon</key>
+		<integer>1</integer>
+		<key>name</key>
+		<string>Clear Extended File Attributes</string>
+		<key>path</key>
+		<string>Clear Extended File Attributes.cmaction</string>
+		<key>type</key>
+		<string>shell</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>isTemplateIcon</key>
+		<integer>1</integer>
+		<key>name</key>
+		<string>AirDrop</string>
+		<key>path</key>
+		<string>AirDrop.cmaction</string>
+		<key>type</key>
+		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Compose Mail</string>
+		<key>path</key>
+		<string>Compose Mail.cmaction</string>
+		<key>type</key>
+		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Compose Message</string>
+		<key>path</key>
+		<string>Compose Message.cmaction</string>
+		<key>type</key>
+		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>isTemplateIcon</key>
+		<false/>
+		<key>name</key>
+		<string>Allow App</string>
+		<key>path</key>
+		<string>Allow App.cmaction</string>
 	</dict>
 </array>
 </plist>

@@ -1,13 +1,19 @@
 {
+  "type" : "shell",
+  "isTemplateIcon" : false,
+  "uuid" : "5E6CB527-90E0-49DA-955D-82CEB0EC09F9",
   "path" : "/bin/sh",
   "options" : {
-    "acceptDirs" : false,
-    "acceptFiles" : true,
     "noSandbox" : true,
+    "outputsText" : false,
+    "acceptTextFrom" : "copy",
+    "showOutput" : false,
+    "acceptsText" : false,
+    "outputTextTo" : "paste",
     "confirmExecution" : false,
-    "showOutput" : true
+    "acceptDirs" : false,
+    "acceptFiles" : true
   },
   "icon" : "icon.icns",
-  "name" : "Convert to .jpg",
-  "type" : "shell"
+  "name" : "Convert to .jpg"
 }

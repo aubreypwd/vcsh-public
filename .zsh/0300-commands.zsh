@@ -46,6 +46,9 @@ alias delete="rm -R"
 alias pwdcp="pwd | pbcopy"
 alias mp="multipass"
 alias allowapp="xattr -rc"
+alias yodex="codex --yolo" # Run Codex in YOLO mode.
+alias edit="$VISUAL" # Graphical editor.
+alias do4="gtimeout" # Do something for an amount of time
 
 # iTerm2 Tab Aliases
 alias nt='ttab' # New tab.
@@ -57,10 +60,6 @@ alias unhide="chflags nohidden"
 
 # Browser in the terminal
 alias browse="carbonyl --zoom=50"
-
-alias edit="$VISUAL" # Graphical editor.
-#alias jekyll="bundle exec jekyll"
-# alias codex="codex --sandbox workspace-write --ask-for-approval untrusted"
 
 if [ "$ITERM_PROFILE" = "Quick Command" ]; then
 	alias vim='vim -u NONE -U NONE --noplugin +"syntax off" +"set notermguicolors"'
