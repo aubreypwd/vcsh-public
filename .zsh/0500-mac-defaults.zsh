@@ -38,13 +38,13 @@ reset-mac-defaults () {
 	# Dock
 	defaults write com.apple.Dock autohide-delay -float -1 # Show dock after X seconds.
 	defaults write com.apple.dock autohide-time-modifier -int 1 # Animation speed.
-	defaults write com.apple.dock show-recents -bool true;
-	defaults write com.apple.dock show-recent-count -int 3;
+	defaults write com.apple.dock show-recents -bool false; # Show recent applications.
+		defaults write com.apple.dock show-recent-count -int 0; # How many applications to show.
 	defaults write com.apple.dock scroll-to-open -bool true; # Enable the ability to swipe up with two fingers to see App Expose.
 
 	# Finder
 	defaults write com.apple.Finder QuitMenuItem 1 # Add Quit to Finder
-	defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Tell Finder what view style to use, see https://www.defaults-write.com/change-default-view-style-in-os-x-finder/
+	defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv" # Tell Finder what view style to use, see https://www.defaults-write.com/change-default-view-style-in-os-x-finder/
 	defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false # Disable the warning when changing a file extension
 	defaults write com.apple.finder _FXShowPosixPathInTitle -bool true # Show full path in the path bar.
 	defaults write com.apple.finder CreateDesktop false # Desktop icons/items/Stage Manager should be hidden.
