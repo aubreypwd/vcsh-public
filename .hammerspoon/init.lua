@@ -177,7 +177,7 @@ fn = {
 
 					-- Browsers
 					['Safari'] = big,
-					['Chrome'] = big,
+					['Google Chrome'] = big,
 					['Chromium'] = big,
 
 					-- Misc
