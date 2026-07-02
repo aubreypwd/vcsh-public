@@ -1034,5 +1034,9 @@
 		"key": "cmd+y",
 		"command": "-redo",
 		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "alt+p alt+a",
+		"command": "workbench.view.extension.codexSecondaryViewContainer"
 	}
 ]
