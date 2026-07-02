@@ -229,12 +229,12 @@
 		<key>behaviourArgument</key>
 		<dict>
 			<key>path</key>
-			<string>/Users/aubreypwd/Applications/Unite Apps/Google Drive.app</string>
+			<string>/Applications/Google Chrome.app</string>
 			<key>type</key>
 			<string>ChoosyBrowser</string>
 		</dict>
 		<key>enabled</key>
-		<false/>
+		<true/>
 		<key>predicate</key>
 		<string>URL CONTAINS "docs.google.com" OR URL CONTAINS "drive.google.com"</string>
 		<key>title</key>
