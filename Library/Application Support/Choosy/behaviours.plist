@@ -661,7 +661,7 @@
 		<key>behaviourArgument</key>
 		<dict>
 			<key>path</key>
-			<string>/Users/aubreypwd/Applications/Script Editor Apps/New Google Chrome Window.app</string>
+			<string>/Users/aubreypwd/Applications/Chrome Apps.localized/Google Meet.app</string>
 			<key>type</key>
 			<string>ChoosyBrowser</string>
 		</dict>
