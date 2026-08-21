@@ -172,7 +172,7 @@ fn = {
 					['Perplexity'] = slim,
 
 					-- Coding
-					['Code'] = medium,
+					['Code'] = full,
 					['Sublime Text'] = medium,
 
 					-- Browsers
@@ -280,4 +280,14 @@ hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reload );
 
 -- Open the Hammerspoon console easily.
 hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
+
+
+
+
+
+
+
+
+
+
 
