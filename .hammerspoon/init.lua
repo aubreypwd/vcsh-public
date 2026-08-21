@@ -3,285 +3,428 @@
 -- https://www.hammerspoon.org/docs/
 -- ===============================================
 
--- ==============================
--- Global Vars
--- ==============================
+----
+--- Configures personal Hammerspoon window management and keyboard shortcuts.
+---
+--- @since Unknown
+--- @since August 21, 2026 Updated to be containing function.
+----
+local function manageWindowsAndSizes()
 
-millisecond = 1000;
-oneSecond = millisecond * 1000;
+	-- ==============================
+	-- Configuration
+	-- ==============================
 
--- Exclude these apps from being messed with.
-alwaysExcludeApps = {
-	['CleanShot X'] = true,
-	['iBar Pro'] = true,
-	['Hammerspoon'] = true,
-	['superwhisper'] = true,
-	['System Settings'] = true,
-	['Raycast'] = true,
-	['DockHelper'] = true,
-	['Itsycal'] = true,
-	['Instagram'] = true,
-	['PastePal'] = true,
-	['AppCleaner'] = true,
-	['Keka'] = true,
-	['Choosy'] = true,
-	['Homerow'] = true,
-	['Stickies'] = true,
-	['Blankie'] = true,
-	['Rectangle'] = true,
-	['Ice'] = true,
-	['Find Any File'] = true,
-	['UTM'] = true,
-	['Good Task'] = true,
-	['Clock'] = true,
-};
+	local millisecond = 1000
+	local oneSecond = millisecond * 1000
 
--- ==============================
--- Functions
--- ==============================
-fn = {
+	-- Exclude these apps from being messed with.
+	local alwaysExcludeApps = {
+		[ "CleanShot X" ] = true,
+		[ "iBar Pro" ] = true,
+		[ "Hammerspoon" ] = true,
+		[ "superwhisper" ] = true,
+		[ "System Settings" ] = true,
+		[ "Raycast" ] = true,
+		[ "DockHelper" ] = true,
+		[ "Itsycal" ] = true,
+		[ "Instagram" ] = true,
+		[ "PastePal" ] = true,
+		[ "AppCleaner" ] = true,
+		[ "Keka" ] = true,
+		[ "Choosy" ] = true,
+		[ "Homerow" ] = true,
+		[ "Stickies" ] = true,
+		[ "Blankie" ] = true,
+		[ "Rectangle" ] = true,
+		[ "Ice" ] = true,
+		[ "Find Any File" ] = true,
+		[ "UTM" ] = true,
+		[ "Good Task" ] = true,
+		[ "Clock" ] = true,
+	}
 
-	-- FUNCTION: That does nothing.
-	doNothing = function()
-		return false;
-	end,
+	-- ==============================
+	-- General Functions
+	-- ==============================
 
-	-- FUNCTION: Easy sleep function (so I don't have to remember the other one).
-	sleep = function( microseconds )
+	----
+	--- Does nothing.
+	---
+	--- @since August 21, 2026
+	---
+	--- @return boolean Always false.
+	----
+	local function doNothing()
+		return false
+	end
+
+	----
+	--- Sleeps for the specified number of microseconds.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param number microseconds Number of microseconds to sleep.
+	----
+	local function sleep( microseconds )
 		hs.timer.usleep( microseconds )
-	end,
+	end
+
+	-- ==============================
+	-- Window Functions
+	-- ==============================
+
+	----
+	--- Determines whether a window should be treated as a standard window.
+	---
+	--- Safari PWAs do not always pass Hammerspoon's native isStandard()
+	--- check, so they are explicitly considered standard windows here.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param userdata win Hammerspoon window.
+	--- @return boolean Whether the window is considered standard.
+	----
+	local function isStandardWindow( win )
+
+		local bundleID = win:application():bundleID() or ""
+
+		return win:isStandard()
+			or nil ~= bundleID:find( "Safari.WebApp", 1, true )
+	end
+
+	----
+	--- Sets selected portions of a window frame while preserving unspecified values.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param userdata win Hammerspoon window.
+	--- @param number animation Animation duration.
+	--- @param number|nil y Window Y position.
+	--- @param number|nil x Window X position.
+	--- @param number|nil h Window height.
+	--- @param number|nil w Window width.
+	----
+	local function setWindowFrame( win, animation, y, x, h, w )
+
+		local frame = win:frame()
+
+		win:setFrame(
+			{
+				y = y or frame.y,
+				x = x or frame.x,
+				h = h or frame.h,
+				w = w or frame.w,
+			},
+			animation
+		)
+	end
+
+	----
+	--- Determines whether a window fills the usable area of its current screen.
+	---
+	--- Allows a two-pixel tolerance for macOS window positioning differences.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param userdata win Hammerspoon window.
+	--- @return boolean Whether the window fills the screen.
+	----
+	local function windowIsFull( win )
+
+		local windowFrame = win:frame()
+		local screenFrame = win:screen():frame()
+
+		return math.abs( windowFrame.x - screenFrame.x ) <= 2
+			and math.abs( windowFrame.y - screenFrame.y ) <= 2
+			and math.abs(
+				( windowFrame.x + windowFrame.w )
+				- ( screenFrame.x + screenFrame.w )
+			) <= 2
+			and math.abs(
+				( windowFrame.y + windowFrame.h )
+				- ( screenFrame.y + screenFrame.h )
+			) <= 2
+	end
+
+	----
+	--- Runs immediately before centering a window.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param userdata win Hammerspoon window.
+	----
+	local function beforeCenter( win )
+		-- Nothing now.
+	end
+
+	----
+	--- Runs immediately after centering a window.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param userdata win Hammerspoon window.
+	----
+	local function afterCenter( win )
+		-- Nothing now.
+	end
+
+	----
+	--- Centers a window using the configured Rectangle Pro shortcut.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param userdata win Hammerspoon window.
+	----
+	local function centerWindowOnScreen( win )
+
+		local appName = win:application():name()
+
+		-- Apps listed here should not be centered.
+		local excludeApps = {
+			-- [ "Voice Memos" ] = true,
+		}
+
+		if true == windowIsFull( win ) then
+			hs.printf( "[Centering Window] Already full: %s", appName )
+			return
+		end
+
+		if true ~= isStandardWindow( win ) then
+			hs.printf( "[Centering Window] Not a standard window: %s", appName )
+			return
+		end
+
+		if true == excludeApps[ appName ] or true == alwaysExcludeApps[ appName ] then
+			hs.printf( "[Centering Window] App excluded: %s", appName )
+			return
+		end
+
+		hs.printf( "[Centering Window] Centering: %s", appName )
+
+		beforeCenter( win )
+
+		-- Center using Rectangle Pro.
+		hs.eventtap.keyStroke( { "cmd", "alt" }, "space" )
+
+		afterCenter( win )
+	end
+
+	----
+	--- Sets a newly-created window's size based on its application.
+	---
+	--- Window sizes are applied using configured Rectangle Pro shortcuts.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param userdata win Hammerspoon window.
+	----
+	local function setApplicationWindowSize( win )
+
+		local appName = win:application():name()
+
+		if true ~= isStandardWindow( win ) then
+			hs.printf( "[Adjusting Window Size] Not a Standard Window: %s", appName )
+			return
+		end
+
+		-- Apps listed here should not have their window size changed.
+		local excludeApps = {
+			-- [ "CleanShot X" ] = true,
+		}
+
+		if true == excludeApps[ appName ] or true == alwaysExcludeApps[ appName ] then
+			hs.printf( "[Adjusting Window Size] Excluded App: %s", appName )
+			return
+		end
+
+		-- Rectangle Pro key combinations.
+		local slim = {
+			mods = { "cmd", "alt" },
+			key = "7",
+		}
+
+		local fat = {
+			mods = { "cmd", "alt", "shift" },
+			key = "7",
+		}
+
+		local chubby = {
+			mods = { "cmd", "alt" },
+			key = "8",
+		}
+
+		local big = {
+			mods = { "cmd", "alt", "shift" },
+			key = "8",
+		}
+
+		local medium = {
+			mods = { "cmd", "alt" },
+			key = "9",
+		}
+
+		local max = {
+			mods = { "cmd", "alt", "shift" },
+			key = "9",
+		}
+
+		local full = {
+			mods = { "cmd", "alt" },
+			key = "0",
+		}
+
+		-- Map applications to their Rectangle Pro window size.
+		local mapping = {
+			-- Finder
+			[ "Finder" ] = chubby,
+
+			-- AI
+			[ "ChatGPT Atlas" ] = slim,
+			[ "ChatGPT" ] = slim,
+			[ "Perplexity" ] = slim,
+
+			-- Coding
+			[ "Code" ] = full,
+			[ "Sublime Text" ] = medium,
+
+			-- Browsers
+			[ "Safari" ] = big,
+			[ "Google Chrome" ] = big,
+			[ "Chromium" ] = big,
+
+			-- Misc
+			-- [ "Claude" ] = fat,
+			-- [ "Contacts" ] = fat,
+			-- [ "@aubreypwd" ] = fat,
+			-- [ "Books" ] = fat,
+			-- [ "Calendar" ] = max,
+			-- [ "Facebook" ] = fat,
+			-- [ "Freedcamp" ] = fat,
+			-- [ "iTerm2" ] = chubby,
+			-- [ "KanbanFlow" ] = max,
+			-- [ "LinkedIn" ] = fat,
+			-- [ "Mail" ] = chubby,
+			-- [ "Mastodon" ] = fat,
+			-- [ "Messages" ] = slim,
+			-- [ "Music" ] = chubby,
+			-- [ "Instagram" ] = slim,
+			-- [ "News Explorer" ] = medium,
+			-- [ "Notes" ] = medium,
+			-- [ "Passwords" ] = fat,
+			-- [ "Reminders" ] = slim,
+			-- [ "Slack" ] = medium,
+			-- [ "TablePlus" ] = medium,
+			-- [ "Twitter" ] = slim,
+			-- [ "PageSpeed Insights" ] = slim,
+			-- [ "Voice" ] = fat,
+			-- [ "WhatsApp" ] = fat,
+			-- [ "YouTube" ] = max,
+			-- [ "Voice Memos" ] = slim,
+		}
+
+		local windowSize = mapping[ appName ]
+
+		if nil == windowSize then
+			hs.printf( "[Adjusting Window Size] App not configured: %s", appName )
+			return
+		end
+
+		-- Focus the window in case macOS has moved focus elsewhere.
+		win:focus()
+
+		-- Trigger Rectangle Pro's configured shortcut.
+		hs.eventtap.keyStroke( windowSize.mods, windowSize.key, 0 )
+
+		-- Focus again in case resizing caused macOS to move focus.
+		win:focus()
+
+		hs.printf( "[Adjusting Window Size] Set window size of: %s", appName )
+	end
+
+	-- ==============================
+	-- Hammerspoon Functions
+	-- ==============================
+
+	----
+	--- Reloads the Hammerspoon configuration.
+	---
+	--- @since August 21, 2026
+	----
+	local function reloadHammerspoon()
+
+		hs.console.clearConsole()
+		hs.openConsole()
+		hs.reload()
+
+		hs.printf( "[Hammerspoon] Reloaded Config" )
+	end
+
+	----
+	--- Handles newly-created windows.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param userdata win Newly-created Hammerspoon window.
+	----
+	local function handleWindowCreated( win )
+
+		local title = win:title() or ""
+
+		hs.printf( "%s", win:application():name() )
+		hs.printf( "%s", title )
+
+		-- Center newly-created windows when desired.
+		-- centerWindowOnScreen( win )
+
+		-- Do not resize the iTerm2 Quick Command window.
+		if nil ~= string.find( title, "Quick Command", 1, true ) then
+			return
+		end
+
+		setApplicationWindowSize( win )
+	end
 
 	-- ==============================
 	-- Windows
 	-- ==============================
-	window = {
 
-		-- FUNCTION: My version of win:isStandard() that takes into account Safari PWA's.
-		isStandard = function( win )
+	-- Never animate Hammerspoon window changes by default.
+	hs.window.animationDuration = 0
 
-			return win:isStandard()
+	-- Keep references to long-lived Hammerspoon objects so they remain active
+	-- after this configuration function finishes.
+	local runtime = {}
 
-				-- Safari PWA's won't pass win:isStandard(), but we can manually say they are.
-				or win:application():bundleID():find( 'Safari.WebApp' );
-		end,
+	runtime.windowFilter = hs.window.filter.new()
 
-		-- FUNCTION: My version of :setFrame.
-		setFrame = function( win, animation, y, x, h, w )
-			win:setFrame(
-				{
-					y = y or win:frame().y,
-					x = x or win:frame().x,
-					h = h or win:frame().h,
-					w = w or win:frame().w,
-				},
-				animation
-			);
-		end,
+	runtime.windowFilter:subscribe(
+		"windowCreated",
+		handleWindowCreated
+	)
 
-		-- FUNCTION: My version of :centerOnScreen.
-		centerOnScreen = function( win )
+	-- ==============================
+	-- Keyboard Shortcuts
+	-- ==============================
 
-			local mapping = (
-				{
-					-- ['Voice Memos'] = true,
-				}
-			)[ win:application():name() ] or true;
+	-- Reload Hammerspoon with ctrl+alt+cmd+\.
+	runtime.reloadHotkey = hs.hotkey.bind(
+		{ "ctrl", "alt", "cmd" },
+		"\\",
+		reloadHammerspoon
+	)
 
-			if false == mapping then
-				hs.printf( '[Centering Window] App set to not center: ' .. win:application():name() );
-				return;
-			end
+	-- Open the Hammerspoon console with ctrl+alt+cmd+shift+\.
+	runtime.consoleHotkey = hs.hotkey.bind(
+		{ "ctrl", "alt", "cmd", "shift" },
+		"\\",
+		hs.openConsole
+	)
 
-			if fn.window.windowIsFull( win ) then
-				hs.printf( '[Centering Window] Already full: ' .. win:application():name() ); -- Easy way to get app name in console.
-				return; -- The window is already full, don't do center.
-			end
-
-			if true ~= fn.window.isStandard( win ) then
-
-				hs.printf( '[Centering Window] Not a standard window: ' .. win:application():name() ); -- Easy way to get app name in console.
-				return; -- Only apply to standard windows.
-			end
-
-			-- Apps to exclude from doing this...
-			local excludeApps = {
-				-- ["CleanShot X"] = true,
-			};
-
-			if ( excludeApps[ win:application():name() ] or alwaysExcludeApps[ win:application():name()] ) then
-
-				hs.printf( '[Centering Window] App excluded: ' .. win:application():name() ); -- Easy way to get app name in console.
-				return; -- The window should not be fucked with.
-			end
-
-			hs.printf( '[Centering Window] Centering: ' .. win:application():name() ); -- Easy way to get app name in console.
-
-			fn.window.beforeCenter( win );
-				hs.eventtap.keyStroke( { 'cmd', 'alt' }, 'space' ); -- Center by issuing the key combo for Rectangle Pro.
-					fn.window.afterCenter( win );
-		end,
-
-			-- HOOK: Before we center any window.
-			beforeCenter = function( win )
-				-- Nothing now.
-			end,
-
-			-- HOOK: After we center any window.
-			afterCenter = function( win )
-				-- Nothing now.
-			end,
-
-		-- FUNCTION: Set the window's size based on application.
-		setApplicationWindowSize = function( win )
-
-			if true ~= fn.window.isStandard( win ) then
-
-				hs.printf( '[Adjusting Window Size] Not a Standard Window: ' .. win:application():name() ); -- Easy way to get app name in console.
-				return; -- Only apply to standard windows.
-			end
-
-			-- Apps to exclude from doing this...
-			local excludeApps = {
-				-- ["CleanShot X"] = true,
-			};
-
-			if ( excludeApps[ win:application():name() ] or alwaysExcludeApps[ win:application():name()] ) then
-
-				hs.printf( '[Adjusting Window Size] Excluded App: ' .. win:application():name() ); -- Easy way to get app name in console.
-				return; -- The window should not be fucked with.
-			end
-
-			-- Rectangle key combos.
-			local slim            = { mods = { 'cmd', 'alt' }, key = '7' };
-			local fat             = { mods = { 'cmd', 'alt', 'shift' }, key = '7' };
-			local chubby          = { mods = { 'cmd', 'alt' }, key = '8' };
-			local big             = { mods = { 'cmd', 'alt', 'shift' }, key = '8' };
-			local medium          = { mods = { 'cmd', 'alt' }, key = '9' };
-			local max             = { mods = { 'cmd', 'alt', 'shift' }, key = '9' };
-			local full            = { mods = { 'cmd', 'alt' }, key = '0' };
-
-			-- App mapping.
-			local mapping = (
-				{
-					-- Finder
-					['Finder'] = chubby,
-
-					-- AI
-					['ChatGPT Atlas'] = slim,
-					['ChatGPT'] = slim,
-					['Perplexity'] = slim,
-
-					-- Coding
-					['Code'] = full,
-					['Sublime Text'] = medium,
-
-					-- Browsers
-					['Safari'] = big,
-					['Google Chrome'] = big,
-					['Chromium'] = big,
-
-					-- Misc
-					-- ['Claude'] = fat,
-					-- ['Contacts'] = fat,
-					-- ['@aubreypwd'] = fat,
-					-- ['Books'] = fat,
-					-- ['Calendar'] = max,
-					-- ['Facebook'] = fat,
-					-- ['Freedcamp'] = fat,
-					-- ['iTerm2'] = chubby,
-					-- ['KanbanFlow'] = max,
-					-- ['LinkedIn'] = fat,
-					-- ['Mail'] = chubby,
-					-- ['Mastodon'] = fat,
-					-- ['Messages'] = slim,
-					-- ['Music'] = chubby,
-					-- ['Instagram'] = slim,
-					-- ['News Explorer'] = medium,
-					-- ['Notes'] = medium,
-					-- ['Passwords'] = fat,
-					-- ['Reminders'] = slim,
-					-- ['Slack'] = medium,
-					-- ['TablePlus'] = medium,
-					-- ['Twitter'] = slim,
-					-- ['PageSpeed Insights'] = slim,
-					-- ['Voice'] = fat,
-					-- ['WhatsApp'] = fat,
-					-- ['YouTube'] = max,
-					-- ['Voice Memos'] = slim,
-				}
-			)[ win:application():name() ] or false;
-
-			if false == mapping then
-				hs.printf( '[Adjusting Window Size] App not configured: ' .. win:application():name() );
-				return;
-			end
-
-			-- Focus the window (in case the system has moved away for whatever reason)...
-			win:focus();
-
-				-- Trigger rectangle's combo for the app.
-			hs.eventtap.keyStroke( mapping.mods, mapping.key, 0 );
-			win:focus(); -- Focus again, in case the key combo moved windows.
-
-			hs.printf( '[Adjusting Window Size] Set window size of: ' .. win:application():name() ); -- Easy way to get app name in console.
-		end,
-
-		-- FUNCTION: A way to discover if a window is already full.
-		windowIsFull = function( win )
-
-			return math.abs( win:frame().x - win:screen():frame().x ) <= 2
-				 and math.abs( win:frame().y - win:screen():frame().y ) <= 2
-				 	and math.abs( ( win:frame().x + win:frame().w ) - ( win:screen():frame().x + win:screen():frame().w) ) <= 2
-					 and math.abs( ( win:frame().y + win:frame().h ) - ( win:screen():frame().y + win:screen():frame().h) ) <= 2;
-		end,
-	},
-
-	-- FUNCTION: Reload hammerspoon.
-	reload = function( args )
-
-		hs.console.clearConsole();
-		hs.openConsole();
-		hs.reload();
-
-		hs.printf( '[Hammerspoon] Reloaded Config' ); -- Easy way to get app name in console.
-	end
-};
-
--- ==============================
--- Windows
--- ==============================
-
-hs.window.animationDuration = 0; -- Never animate things by default.
-
-hs.window.filter.new():subscribe(
-	"windowCreated",
-	function( win )
-
-		hs.printf( win:application():name() ); -- Easy way to get app name in console.
-		hs.printf( win:title() ); -- Display window title.
-
-		-- Apply things to the windows..
-		-- fn.window.centerOnScreen( win );
-
-		if string.find( win:title() or '', 'Quick Command' ) then
-			return -- Do not resize the Quick Command iTerm2 window.
-		end
-
-		fn.window.setApplicationWindowSize( win );
-	end
-); -- Center all newly created windows.
-
--- ==============================
--- Keyboard Shortcuts
--- ==============================
-
--- Reload Hammerspoon with ctrl+alt+cmd+\.
-hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reload );
-
--- Open the Hammerspoon console easily.
-hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
-
-
+	-- Store the runtime references globally so Hammerspoon does not
+	-- garbage-collect the filter or hotkeys after this function returns.
+	_G.personalHammerspoonConfig = runtime
+end
 
 ----
 --- Enables current-Space behavior for Google Chrome PWA Dock clicks.
@@ -469,4 +612,6 @@ local function fixChromePWADockBehavior()
 	_G.chromePWADockBlocker:start()
 end
 
+-- Call the things in this file.
+manageWindowsAndSizes()
 fixChromePWADockBehavior()
