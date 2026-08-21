@@ -282,12 +282,138 @@ hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reload );
 hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
 
 
+----
+--- Enables current-Space behavior for Google Chrome PWA Dock clicks.
+---
+--- Chrome PWAs normally switch to an existing window on another macOS Space
+--- when their Dock icon is clicked. This intercepts that Dock click and:
+---
+--- 1. Focuses the PWA window if one exists on the current Space.
+--- 2. Opens a new PWA window if one does not exist on the current Space.
+--- 3. Leaves excluded PWAs and all non-PWA apps completely untouched.
+---
+--- @since August 21, 2026
+----
+local function fixChromePWADockBehavior()
 
+	-- PWAs listed here keep their normal macOS/Chrome Dock behavior.
+	local excludedChromePWAs = {
+		[ "YouTube" ] = true,
+		[ "Google Drive" ] = true,
+		[ "Google Meet" ] = true,
+	}
 
+	-- Tracks whether we swallowed mouse-down so we can also swallow the corresponding mouse-up event.
+	local swallowing = false
 
+	-- Listen for Dock mouse clicks.
+	_G.chromePWADockBlocker = hs.eventtap.new(
+		{ hs.eventtap.event.types.leftMouseDown, hs.eventtap.event.types.leftMouseUp, },
 
+		-- Run this function when it happens.
+		function( event )
 
+			-- If we intercepted mouse-down, intercept mouse-up too so the Dock never receives a partial click.
+			if hs.eventtap.event.types.leftMouseUp == event:getType() then
+				if true == swallowing then
 
+					swallowing = false
+					return true
+				end
 
+				return false
+			end
 
+			-- Determine which accessibility element was clicked.
+			local element = hs.axuielement.systemElementAtPosition( event:location() )
+			if nil == element then
+				return false
+			end
 
+			-- Ignore anything that was not clicked inside the macOS Dock.
+			local dock = hs.application.get( "Dock" )
+			if nil == dock or element:pid() ~= dock:pid() then
+				return false
+			end
+
+			-- Walk up the accessibility hierarchy until we find the actual application Dock item.
+			local dockItem
+			for _, item in ipairs( element:path() ) do
+				if "AXApplicationDockItem" == item:attributeValue( "AXSubrole" ) then
+					dockItem = item
+					break
+				end
+			end
+
+			if nil == dockItem then
+				return false
+			end
+
+			-- Get the application name shown in the Dock.
+			local appName = dockItem:attributeValue( "AXTitle" )
+			if nil == appName then
+				return false
+			end
+
+			-- Excluded apps should behave exactly as they normally would.
+			if true == excludedChromePWAs[ appName ] then
+				return false
+			end
+
+			-- Find the running application associated with this Dock item. If it is not running yet, let the Dock launch it normally.
+			local app = hs.application.get( appName )
+			if nil == app then
+				return false
+			end
+
+			-- Find the application's actual .app bundle.
+			local appPath = app:path()
+			if nil == appPath then
+				return false
+			end
+
+			local info = hs.application.infoForBundlePath( appPath )
+			if nil == info then
+				return false
+			end
+
+			-- Chrome PWAs contain these app-shim metadata values. Anything else should retain its normal Dock behavior.
+			if "com.google.Chrome" ~= info.CrBundleIdentifier
+				or nil == info.CrAppModeShortcutID
+				or nil == info.CrAppModeShortcutURL then
+					return false
+			end
+
+			-- From this point onward we are handling the Dock click ourselves, so prevent the Dock from receiving both parts of the click.
+			swallowing = true
+
+			-- Hammerspoon's visibleWindows() only gives us visible windows available on the current Mission Control Space.
+			local windows = app:visibleWindows()
+
+			-- If this PWA already has a window on the current Space, focus that window instead of allowing Chrome to switch Spaces.
+			if nil ~= windows[ 1 ] then
+
+				windows[ 1 ]:focus()
+				return true
+			end
+
+			----
+			-- There is no PWA window on this Space.
+			--
+			-- Opening the PWA's own launch URL through its .app bundle creates
+			-- a new PWA window on the current Space instead of switching to an
+			-- existing window somewhere else.
+			---
+			local task = hs.task.new( "/usr/bin/open", nil, { "-a", appPath, info.CrAppModeShortcutURL } )
+			if nil ~= task then
+				task:start()
+			end
+
+			return true
+		end
+	)
+
+	-- Keep the event tap running.
+	_G.chromePWADockBlocker:start()
+end
+fixChromePWADockBehavior()
