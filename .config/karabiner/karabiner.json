@@ -1,4 +1,5 @@
 {
+    "global": { "show_in_menu_bar": false },
     "profiles": [
         {
             "complex_modifications": {
@@ -253,7 +254,7 @@
                         ]
                     },
                     {
-                        "description": "Remap Shift+F5 to Superwhisper",
+                        "description": "Remap Shift+F5 to Spokenly",
                         "manipulators": [
                             {
                                 "from": {
