@@ -9,3 +9,5 @@ files:
   commitChangesWithEditor: 'c'
 refresher:
   refreshInterval: 1 # file/submodule refresh interval in seconds
+git:
+  autoFetch: false
