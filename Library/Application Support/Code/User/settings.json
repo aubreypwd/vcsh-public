@@ -138,7 +138,7 @@
   "editor.dragAndDrop": false,
   "editor.emptySelectionClipboard": true,
   "editor.fontFamily": "Menlo",
-  "editor.fontSize": 12.3,
+  "editor.fontSize": 12.5,
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": true,
   "editor.insertSpaces": false,
@@ -168,7 +168,7 @@
   "editor.scrollbar.horizontalScrollbarSize": 0,
   "editor.scrollbar.verticalScrollbarSize": 0,
   "editor.snippetSuggestions": "top",
-  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.enabled": false,
   "editor.stickyScroll.maxLineCount": 5,
   "editor.stickyTabStops": true,
   "editor.tabCompletion": "on",
@@ -183,24 +183,44 @@
   "files.watcherExclude": {
     "**/.git/": true,
     "**/node_modules/*/**": true,
-    "**/vendor/*/**": true
+    "**/vendor/*/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/coverage/**": true,
+    "**/.cache/**": true,
+    "**/.parcel-cache/**": true,
+    "**/.turbo/**": true,
+    "**/.output/**": true
   },
 
   // Firefox settings
   "firefox.profileDir": "/Users/aubreypwd/Library/Application Support/Firefox/Profiles/hlshzjk8.dev-edition-default-1698963937197",
 
+  // npm settings
+  "npm.autoDetect": "off",
+  "grunt.autoDetect": "off",
+  "gulp.autoDetect": "off",
+  "ts.tsc.autoDetect": "off",
+
   // Git settings
-  "git.autofetch": true,
+  "git.autoRepositoryDetection": false,
+  "git.detectSubmodules": false,
+  "git.decorations.enabled": false,
+  "git.autofetch": false,
   "git.branchProtection": [
     "master",
     "main"
   ],
   "git.confirmSync": false,
-  "git.decorations.enabled": false,
-  "git.enableSmartCommit": true,
-  "git.fetchOnPull": true,
-  "git.openRepositoryInParentFolders": "always",
-  "git.replaceTagsWhenPull": true,
+  "git.enableSmartCommit": false,
+  "git.fetchOnPull": false,
+  "git.openRepositoryInParentFolders": "openEditors",
+  "git.replaceTagsWhenPull": false,
 
   // GitHub settings
   "github.branchProtection": true,
@@ -839,5 +859,19 @@
   "editor.pasteAs.preferences": [
     "text.plain"
   ],
-  "js/ts.updateImportsOnFileMove.enabled": "always"
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "chat.disableAIFeatures": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/.nuxt": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/.cache": true,
+    "**/.parcel-cache": true,
+    "**/.turbo": true,
+    "**/.output": true
+  },
+  "search.followSymlinks": true
 }
