@@ -41,6 +41,7 @@ reset-mac-defaults () {
 	defaults write com.apple.dock show-recents -bool false; # Show recent applications.
 		defaults write com.apple.dock show-recent-count -int 0; # How many applications to show.
 	defaults write com.apple.dock scroll-to-open -bool true; # Enable the ability to swipe up with two fingers to see App Expose.
+	defaults write com.apple.dock workspaces-auto-swoosh -bool NO # Prevent dock clicks from auto-switching to desktops.
 
 	# Finder
 	defaults write com.apple.Finder QuitMenuItem 1 # Add Quit to Finder
