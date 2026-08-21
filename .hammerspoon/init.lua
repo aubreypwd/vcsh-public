@@ -282,26 +282,60 @@ hs.hotkey.bind( { 'ctrl', 'alt', 'cmd' }, '\\', fn.reload );
 hs.hotkey.bind( { 'ctrl', 'alt', 'cmd', 'shift' }, '\\', hs.openConsole );
 
 
+
 ----
 --- Enables current-Space behavior for Google Chrome PWA Dock clicks.
 ---
 --- Chrome PWAs normally switch to an existing window on another macOS Space
 --- when their Dock icon is clicked. This intercepts that Dock click and:
 ---
---- 1. Focuses the PWA window if one exists on the current Space.
---- 2. Opens a new PWA window if one does not exist on the current Space.
---- 3. Leaves excluded PWAs and all non-PWA apps completely untouched.
+--- 1. Leaves PWAs assigned to a Desktop with their normal Dock behavior.
+--- 2. Focuses the PWA window if one exists on the current Space.
+--- 3. Opens a new PWA window if one does not exist on the current Space.
+--- 4. Leaves excluded PWAs and all non-PWA apps completely untouched.
 ---
 --- @since August 21, 2026
 ----
 local function fixChromePWADockBehavior()
 
-	-- PWAs listed here keep their normal macOS/Chrome Dock behavior.
+	-- PWAs listed here keep their normal macOS/Chrome Dock behavior regardless of their Desktop assignment.
 	local excludedChromePWAs = {
-		[ "YouTube" ] = true,
 		[ "Google Drive" ] = true,
 		[ "Google Meet" ] = true,
 	}
+
+	----
+	--- Checks whether an application has been explicitly assigned to a macOS Desktop.
+	---
+	--- This includes "This Desktop" and "All Desktops". macOS may use an
+	--- empty string for the primary Desktop, so any existing binding counts.
+	---
+	--- @since August 21, 2026
+	---
+	--- @param string bundleID Application bundle identifier.
+	--- @return boolean Whether the application has a Desktop assignment.
+	----
+	local function isAppAssignedToDesktop( bundleID )
+
+		-- Export the current Spaces preferences so we read the active macOS configuration.
+		local output, status = hs.execute( "/usr/bin/defaults export com.apple.spaces -" )
+
+		if true ~= status or "" == output then
+			return false
+		end
+
+		local spaces = hs.plist.readString( output )
+
+		if nil == spaces or nil == spaces[ "app-bindings" ] then
+			return false
+		end
+
+		-- macOS stores application bindings using lowercase bundle identifiers.
+		local bindings = spaces[ "app-bindings" ]
+		local normalizedBundleID = bundleID:lower()
+
+		return nil ~= bindings[ normalizedBundleID ]
+	end
 
 	-- Tracks whether we swallowed mouse-down so we can also swallow the corresponding mouse-up event.
 	local swallowing = false
@@ -326,18 +360,21 @@ local function fixChromePWADockBehavior()
 
 			-- Determine which accessibility element was clicked.
 			local element = hs.axuielement.systemElementAtPosition( event:location() )
+
 			if nil == element then
 				return false
 			end
 
 			-- Ignore anything that was not clicked inside the macOS Dock.
 			local dock = hs.application.get( "Dock" )
+
 			if nil == dock or element:pid() ~= dock:pid() then
 				return false
 			end
 
 			-- Walk up the accessibility hierarchy until we find the actual application Dock item.
 			local dockItem
+
 			for _, item in ipairs( element:path() ) do
 				if "AXApplicationDockItem" == item:attributeValue( "AXSubrole" ) then
 					dockItem = item
@@ -351,28 +388,32 @@ local function fixChromePWADockBehavior()
 
 			-- Get the application name shown in the Dock.
 			local appName = dockItem:attributeValue( "AXTitle" )
+
 			if nil == appName then
 				return false
 			end
 
-			-- Excluded apps should behave exactly as they normally would.
+			-- Excluded PWAs should behave exactly as they normally would.
 			if true == excludedChromePWAs[ appName ] then
 				return false
 			end
 
 			-- Find the running application associated with this Dock item. If it is not running yet, let the Dock launch it normally.
 			local app = hs.application.get( appName )
+
 			if nil == app then
 				return false
 			end
 
 			-- Find the application's actual .app bundle.
 			local appPath = app:path()
+
 			if nil == appPath then
 				return false
 			end
 
 			local info = hs.application.infoForBundlePath( appPath )
+
 			if nil == info then
 				return false
 			end
@@ -380,14 +421,20 @@ local function fixChromePWADockBehavior()
 			-- Chrome PWAs contain these app-shim metadata values. Anything else should retain its normal Dock behavior.
 			if "com.google.Chrome" ~= info.CrBundleIdentifier
 				or nil == info.CrAppModeShortcutID
-				or nil == info.CrAppModeShortcutURL then
+				or nil == info.CrAppModeShortcutURL
+				or nil == info.CFBundleIdentifier then
 					return false
+			end
+
+			-- Apps explicitly assigned to a Desktop should retain normal macOS Dock behavior.
+			if true == isAppAssignedToDesktop( info.CFBundleIdentifier ) then
+				return false
 			end
 
 			-- From this point onward we are handling the Dock click ourselves, so prevent the Dock from receiving both parts of the click.
 			swallowing = true
 
-			-- Hammerspoon's visibleWindows() only gives us visible windows available on the current Mission Control Space.
+			-- Hammerspoon's visibleWindows() gives us the PWA windows available on the current Mission Control Space.
 			local windows = app:visibleWindows()
 
 			-- If this PWA already has a window on the current Space, focus that window instead of allowing Chrome to switch Spaces.
@@ -403,8 +450,13 @@ local function fixChromePWADockBehavior()
 			-- Opening the PWA's own launch URL through its .app bundle creates
 			-- a new PWA window on the current Space instead of switching to an
 			-- existing window somewhere else.
-			---
-			local task = hs.task.new( "/usr/bin/open", nil, { "-a", appPath, info.CrAppModeShortcutURL } )
+			----
+			local task = hs.task.new(
+				"/usr/bin/open",
+				nil,
+				{ "-a", appPath, info.CrAppModeShortcutURL }
+			)
+
 			if nil ~= task then
 				task:start()
 			end
@@ -416,4 +468,5 @@ local function fixChromePWADockBehavior()
 	-- Keep the event tap running.
 	_G.chromePWADockBlocker:start()
 end
+
 fixChromePWADockBehavior()
