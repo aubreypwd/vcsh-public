@@ -64,7 +64,7 @@
 	"theme": "Delta.sublime-theme",
 	"tree_animation_enabled": false,
 	"ui_separator": true,
-	"sidebar_on_right": true,
+	"sidebar_on_right": false,
 	"show_sidebar_button": true,
 
 	// Window / Startup / Tabs
