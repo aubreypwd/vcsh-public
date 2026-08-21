@@ -35,6 +35,7 @@ alias localdb="dbgpClient-macos-arm64 -p 9003" # LocalWP
 
 # Misc Aliases
 alias lg="lazygit"
+alias lgx="lazygit && x"
 alias ss='cmatrix' # Sceeen Saver
 alias safariextconv='xcrun /Applications/Xcode.app/Contents/Developer/us/bin/safari-web-extension-converter' # Convert Chrome Extensions to Safari Extensions.
 alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
@@ -48,7 +49,7 @@ alias mp="multipass"
 alias allowapp="xattr -rc"
 alias yodex="codex --yolo" # Run Codex in YOLO mode.
 alias edit="$VISUAL" # Graphical editor.
-alias do4="gtimeout" # Do something for an amount of time
+alias dofor="gtimeout" # Do something for an amount of time
 
 # iTerm2 Tab Aliases
 alias nt='ttab' # New tab.
@@ -1167,13 +1168,6 @@ function svn () {
 	else
 		command svn "$@"
 	fi
-}
-
-# Run WP CLI on the latest with PHP 7.4 to avoid warnings/errors.
-# @since August 26th 2025
-wp () {
-	/opt/homebrew/opt/php@7.4/bin/php /usr/local/bin/wp cli update --quiet && \
-		/opt/homebrew/opt/php@7.4/bin/php /usr/local/bin/wp $@
 }
 
 # An easy way to call my editor and configure.
