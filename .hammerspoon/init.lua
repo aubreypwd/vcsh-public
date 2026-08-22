@@ -424,7 +424,7 @@ local function manageWindowsAndSizes()
 	-- Store the runtime references globally so Hammerspoon does not
 	-- garbage-collect the filter or hotkeys after this function returns.
 	_G.personalHammerspoonConfig = runtime
-end
+end; manageWindowsAndSizes()
 
 ----
 --- Enables current-Space behavior for Google Chrome PWA Dock clicks.
@@ -436,6 +436,7 @@ end
 --- 2. Focuses the PWA window if one exists on the current Space.
 --- 3. Opens a new PWA window if one does not exist on the current Space.
 --- 4. Leaves excluded PWAs and all non-PWA apps completely untouched.
+--- 5. Preserves normal Dock icon dragging.
 ---
 --- @since August 21, 2026
 ----
@@ -480,26 +481,131 @@ local function fixChromePWADockBehavior()
 		return nil ~= bindings[ normalizedBundleID ]
 	end
 
-	-- Tracks whether we swallowed mouse-down so we can also swallow the corresponding mouse-up event.
-	local swallowing = false
+	-- Stores information about a PWA click while we wait to see if it becomes a drag.
+	local pendingChromePWA = nil
 
-	-- Listen for Dock mouse clicks.
+	-- Stores the original mouse-down event so it can be replayed if the gesture becomes a drag.
+	local pendingMouseDown = nil
+
+	-- Tracks whether the current PWA mouse gesture became a drag.
+	local dragging = false
+
+	-- Listen for Dock mouse clicks and drags.
 	_G.chromePWADockBlocker = hs.eventtap.new(
-		{ hs.eventtap.event.types.leftMouseDown, hs.eventtap.event.types.leftMouseUp, },
+		{
+			hs.eventtap.event.types.leftMouseDown,
+			hs.eventtap.event.types.leftMouseDragged,
+			hs.eventtap.event.types.leftMouseUp,
+		},
 
 		-- Run this function when it happens.
 		function( event )
 
-			-- If we intercepted mouse-down, intercept mouse-up too so the Dock never receives a partial click.
-			if hs.eventtap.event.types.leftMouseUp == event:getType() then
-				if true == swallowing then
+			local eventType = event:getType()
 
-					swallowing = false
+			----
+			-- Dragging
+			--
+			-- We originally swallowed mouse-down so Chrome could not perform
+			-- its normal Dock activation. Once we know this gesture is actually
+			-- a drag, replay that original mouse-down to the Dock and allow the
+			-- real drag events to continue normally.
+			----
+			if hs.eventtap.event.types.leftMouseDragged == eventType then
+
+				if nil == pendingChromePWA or nil == pendingMouseDown then
+					return false
+				end
+
+				if true ~= dragging then
+
+					dragging = true
+
+					-- Temporarily stop this event tap so it does not intercept
+					-- the mouse-down event we are about to replay.
+					_G.chromePWADockBlocker:stop()
+
+					pendingMouseDown:post()
+
+					_G.chromePWADockBlocker:start()
+
+					-- We only need to replay mouse-down once.
+					pendingMouseDown = nil
+				end
+
+				-- Let the Dock receive the real drag event.
+				return false
+			end
+
+			----
+			-- Mouse Up
+			--
+			-- At this point we know whether the gesture was a click or a drag.
+			----
+			if hs.eventtap.event.types.leftMouseUp == eventType then
+
+				if nil == pendingChromePWA then
+					return false
+				end
+
+				-- If this became a drag, the Dock already received our replayed
+				-- mouse-down and the real drag events. Let it receive mouse-up too.
+				if true == dragging then
+
+					pendingChromePWA = nil
+					pendingMouseDown = nil
+					dragging = false
+
+					return false
+				end
+
+				-- This was a normal click, so handle the Chrome PWA ourselves.
+				local chromePWA = pendingChromePWA
+
+				pendingChromePWA = nil
+				pendingMouseDown = nil
+				dragging = false
+
+				-- Hammerspoon's visibleWindows() gives us the PWA windows available on the current Mission Control Space.
+				local windows = chromePWA.app:visibleWindows()
+
+				-- If this PWA already has a window on the current Space, focus that window instead of allowing Chrome to switch Spaces.
+				if nil ~= windows[ 1 ] then
+
+					windows[ 1 ]:focus()
 					return true
 				end
 
-				return false
+				----
+				-- There is no PWA window on this Space.
+				--
+				-- Opening the PWA's own launch URL through its .app bundle creates
+				-- a new PWA window on the current Space instead of switching to an
+				-- existing window somewhere else.
+				----
+				local task = hs.task.new(
+					"/usr/bin/open",
+					nil,
+					{
+						"-a",
+						chromePWA.appPath,
+						chromePWA.info.CrAppModeShortcutURL,
+					}
+				)
+
+				if nil ~= task then
+					task:start()
+				end
+
+				-- Swallow mouse-up because the Dock never received mouse-down
+				-- and should not perform its normal Chrome PWA activation.
+				return true
 			end
+
+			-- A new mouse-down starts a new gesture.
+			pendingChromePWA = nil
+			pendingMouseDown = nil
+			dragging = false
 
 			-- Determine which accessibility element was clicked.
 			local element = hs.axuielement.systemElementAtPosition( event:location() )
@@ -574,44 +680,25 @@ local function fixChromePWADockBehavior()
 				return false
 			end
 
-			-- From this point onward we are handling the Dock click ourselves, so prevent the Dock from receiving both parts of the click.
-			swallowing = true
-
-			-- Hammerspoon's visibleWindows() gives us the PWA windows available on the current Mission Control Space.
-			local windows = app:visibleWindows()
-
-			-- If this PWA already has a window on the current Space, focus that window instead of allowing Chrome to switch Spaces.
-			if nil ~= windows[ 1 ] then
-
-				windows[ 1 ]:focus()
-				return true
-			end
-
 			----
-			-- There is no PWA window on this Space.
+			-- This is a Chrome PWA we want to manage.
 			--
-			-- Opening the PWA's own launch URL through its .app bundle creates
-			-- a new PWA window on the current Space instead of switching to an
-			-- existing window somewhere else.
+			-- Save everything we need, then swallow mouse-down. If this later
+			-- becomes a drag, the original mouse-down will be replayed to Dock.
 			----
-			local task = hs.task.new(
-				"/usr/bin/open",
-				nil,
-				{ "-a", appPath, info.CrAppModeShortcutURL }
-			)
+			pendingChromePWA = {
+				app = app,
+				appPath = appPath,
+				info = info,
+			}
 
-			if nil ~= task then
-				task:start()
-			end
+			pendingMouseDown = event:copy()
 
+			-- Prevent Chrome from receiving the normal Dock activation.
 			return true
 		end
 	)
 
 	-- Keep the event tap running.
 	_G.chromePWADockBlocker:start()
-end
-
--- Call the things in this file.
-manageWindowsAndSizes()
-fixChromePWADockBehavior()
+end; fixChromePWADockBehavior()
