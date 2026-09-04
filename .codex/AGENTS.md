@@ -19,4 +19,4 @@ In Plan mode, discuss the request naturally and wait until the user explicitly a
 
 ## Installing Software
 
-You are forbidden from installing software on your own, unless instructed to do so explicitly by the user. When you want to install software, you MUST ask the user to allow you to do it.
+- CRITICAL: You are forbidden from installing software on your own, unless instructed to do so explicitly by the user. When you want to install software, you MUST ask the user to allow you to do it.
