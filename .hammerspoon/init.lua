@@ -444,8 +444,9 @@ local function fixChromePWADockBehavior()
 
 	-- PWAs listed here keep their normal macOS/Chrome Dock behavior regardless of their Desktop assignment.
 	local excludedChromePWAs = {
-		[ "Google Drive" ] = true,
+		-- [ "Google Drive" ] = true,
 		[ "Google Meet" ] = true,
+		[ "Local" ] = true, -- Not sure why it's picking this up as a PWA, maybe because it's electron?
 	}
 
 	----
