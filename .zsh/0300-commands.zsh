@@ -1185,7 +1185,7 @@ econf () {
 
 	if [ -z "$1" ]; then
 		for key in "${(@k)CONFMAP}"; do
-		  echo "$key: ${CONFMAP[$key]}"
+			echo "$key: ${CONFMAP[$key]}"
 		done
 
 		return 0
@@ -1226,4 +1226,20 @@ xt2json () {
 # @usage port 8081
 port () {
 	lsof -i ":$1"
+}
+
+# Run Google Chrome in a new instance and profile.
+# @since September 4th 2026
+# @usage ngchp "Profile Name"
+ngchp() {
+
+	local profile="$1"
+
+	if [[ -z "$profile" ]]; then
+		echo "Usage: nchp <profile-name>"
+		return 1
+	fi
+
+	open -na "Google Chrome" --args \
+		--user-data-dir="$HOME/.chrome-profiles/$profile"
 }
