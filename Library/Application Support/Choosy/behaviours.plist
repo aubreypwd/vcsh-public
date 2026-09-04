@@ -348,12 +348,12 @@
 		<key>behaviourArgument</key>
 		<dict>
 			<key>path</key>
-			<string>/Users/aubreypwd/Applications/Unite Apps/Github.app</string>
+			<string>/Users/aubreypwd/Applications/Script Editor Apps/New Google Chrome Window.app</string>
 			<key>type</key>
 			<string>ChoosyBrowser</string>
 		</dict>
 		<key>enabled</key>
-		<false/>
+		<true/>
 		<key>predicate</key>
 		<string>URL CONTAINS "github.com"</string>
 		<key>title</key>
@@ -382,7 +382,7 @@
 		<key>behaviourArgument</key>
 		<dict>
 			<key>path</key>
-			<string>/Users/aubreypwd/Applications/Script Editor Apps/Chromium.app</string>
+			<string>/Users/aubreypwd/Applications/Script Editor Apps/New Chromium Window.app</string>
 			<key>type</key>
 			<string>ChoosyBrowser</string>
 		</dict>
@@ -661,7 +661,7 @@
 		<key>behaviourArgument</key>
 		<dict>
 			<key>path</key>
-			<string>/Users/aubreypwd/Applications/Chrome Apps.localized/Google Meet.app</string>
+			<string>/Users/aubreypwd/Applications/Script Editor Apps/New Google Chrome Window.app</string>
 			<key>type</key>
 			<string>ChoosyBrowser</string>
 		</dict>
