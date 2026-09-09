@@ -11,3 +11,14 @@ refresher:
   refreshInterval: 1 # file/submodule refresh interval in seconds
 git:
   autoFetch: false
+customCommands:
+  - key: 'P'
+    context: 'global'
+    description: 'Push with confirmation'
+    command: 'git push'
+    loadingText: 'Pushing...'
+    prompts:
+      - type: 'confirm'
+        key: 'Confirm'
+        title: 'Push'
+        body: 'Are you sure? Enter to confirm.'
