@@ -439,6 +439,7 @@ end; manageWindowsAndSizes()
 --- 5. Preserves normal Dock icon dragging.
 ---
 --- @since August 21, 2026
+--- @since September 12, 2026 Ignores small pointer movement before starting a drag.
 ----
 local function fixChromePWADockBehavior()
 
@@ -485,8 +486,11 @@ local function fixChromePWADockBehavior()
 	-- Stores information about a PWA click while we wait to see if it becomes a drag.
 	local pendingChromePWA = nil
 
-	-- Stores the original mouse-down event so it can be replayed if the gesture becomes a drag.
-	local pendingMouseDown = nil
+	-- Stores the original mouse-down location so a clean drag event can be started later.
+	local pendingMouseDownLocation = nil
+
+	-- Requires deliberate movement before a click becomes a Dock icon drag.
+	local chromePWADragDistance = 8
 
 	-- Tracks whether the current PWA mouse gesture became a drag.
 	local dragging = false
@@ -508,14 +512,23 @@ local function fixChromePWADockBehavior()
 			-- Dragging
 			--
 			-- We originally swallowed mouse-down so Chrome could not perform
-			-- its normal Dock activation. Once we know this gesture is actually
-			-- a drag, replay that original mouse-down to the Dock and allow the
-			-- real drag events to continue normally.
+			-- its normal Dock activation. Once the pointer moves far enough to
+			-- be a deliberate drag, start a clean Dock drag and allow the real
+			-- drag events to continue normally.
 			----
 			if hs.eventtap.event.types.leftMouseDragged == eventType then
 
-				if nil == pendingChromePWA or nil == pendingMouseDown then
+				if nil == pendingChromePWA or nil == pendingMouseDownLocation then
 					return false
+				end
+
+				local dragLocation = event:location()
+				local distanceX = dragLocation.x - pendingMouseDownLocation.x
+				local distanceY = dragLocation.y - pendingMouseDownLocation.y
+
+				if chromePWADragDistance * chromePWADragDistance >
+					distanceX * distanceX + distanceY * distanceY then
+					return true
 				end
 
 				if true ~= dragging then
@@ -523,15 +536,15 @@ local function fixChromePWADockBehavior()
 					dragging = true
 
 					-- Temporarily stop this event tap so it does not intercept
-					-- the mouse-down event we are about to replay.
+					-- the clean mouse-down event we are about to post.
 					_G.chromePWADockBlocker:stop()
 
-					pendingMouseDown:post()
+					hs.eventtap.event.newMouseEvent(
+						hs.eventtap.event.types.leftMouseDown,
+						pendingMouseDownLocation
+					):post()
 
 					_G.chromePWADockBlocker:start()
-
-					-- We only need to replay mouse-down once.
-					pendingMouseDown = nil
 				end
 
 				-- Let the Dock receive the real drag event.
@@ -549,12 +562,12 @@ local function fixChromePWADockBehavior()
 					return false
 				end
 
-				-- If this became a drag, the Dock already received our replayed
+				-- If this became a drag, the Dock already received our clean
 				-- mouse-down and the real drag events. Let it receive mouse-up too.
 				if true == dragging then
 
 					pendingChromePWA = nil
-					pendingMouseDown = nil
+					pendingMouseDownLocation = nil
 					dragging = false
 
 					return false
@@ -564,7 +577,7 @@ local function fixChromePWADockBehavior()
 				local chromePWA = pendingChromePWA
 
 				pendingChromePWA = nil
-				pendingMouseDown = nil
+				pendingMouseDownLocation = nil
 				dragging = false
 
 				-- Hammerspoon's visibleWindows() gives us the PWA windows available on the current Mission Control Space.
@@ -605,7 +618,7 @@ local function fixChromePWADockBehavior()
 
 			-- A new mouse-down starts a new gesture.
 			pendingChromePWA = nil
-			pendingMouseDown = nil
+			pendingMouseDownLocation = nil
 			dragging = false
 
 			-- Determine which accessibility element was clicked.
@@ -633,6 +646,11 @@ local function fixChromePWADockBehavior()
 			end
 
 			if nil == dockItem then
+				return false
+			end
+
+			-- Control-click is macOS's secondary-click gesture, so leave it to the Dock.
+			if true == event:getFlags().ctrl then
 				return false
 			end
 
@@ -685,7 +703,7 @@ local function fixChromePWADockBehavior()
 			-- This is a Chrome PWA we want to manage.
 			--
 			-- Save everything we need, then swallow mouse-down. If this later
-			-- becomes a drag, the original mouse-down will be replayed to Dock.
+			-- becomes a deliberate drag, a clean mouse-down will be sent to Dock.
 			----
 			pendingChromePWA = {
 				app = app,
@@ -693,7 +711,7 @@ local function fixChromePWADockBehavior()
 				info = info,
 			}
 
-			pendingMouseDown = event:copy()
+			pendingMouseDownLocation = event:location()
 
 			-- Prevent Chrome from receiving the normal Dock activation.
 			return true
