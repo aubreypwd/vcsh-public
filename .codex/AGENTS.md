@@ -21,6 +21,10 @@ In Plan mode, discuss the request naturally and wait until the user explicitly a
 
 - CRITICAL: You are forbidden from installing software on your own, unless instructed to do so explicitly by the user. When you want to install software, you MUST ask the user to allow you to do it.
 
+## Hammerspoon Configuration Changes
+
+- CRITICAL: Never reload, restart, quit, or launch Hammerspoon after editing its configuration. Do not use `hs.reload()`, AppleScript, `killall`, `open -a`, or Hammerspoon menu/UI actions for this purpose. After making Hammerspoon changes, ask Aubrey to reload or restart Hammerspoon manually.
+
 ## Voice notifications with `/usr/bin/say`
 
 Use `/usr/bin/say` to communicate with Aubrey when he is away from this Codex session.
