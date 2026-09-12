@@ -440,14 +440,15 @@ end; manageWindowsAndSizes()
 ---
 --- @since August 21, 2026
 --- @since September 12, 2026 Ignores small pointer movement before starting a drag.
+--- @since September 12, 2026 Refactored gesture handling into local helpers.
 ----
 local function fixChromePWADockBehavior()
 
-	-- PWAs listed here keep their normal macOS/Chrome Dock behavior regardless of their Desktop assignment.
+	-- Excluded PWAs keep their normal macOS/Chrome behavior.
 	local excludedChromePWAs = {
 		-- [ "Google Drive" ] = true,
 		[ "Google Meet" ] = true,
-		[ "Local" ] = true, -- Not sure why it's picking this up as a PWA, maybe because it's electron?
+		[ "Local" ] = true, -- Electron app detected as a PWA.
 	}
 
 	----
@@ -457,13 +458,17 @@ local function fixChromePWADockBehavior()
 	--- empty string for the primary Desktop, so any existing binding counts.
 	---
 	--- @since August 21, 2026
+	--- @since September 12, 2026 Simplified the Desktop-binding lookup.
 	---
 	--- @param string bundleID Application bundle identifier.
 	--- @return boolean Whether the application has a Desktop assignment.
 	----
 	local function isAppAssignedToDesktop( bundleID )
 
-		-- Export the current Spaces preferences so we read the active macOS configuration.
+		if "string" ~= type( bundleID ) then
+			return false
+		end
+
 		local output, status = hs.execute( "/usr/bin/defaults export com.apple.spaces -" )
 
 		if true ~= status or "" == output then
@@ -476,72 +481,161 @@ local function fixChromePWADockBehavior()
 			return false
 		end
 
-		-- macOS stores application bindings using lowercase bundle identifiers.
-		local bindings = spaces[ "app-bindings" ]
-		local normalizedBundleID = bundleID:lower()
-
-		return nil ~= bindings[ normalizedBundleID ]
+		return nil ~= spaces[ "app-bindings" ][ bundleID:lower() ]
 	end
 
-	-- Stores information about a PWA click while we wait to see if it becomes a drag.
-	local pendingChromePWA = nil
+	----
+	--- Finds the managed Chrome PWA at a mouse event's location.
+	---
+	--- @since September 12, 2026
+	---
+	--- @param userdata event Mouse event to inspect.
+	--- @return table Chrome PWA data, or nil when the event is not eligible.
+	----
+	local function getChromePWAForEvent( event )
 
-	-- Stores the original mouse-down location so a clean drag event can be started later.
-	local pendingMouseDownLocation = nil
+		local element = hs.axuielement.systemElementAtPosition( event:location() )
+
+		if nil == element then
+			return nil
+		end
+
+		local dock = hs.application.get( "Dock" )
+
+		if nil == dock or element:pid() ~= dock:pid() then
+			return nil
+		end
+
+		local dockItem
+
+		for _, item in ipairs( element:path() ) do
+			if "AXApplicationDockItem" == item:attributeValue( "AXSubrole" ) then
+				dockItem = item
+				break
+			end
+		end
+
+		if nil == dockItem or true == event:getFlags().ctrl then
+			return nil
+		end
+
+		local appName = dockItem:attributeValue( "AXTitle" )
+
+		if nil == appName or true == excludedChromePWAs[ appName ] then
+			return nil
+		end
+
+		local app = hs.application.get( appName )
+
+		if nil == app then
+			return nil
+		end
+
+		local appPath = app:path()
+
+		if nil == appPath then
+			return nil
+		end
+
+		local info = hs.application.infoForBundlePath( appPath )
+
+		if nil == info then
+			return nil
+		end
+
+		if "com.google.Chrome" ~= info.CrBundleIdentifier
+			or nil == info.CrAppModeShortcutID
+			or nil == info.CrAppModeShortcutURL
+			or nil == info.CFBundleIdentifier then
+			return nil
+		end
+
+		if true == isAppAssignedToDesktop( info.CFBundleIdentifier ) then
+			return nil
+		end
+
+		return {
+			app = app,
+			appPath = appPath,
+			info = info,
+		}
+	end
+
+	----
+	--- Focuses the current-Space Chrome PWA or opens a new window.
+	---
+	--- @since September 12, 2026
+	---
+	--- @param table chromePWA Chrome PWA application data.
+	----
+	local function focusOrOpenChromePWA( chromePWA )
+
+		local windows = chromePWA.app:visibleWindows()
+
+		if nil ~= windows[ 1 ] then
+			windows[ 1 ]:focus()
+			return
+		end
+
+		local task = hs.task.new(
+			"/usr/bin/open",
+			nil,
+			{
+				"-a",
+				chromePWA.appPath,
+				chromePWA.info.CrAppModeShortcutURL,
+			}
+		)
+
+		if nil ~= task then
+			task:start()
+		end
+	end
+
+	-- Stores the current PWA gesture until it becomes a click or deliberate drag.
+	local pendingGesture = nil
 
 	-- Requires deliberate movement before a click becomes a Dock icon drag.
 	local chromePWADragDistance = 8
+	local eventTypes = hs.eventtap.event.types
 
-	-- Tracks whether the current PWA mouse gesture became a drag.
-	local dragging = false
-
-	-- Listen for Dock mouse clicks and drags.
 	_G.chromePWADockBlocker = hs.eventtap.new(
 		{
-			hs.eventtap.event.types.leftMouseDown,
-			hs.eventtap.event.types.leftMouseDragged,
-			hs.eventtap.event.types.leftMouseUp,
+			eventTypes.leftMouseDown,
+			eventTypes.leftMouseDragged,
+			eventTypes.leftMouseUp,
 		},
 
-		-- Run this function when it happens.
 		function( event )
 
 			local eventType = event:getType()
 
-			----
-			-- Dragging
-			--
-			-- We originally swallowed mouse-down so Chrome could not perform
-			-- its normal Dock activation. Once the pointer moves far enough to
-			-- be a deliberate drag, start a clean Dock drag and allow the real
-			-- drag events to continue normally.
-			----
-			if hs.eventtap.event.types.leftMouseDragged == eventType then
+			if eventTypes.leftMouseDragged == eventType then
 
-				if nil == pendingChromePWA or nil == pendingMouseDownLocation then
+				if nil == pendingGesture then
 					return false
 				end
 
 				local dragLocation = event:location()
-				local distanceX = dragLocation.x - pendingMouseDownLocation.x
-				local distanceY = dragLocation.y - pendingMouseDownLocation.y
+				local distanceX = dragLocation.x - pendingGesture.location.x
+				local distanceY = dragLocation.y - pendingGesture.location.y
 
 				if chromePWADragDistance * chromePWADragDistance >
 					distanceX * distanceX + distanceY * distanceY then
 					return true
 				end
 
-				if true ~= dragging then
+				if true ~= pendingGesture.dragging then
 
-					dragging = true
+					pendingGesture.dragging = true
 
 					-- Temporarily stop this event tap so it does not intercept
 					-- the clean mouse-down event we are about to post.
 					_G.chromePWADockBlocker:stop()
 
 					hs.eventtap.event.newMouseEvent(
-						hs.eventtap.event.types.leftMouseDown,
-						pendingMouseDownLocation
+						eventTypes.leftMouseDown,
+						pendingGesture.location
 					):post()
 
 					_G.chromePWADockBlocker:start()
@@ -556,162 +650,37 @@ local function fixChromePWADockBehavior()
 			--
 			-- At this point we know whether the gesture was a click or a drag.
 			----
-			if hs.eventtap.event.types.leftMouseUp == eventType then
+			if eventTypes.leftMouseUp == eventType then
 
-				if nil == pendingChromePWA then
+				if nil == pendingGesture then
 					return false
 				end
 
-				-- If this became a drag, the Dock already received our clean
-				-- mouse-down and the real drag events. Let it receive mouse-up too.
-				if true == dragging then
+				local gesture = pendingGesture
+				pendingGesture = nil
 
-					pendingChromePWA = nil
-					pendingMouseDownLocation = nil
-					dragging = false
-
+				if true == gesture.dragging then
 					return false
 				end
 
-				-- This was a normal click, so handle the Chrome PWA ourselves.
-				local chromePWA = pendingChromePWA
+				focusOrOpenChromePWA( gesture.chromePWA )
 
-				pendingChromePWA = nil
-				pendingMouseDownLocation = nil
-				dragging = false
-
-				-- Hammerspoon's visibleWindows() gives us the PWA windows available on the current Mission Control Space.
-				local windows = chromePWA.app:visibleWindows()
-
-				-- If this PWA already has a window on the current Space, focus that window instead of allowing Chrome to switch Spaces.
-				if nil ~= windows[ 1 ] then
-
-					windows[ 1 ]:focus()
-					return true
-				end
-
-				----
-				-- There is no PWA window on this Space.
-				--
-				-- Opening the PWA's own launch URL through its .app bundle creates
-				-- a new PWA window on the current Space instead of switching to an
-				-- existing window somewhere else.
-				----
-				local task = hs.task.new(
-					"/usr/bin/open",
-					nil,
-					{
-						"-a",
-						chromePWA.appPath,
-						chromePWA.info.CrAppModeShortcutURL,
-					}
-				)
-
-				if nil ~= task then
-					task:start()
-				end
-
-				-- Swallow mouse-up because the Dock never received mouse-down
-				-- and should not perform its normal Chrome PWA activation.
 				return true
 			end
 
 			-- A new mouse-down starts a new gesture.
-			pendingChromePWA = nil
-			pendingMouseDownLocation = nil
-			dragging = false
+			pendingGesture = nil
 
-			-- Determine which accessibility element was clicked.
-			local element = hs.axuielement.systemElementAtPosition( event:location() )
+			local chromePWA = getChromePWAForEvent( event )
 
-			if nil == element then
+			if nil == chromePWA then
 				return false
 			end
 
-			-- Ignore anything that was not clicked inside the macOS Dock.
-			local dock = hs.application.get( "Dock" )
-
-			if nil == dock or element:pid() ~= dock:pid() then
-				return false
-			end
-
-			-- Walk up the accessibility hierarchy until we find the actual application Dock item.
-			local dockItem
-
-			for _, item in ipairs( element:path() ) do
-				if "AXApplicationDockItem" == item:attributeValue( "AXSubrole" ) then
-					dockItem = item
-					break
-				end
-			end
-
-			if nil == dockItem then
-				return false
-			end
-
-			-- Control-click is macOS's secondary-click gesture, so leave it to the Dock.
-			if true == event:getFlags().ctrl then
-				return false
-			end
-
-			-- Get the application name shown in the Dock.
-			local appName = dockItem:attributeValue( "AXTitle" )
-
-			if nil == appName then
-				return false
-			end
-
-			-- Excluded PWAs should behave exactly as they normally would.
-			if true == excludedChromePWAs[ appName ] then
-				return false
-			end
-
-			-- Find the running application associated with this Dock item. If it is not running yet, let the Dock launch it normally.
-			local app = hs.application.get( appName )
-
-			if nil == app then
-				return false
-			end
-
-			-- Find the application's actual .app bundle.
-			local appPath = app:path()
-
-			if nil == appPath then
-				return false
-			end
-
-			local info = hs.application.infoForBundlePath( appPath )
-
-			if nil == info then
-				return false
-			end
-
-			-- Chrome PWAs contain these app-shim metadata values. Anything else should retain its normal Dock behavior.
-			if "com.google.Chrome" ~= info.CrBundleIdentifier
-				or nil == info.CrAppModeShortcutID
-				or nil == info.CrAppModeShortcutURL
-				or nil == info.CFBundleIdentifier then
-					return false
-			end
-
-			-- Apps explicitly assigned to a Desktop should retain normal macOS Dock behavior.
-			if true == isAppAssignedToDesktop( info.CFBundleIdentifier ) then
-				return false
-			end
-
-			----
-			-- This is a Chrome PWA we want to manage.
-			--
-			-- Save everything we need, then swallow mouse-down. If this later
-			-- becomes a deliberate drag, a clean mouse-down will be sent to Dock.
-			----
-			pendingChromePWA = {
-				app = app,
-				appPath = appPath,
-				info = info,
+			pendingGesture = {
+				chromePWA = chromePWA,
+				location = event:location(),
 			}
-
-			pendingMouseDownLocation = event:location()
 
 			-- Prevent Chrome from receiving the normal Dock activation.
 			return true
