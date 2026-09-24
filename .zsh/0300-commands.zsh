@@ -1243,3 +1243,19 @@ ngchp() {
 	open -na "Google Chrome" --args \
 		--user-data-dir="$HOME/.chrome-profiles/$profile"
 }
+
+# Run my personal assistant.
+# @since September 23rd 2026
+# @usage dex
+dex() {
+
+	pushd "$HOME/.codex/skills/dex" >/dev/null || return
+
+	codex 'Hey $dex I need you.'
+
+	local codex_status=$?
+
+	popd >/dev/null
+
+	return "$codex_status"
+}
