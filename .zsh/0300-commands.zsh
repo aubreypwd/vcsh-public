@@ -1251,7 +1251,7 @@ dex() {
 
 	pushd "$HOME/.codex/skills/dex" >/dev/null || return
 
-	codex 'Hey $dex I need you.'
+	codex resume
 
 	local codex_status=$?
 
