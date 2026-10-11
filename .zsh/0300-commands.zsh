@@ -1170,8 +1170,14 @@ function svn () {
 	fi
 }
 
-# An easy way to call my editor and configure.
-# @since August 27th 2025
+###
+ # Opens a mapped configuration in the visual editor.
+ #
+ # @since August 27th 2025
+ # @since October 11, 2026 Use VISUAL so configuration editing does not wait.
+ #
+ # @param string $1 Configuration name; omit to list available names.
+ ##
 econf () {
 
 	declare -A CONFMAP=(
@@ -1191,7 +1197,7 @@ econf () {
 		return 0
 	fi
 
-	"$EDITOR" "${CONFMAP[$1]}"
+	"$VISUAL" "${CONFMAP[$1]}"
 }
 
 # Convert Xdebug .xt to .svg flamegraph

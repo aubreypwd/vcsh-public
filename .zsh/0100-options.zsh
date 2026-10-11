@@ -24,15 +24,11 @@ export GPG_TTY=$(tty) # GPG Suite.
 
 # Editors.
 # @since Thursday, 5/13/2021
+# @since October 11, 2026 Use Sublime Text as the default editor.
 
-# Terminal editor.
-if [[ "$TERM_PROGRAM" == 'vscode' ]]; then
-	export EDITOR='code'
-else
-	export EDITOR='code'
-fi
-
-export VISUAL="code" # Visual Editor.
+# Wait for editing to finish when a command requires an editor.
+export EDITOR='subl --wait'
+export VISUAL='subl'
 
 # export PAGER="highlight --out-format ansi --syntax=html --force --no-trailing-nl" # I can scroll and highlist
 export PAGER="cat" # Just use cat for now.
