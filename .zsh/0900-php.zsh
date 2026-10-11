@@ -14,7 +14,7 @@
 MY_PHP_VERSIONS=(7.4 8.0 8.1 8.2 8.3 8.4)
 
 # The PHP version I want to use by default (pinned).
-MY_PHP_VERSION="8.3"
+MY_PHP_VERSION="8.4"
 
 ###
  # Setup PHP on my system.
