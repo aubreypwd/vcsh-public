@@ -389,7 +389,7 @@
 		<key>enabled</key>
 		<true/>
 		<key>predicate</key>
-		<string>URL CONTAINS ".local" OR URL CONTAINS ".test" OR URL CONTAINS "localhost:" OR URL CONTAINS "localhost" OR URL CONTAINS "127.0.0." OR URL CONTAINS "ddev.site"</string>
+		<string>URL CONTAINS ".local" OR URL CONTAINS ".test" OR URL CONTAINS "localhost:" OR URL CONTAINS "localhost" OR URL CONTAINS "127.0.0." OR URL CONTAINS ".ptl" OR URL CONTAINS "ddev.site"</string>
 		<key>title</key>
 		<string>Locals</string>
 	</dict>
