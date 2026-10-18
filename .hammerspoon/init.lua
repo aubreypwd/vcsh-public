@@ -596,7 +596,7 @@ local function fixChromePWADockBehavior()
 	local pendingGesture = nil
 
 	-- Requires deliberate movement before a click becomes a Dock icon drag.
-	local chromePWADragDistance = 8
+	local chromePWADragDistance = 16
 	local eventTypes = hs.eventtap.event.types
 
 	_G.chromePWADockBlocker = hs.eventtap.new(
