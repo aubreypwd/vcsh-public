@@ -1005,7 +1005,7 @@
 		<key>behaviourArgument</key>
 		<dict>
 			<key>path</key>
-			<string>/Users/aubreypwd/Applications/Script Editor Apps/New ChatGPT Window.app</string>
+			<string>/Users/aubreypwd/Applications/Chrome Apps.localized/ChatGPT.app</string>
 			<key>type</key>
 			<string>ChoosyBrowser</string>
 		</dict>
