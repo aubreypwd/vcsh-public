@@ -286,7 +286,7 @@ local function manageWindowsAndSizes()
 
 			-- Coding
 			[ "Code" ] = full,
-			[ "Sublime Text" ] = medium,
+			[ "Sublime Text" ] = full,
 
 			-- Browsers
 			[ "Safari" ] = big,
